@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block title %}Reset Password | Data Entry Management System{% endblock %}
+{% block content %}
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow-lg border-0 p-4 rounded-4">
+        <h3 class="text-center text-primary fw-bold mb-3">
+          <i class="fa-solid fa-lock me-2"></i>Reset Password
+        </h3>
+        <p class="text-center text-muted mb-4">Enter your new password below.</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+          {% endfor %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('reset_password') }}">
+          <div class="mb-3">
+            <label for="new_password" class="form-label fw-semibold">New Password</label>
+            <input type="password" name="new_password" id="new_password" class="form-control" placeholder="Enter new password" minlength="6" required>
+          </div>
+          <div class="mb-3">
+            <label for="confirm_password" class="form-label fw-semibold">Confirm New Password</label>
+            <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm new password" minlength="6" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100 fw-semibold">
+            <i class="fa-solid fa-save me-2"></i>Update Password
+          </button>
+        </form>
+
+        <div class="text-center mt-3">
+          <a href="{{ url_for('login') }}" class="text-decoration-none text-primary fw-semibold">
+            Back to Login
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

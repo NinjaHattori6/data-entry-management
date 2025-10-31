@@ -1,0 +1,86 @@
+index.html
+{% extends "layout.html" %}
+{% block title %}Home | Data Entry Management System{% endblock %}
+
+{% block content %}
+
+<!-- 🌟 Hero Section -->
+<section class="text-center py-5" style="background: linear-gradient(135deg, #00cec9, #0984e3); border-radius: 20px; color: white;">
+  <div class="container py-5">
+    <h1 class="fw-bold display-5 mb-3">Welcome to the Data Entry Management System</h1>
+    <p class="lead mb-4">
+      Manage your data efficiently — add, update, and analyze your entries with secure login and downloadable reports.
+    </p>
+
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="{{ url_for('login') }}" class="btn btn-light btn-lg fw-semibold px-4">
+        <i class="fa-solid fa-right-to-bracket me-2"></i>Login
+      </a>
+      <a href="{{ url_for('register') }}" class="btn btn-outline-light btn-lg fw-semibold px-4">
+        <i class="fa-solid fa-user-plus me-2"></i>Register
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 💡 Features Section -->
+<section class="container text-center my-5">
+  <h2 class="fw-bold text-primary mb-4">Why Use This System?</h2>
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 p-4 h-100">
+        <div class="mb-3 text-primary">
+          <i class="fa-solid fa-database fa-2x"></i>
+        </div>
+        <h5 class="fw-semibold">Easy Data Management</h5>
+        <p class="text-muted small">Add, view, and manage your data from one clean dashboard.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 p-4 h-100">
+        <div class="mb-3 text-success">
+          <i class="fa-solid fa-file-export fa-2x"></i>
+        </div>
+        <h5 class="fw-semibold">Instant Report Export</h5>
+        <p class="text-muted small">Download your data instantly as CSV, Excel, or PDF reports.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 p-4 h-100">
+        <div class="mb-3 text-danger">
+          <i class="fa-solid fa-chart-pie fa-2x"></i>
+        </div>
+        <h5 class="fw-semibold">Smart Insights</h5>
+        <p class="text-muted small">See summaries and key statistics on your dashboard at a glance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 📦 About Section -->
+<section class="py-5" style="background-color: #f8f9fa;">
+  <div class="container text-center">
+    <h3 class="fw-bold text-primary mb-3">About the Project</h3>
+    <p class="text-muted mx-auto" style="max-width: 700px;">
+      This web-based Data Entry System is built using <strong>Flask</strong> and <strong>SQLite</strong>.
+      It allows users to securely manage their data entries, generate reports in multiple formats,
+      and access personalized dashboards — with admin control features for managing users.
+    </p>
+  </div>
+</section>
+
+<!-- 🚀 Call-to-Action Section -->
+<section class="text-center py-5" style="background: linear-gradient(135deg, #0984e3, #00cec9); color: white;">
+  <div class="container">
+    <h2 class="fw-bold mb-3">Get Started Today!</h2>
+    <p class="mb-4">Join now to start managing your data efficiently and securely.</p>
+    <a href="{{ url_for('register') }}" class="btn btn-light btn-lg fw-semibold px-4">
+      <i class="fa-solid fa-user-plus me-2"></i>Create Your Account
+    </a>
+  </div>
+</section>
+
+{% endblock %}

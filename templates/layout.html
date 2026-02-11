@@ -1,134 +1,114 @@
-Layout.html
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Data Entry Management System{% endblock %}</title>
 
-  <!-- Bootstrap & Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>{% block title %}Data Vault{% endblock %}</title>
 
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <!-- Description -->
+  <meta name="description" content="A secure Data Vault built with Flask.">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg shadow-sm" style="background:#0d6efd;">
   <div class="container-fluid">
-    <a class="navbar-brand fw-bold" href="{{ url_for('dashboard') }}">
-      <i class="fa-solid fa-database me-2"></i>Data Entry App
+
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold text-light" href="{{ url_for('index') }}">
+      <i class="fa-solid fa-database me-2"></i> Data Vault App
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <!-- Menu -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav align-items-center gap-3">
 
         {% if session.get('user_id') %}
+
           {% if session.get('is_admin') %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('admin') }}">
-                <i class="fa-solid fa-user-shield me-1"></i> Admin Panel
-              </a>
-            </li>
-          {% endif %}
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('dashboard') }}">
-              <i class="fa-solid fa-house me-1"></i> Dashboard
+            <a class="nav-link text-light" href="{{ url_for('admin') }}">
+              <i class="fa-solid fa-user-shield me-1"></i> Admin Panel
             </a>
           </li>
+          {% endif %}
+
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('profile') }}">
+            <a class="nav-link text-light" href="{{ url_for('dashboard') }}">
+              <i class="fa-solid fa-table-list me-1"></i> Dashboard
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-light" href="{{ url_for('profile') }}">
               <i class="fa-solid fa-user me-1"></i> Profile
             </a>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link text-danger fw-semibold" href="{{ url_for('logout') }}">
+            <a class="nav-link text-warning fw-semibold" href="{{ url_for('logout') }}">
               <i class="fa-solid fa-right-from-bracket me-1"></i> Logout
             </a>
           </li>
+
         {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('login') }}">
+            <a class="nav-link text-light" href="{{ url_for('login') }}">
               <i class="fa-solid fa-right-to-bracket me-1"></i> Login
             </a>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('register') }}">
+            <a class="nav-link text-light" href="{{ url_for('register') }}">
               <i class="fa-solid fa-user-plus me-1"></i> Sign Up
             </a>
           </li>
         {% endif %}
 
-        <!-- 🌗 Dark Mode Toggle -->
-        <li class="nav-item">
-          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
-            <span class="icon">🌙</span>
-            <span class="label">Dark Mode</span>
-          </button>
-        </li>
-
       </ul>
     </div>
+
   </div>
 </nav>
 
-<!-- Main Content -->
+<!-- ================= MAIN CONTENT ================= -->
 <main class="container-fluid my-4">
-  {% block content %}
-  {% endblock %}
+  {% block content %}{% endblock %}
 </main>
 
-<!-- Footer -->
-<footer>
-  <p>
-    © {{ now().year if now else "2025" }} Data Entry Management System |
-    Built with ❤️ using Flask & Bootstrap
+<!-- ================= FOOTER ================= -->
+<footer class="text-center py-3 bg-light text-muted border-top">
+  <p class="mb-0 small">
+    &copy; 2025 Data Vault | Built with &#10084; using Flask + Bootstrap 5
   </p>
 </footer>
 
-<!-- Bootstrap JS -->
+<!-- ================= JS ================= -->
+
+<!-- Bootstrap Bundle (with Popper) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- 🌙 Dark Mode Script -->
-<script>
-  const toggleBtn = document.getElementById('theme-toggle');
-  const icon = toggleBtn.querySelector('.icon');
-  const label = toggleBtn.querySelector('.label');
-  const currentTheme = localStorage.getItem('theme');
-
-  // Apply saved theme
-  if (currentTheme === 'dark') {
-    document.body.classList.add('dark-mode');
-    icon.textContent = '☀️';
-    label.textContent = 'Light Mode';
-  }
-
-  toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    let theme = 'light';
-
-    if (document.body.classList.contains('dark-mode')) {
-      theme = 'dark';
-      icon.textContent = '☀️';
-      label.textContent = 'Light Mode';
-    } else {
-      icon.textContent = '🌙';
-      label.textContent = 'Dark Mode';
-    }
-
-    localStorage.setItem('theme', theme);
-  });
-</script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
 </html>

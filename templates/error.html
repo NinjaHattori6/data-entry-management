@@ -1,20 +1,31 @@
-{% extends "layout.html" %}
-{% block title %}Error | Data Entry Management System{% endblock %}
+﻿{% extends "layout.html" %}
+{% block title %}Error | Data Vault{% endblock %}
 {% block content %}
 
-<div class="container text-center py-5">
-  <div class="card shadow-lg border-0 p-5 rounded-4 mx-auto" style="max-width: 600px;">
-    <h1 class="display-3 text-danger fw-bold mb-3">
+<div class="d-flex justify-content-center align-items-center px-3" style="min-height: 80vh;">
+  <div class="card shadow-lg border-0 p-5 rounded-4 text-center" style="max-width: 500px; width: 100%;">
+    <h1 class="display-4 text-danger fw-bold mb-3">
       <i class="fa-solid fa-triangle-exclamation"></i>
     </h1>
-    <h3 class="fw-bold text-primary mb-2">Oops! Something went wrong</h3>
-    <p class="text-muted mb-4">
-      {{ error_message or "An unexpected error occurred. Please try again later." }}
-    </p>
-    <a href="{{ url_for('dashboard') if session.get('user_id') else url_for('index') }}" class="btn btn-primary fw-semibold">
-      <i class="fa-solid fa-house me-2"></i>Go Back Home
+    <h3 class="fw-bold text-primary mb-2">
+      Oops! Something went wrong
+    </h3>
+
+    {% if error %}
+      <p class="text-muted mb-4 small">{{ error }}</p>
+    {% else %}
+      <p class="text-muted mb-4 small">An unexpected error occurred. Please try again later.</p>
+    {% endif %}
+
+    {% if request.endpoint %}
+      <p class="text-secondary small">Route: <code>{{ request.endpoint }}</code></p>
+    {% endif %}
+
+    <a href="{{ url_for('index') }}" class="btn btn-primary fw-semibold mt-3">
+      <i class="fa-solid fa-house me-2"></i> Go Home
     </a>
   </div>
 </div>
 
 {% endblock %}
+

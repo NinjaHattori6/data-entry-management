@@ -1,61 +1,68 @@
-login.html
-{% extends "layout.html" %}
-{% block title %}Login | Data Entry Management System{% endblock %}
-
+﻿{% extends "layout.html" %}
+{% block title %}Login | Data Vault{% endblock %}
 {% block content %}
 
 <div class="container py-5">
   <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
+    <div class="col-md-5">
       <div class="card shadow-lg border-0 p-4 rounded-4">
 
-        <h3 class="text-center mb-3 text-primary fw-bold">
-          <i class="fa-solid fa-right-to-bracket me-2"></i>Welcome Back
+        <!-- Header -->
+        <h3 class="text-center text-primary mb-4 fw-bold">
+          <i class="fa-solid fa-right-to-bracket me-2"></i> Login
         </h3>
-        <p class="text-center text-muted mb-4">Log in to manage your data efficiently.</p>
 
-        <!-- Flask Flash Messages -->
+        <!-- Flash Messages -->
         {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-            {% for category, message in messages %}
-              <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-            {% endfor %}
-          {% endif %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show text-center fw-semibold" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+          {% endfor %}
         {% endwith %}
 
         <!-- Login Form -->
-        <form method="POST" action="{{ url_for('login') }}" id="loginForm">
-          <div class="mb-3">
-            <label for="email" class="form-label fw-semibold">Email Address</label>
-            <input type="email" class="form-control" id="email" name="email"
-                   placeholder="Enter your email" required>
-          </div>
+        <form method="POST" action="{{ url_for('login') }}" id="loginForm" novalidate>
 
           <div class="mb-3">
+            <label for="email" class="form-label fw-semibold">Email</label>
+            <input type="email" id="email" name="email" class="form-control"
+                   placeholder="Enter your email address" required>
+          </div>
+
+          <div class="mb-2">
             <label for="password" class="form-label fw-semibold">Password</label>
-            <input type="password" class="form-control" id="password" name="password"
-                   placeholder="Enter your password" required>
+
+            <!-- Password with eye toggle -->
+            <div class="input-group">
+              <input type="password" id="password" name="password"
+                     class="form-control"
+                     placeholder="Enter your password" required>
+
+              <span class="input-group-text" id="toggleLoginPassword" style="cursor:pointer;">
+                <i class="fa-solid fa-eye"></i>
+              </span>
+            </div>
           </div>
 
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="remember" name="remember">
-              <label for="remember" class="form-check-label small">Remember me</label>
-            </div>
-            <a href="#" class="small text-primary text-decoration-none">Forgot password?</a>
+          <!-- Forgot Password link -->
+          <div class="text-end mb-3">
+            <a href="{{ url_for('forget') }}" class="text-decoration-none small text-primary fw-semibold">
+              Forgot password?
+            </a>
           </div>
 
           <button type="submit" class="btn btn-primary w-100 fw-semibold">
-            <i class="fa-solid fa-right-to-bracket me-2"></i>Login
+            <i class="fa-solid fa-right-to-bracket me-2"></i> Login
           </button>
         </form>
 
-        <div class="text-center mt-3">
-          <p class="mb-0">Don't have an account?
-            <a href="{{ url_for('register') }}" class="text-decoration-none fw-semibold text-primary">
+        <!-- Register link -->
+        <div class="text-center mt-4">
+          <p class="mb-0 small text-muted">
+            Don't have an account?
+            <a href="{{ url_for('register') }}" class="fw-semibold text-primary">
               Register here
             </a>
           </p>
@@ -66,16 +73,31 @@ login.html
   </div>
 </div>
 
-<!-- Client-side validation -->
+<!-- Client-side Validation + Eye Toggle -->
 <script>
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-  const email = document.getElementById('email').value.trim();
-  const pass = document.getElementById('password').value.trim();
+document.addEventListener("DOMContentLoaded", () => {
 
-  if (!email || !pass) {
-    event.preventDefault();
-    alert('Please fill in both email and password.');
-  }
+  // Basic validation
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+    const email = document.getElementById('email').value.trim();
+    const pass = document.getElementById('password').value.trim();
+    if (!email || !pass) {
+      event.preventDefault();
+      alert('Please fill in both email and password.');
+    }
+  });
+
+  // Password eye toggle
+  const toggle = document.getElementById("toggleLoginPassword");
+  const password = document.getElementById("password");
+
+  toggle.addEventListener("click", () => {
+    const icon = toggle.querySelector("i");
+    password.type = password.type === "password" ? "text" : "password";
+    icon.classList.toggle("fa-eye");
+    icon.classList.toggle("fa-eye-slash");
+  });
+
 });
 </script>
 

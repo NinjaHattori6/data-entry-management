@@ -1,60 +1,42 @@
-{% extends "layout.html" %}
-{% block title %}View Entry | Data Entry System{% endblock %}
+﻿{% extends "layout.html" %}
+{% block title %}View Entry{% endblock %}
+
 {% block content %}
+<div class="container py-4">
 
-<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-  <div class="card shadow-lg p-4 rounded-4" style="width: 500px; max-width: 95%;">
-    <h3 class="text-center text-primary fw-bold mb-3">Entry Details 🗂️</h3>
-    <p class="text-center text-muted mb-4">View all information about this entry.</p>
+  <h3 class="text-center mb-4">View Entry</h3>
 
-    <!-- Flash Messages -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show" role="alert">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
+  <table class="table table-bordered">
+    <tr>
+      <th>Name</th>
+      <td>{{ entry.name }}</td>
+    </tr>
+    <tr>
+      <th>Gender</th>
+      <td>{{ entry.gender }}</td>
+    </tr>
+    <tr>
+      <th>Amount</th>
+      <td>{{ entry.amount }}</td>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <td>{{ entry.date }}</td>
+    </tr>
 
-    <!-- Entry Details -->
-    <table class="table table-bordered align-middle text-center">
-      <tbody>
-        <tr>
-          <th class="bg-light text-secondary" style="width: 40%;">Entry ID</th>
-          <td>{{ entry['id'] }}</td>
-        </tr>
-        <tr>
-          <th class="bg-light text-secondary">Full Name</th>
-          <td>{{ entry['name'] }}</td>
-        </tr>
-        <tr>
-          <th class="bg-light text-secondary">Gender</th>
-          <td>{{ entry['gender'] }}</td>
-        </tr>
-        <tr>
-          <th class="bg-light text-secondary">Amount</th>
-          <td>₹ {{ entry['amount'] }}</td>
-        </tr>
-        <tr>
-          <th class="bg-light text-secondary">Date Added</th>
-          <td>{{ entry['date'] }}</td>
-        </tr>
-      </tbody>
-    </table>
+    {% if entry.owner_name %}
+    <tr>
+      <th>Owner</th>
+      <td>{{ entry.owner_name }}</td>
+    </tr>
+    {% endif %}
+  </table>
 
-    <!-- Action Buttons -->
-    <div class="d-flex justify-content-between mt-3">
-      <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary fw-semibold">
-        <i class="fa-solid fa-arrow-left"></i> Back
-      </a>
-      <a href="{{ url_for('edit_entry', entry_id=entry['id']) }}" class="btn btn-primary fw-semibold">
-        <i class="fa-solid fa-pen"></i> Edit
-      </a>
-    </div>
+  <div class="text-center">
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">
+      ← Back
+    </a>
   </div>
-</div>
 
+</div>
 {% endblock %}

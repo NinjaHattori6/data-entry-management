@@ -1,88 +1,104 @@
-profile.html
-{% extends "layout.html" %}
-{% block title %}Profile | Data Entry Management System{% endblock %}
-
+﻿{% extends "layout.html" %}
+{% block title %}Profile | Data Vault{% endblock %}
 {% block content %}
 
 <div class="container py-5">
   <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
+    <div class="col-md-5">
       <div class="card shadow-lg border-0 p-4 rounded-4">
 
         <!-- Header -->
         <h3 class="text-center text-primary mb-3 fw-bold">
-          <i class="fa-solid fa-user-circle me-2"></i>My Profile
+          <i class="fa-solid fa-user-circle me-2"></i> My Profile
         </h3>
-        <p class="text-center text-muted mb-4">Manage your account and change your password.</p>
 
-        <!-- Flask Flash Messages -->
+        <!-- Flash Messages -->
         {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-            {% for category, message in messages %}
-              <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-            {% endfor %}
-          {% endif %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show text-center fw-semibold" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
         {% endwith %}
 
         <!-- Profile Info -->
         <div class="text-center mb-4">
-          <div class="mb-2">
-            <i class="fa-solid fa-circle-user fa-4x text-secondary"></i>
-          </div>
-          <h5 class="fw-semibold text-dark">{{ session['username'] }}</h5>
-          <p class="text-muted small mb-0">{{ session.get('email', 'Email hidden') }}</p>
+          <i class="fa-solid fa-circle-user fa-4x text-secondary mb-2"></i>
+          <h5 class="fw-bold">{{ session['username'] }}</h5>
+          <p class="text-muted small mb-0">{{ session.get('email', 'Email Hidden') }}</p>
         </div>
 
-        <!-- Password Change Form -->
-        <h6 class="fw-bold text-primary mb-3 text-center">Change Password</h6>
-        <form method="POST" action="{{ url_for('profile') }}">
+        <hr class="my-3">
+
+        <!-- Password Change Section -->
+        <h6 class="fw-bold text-primary text-center mb-3">
+          <i class="fa-solid fa-key me-2"></i> Change Password
+        </h6>
+
+        <form method="POST" action="{{ url_for('profile') }}" id="passwordForm">
           <div class="mb-3">
             <label for="old_password" class="form-label fw-semibold">Old Password</label>
-            <input type="password" class="form-control" id="old_password" name="old_password"
-                   placeholder="Enter old password" required>
+            <input type="password" id="old_password" name="old_password" class="form-control" placeholder="Enter old password" required>
           </div>
 
           <div class="mb-3">
             <label for="new_password" class="form-label fw-semibold">New Password</label>
-            <input type="password" class="form-control" id="new_password" name="new_password"
-                   placeholder="Enter new password" minlength="6" required>
+            <div class="input-group">
+              <input type="password" id="new_password" name="new_password" class="form-control" placeholder="Enter new password" required>
+              <button type="button" class="btn btn-outline-secondary" id="toggleNewPassword"><i class="fa-solid fa-eye"></i></button>
+            </div>
           </div>
 
           <div class="mb-3">
             <label for="confirm_password" class="form-label fw-semibold">Confirm New Password</label>
-            <input type="password" class="form-control" id="confirm_password" name="confirm_password"
-                   placeholder="Re-enter new password" minlength="6" required>
+            <div class="input-group">
+              <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Re-enter new password" required>
+              <button type="button" class="btn btn-outline-secondary" id="toggleConfirmPassword"><i class="fa-solid fa-eye"></i></button>
+            </div>
           </div>
 
-          <button type="submit" class="btn btn-primary w-100 fw-semibold">
-            <i class="fa-solid fa-key me-2"></i>Update Password
+          <button type="submit" class="btn btn-primary w-100 fw-semibold mt-2">
+            <i class="fa-solid fa-floppy-disk me-2"></i> Update Password
           </button>
         </form>
 
-        <div class="text-center mt-4">
-          <a href="{{ url_for('dashboard') }}" class="btn btn-secondary w-100 fw-semibold">
-            <i class="fa-solid fa-arrow-left me-2"></i>Back to Dashboard
-          </a>
-        </div>
-
+        <!-- Back Button -->
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary w-100 mt-3 fw-semibold">
+          <i class="fa-solid fa-arrow-left me-2"></i> Back to Dashboard
+        </a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Client-side validation -->
+<!-- JS for validation and show/hide password -->
 <script>
-document.querySelector("form").addEventListener("submit", function(e) {
-  const newPass = document.getElementById("new_password").value.trim();
-  const confirm = document.getElementById("confirm_password").value.trim();
-  if (newPass !== confirm) {
+document.getElementById('passwordForm').addEventListener('submit', function(e) {
+  const newPw = document.getElementById('new_password').value.trim();
+  const confirmPw = document.getElementById('confirm_password').value.trim();
+  if (newPw !== confirmPw) {
     e.preventDefault();
-    alert("New passwords do not match. Please recheck.");
+    alert("Passwords do not match. Please recheck.");
   }
 });
+
+function toggleVisibility(fieldId, buttonId) {
+  const field = document.getElementById(fieldId);
+  const button = document.getElementById(buttonId);
+  const icon = button.querySelector('i');
+  if (field.type === "password") {
+    field.type = "text";
+    icon.classList.replace('fa-eye', 'fa-eye-slash');
+  } else {
+    field.type = "password";
+    icon.classList.replace('fa-eye-slash', 'fa-eye');
+  }
+}
+
+document.getElementById('toggleNewPassword').addEventListener('click', () => toggleVisibility('new_password', 'toggleNewPassword'));
+document.getElementById('toggleConfirmPassword').addEventListener('click', () => toggleVisibility('confirm_password', 'toggleConfirmPassword'));
 </script>
 
 {% endblock %}
+

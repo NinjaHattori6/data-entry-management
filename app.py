@@ -1,232 +1,389 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash, send_file
-from werkzeug.security import generate_password_hash, check_password_hash
-import sqlite3, pandas as pd, os, random, smtplib
+﻿# FINAL CLEAN APP.PY â€” FULLY COMPATIBLE WITH YOUR DB SCHEMA
+
+import os
+import time
+import sqlite3
+import random
+from functools import wraps
+from datetime import timedelta, datetime
 from io import BytesIO
+
+from dotenv import load_dotenv
+from flask import (
+    Flask, render_template, request, redirect, url_for,
+    session, flash, send_file, abort
+)
+from werkzeug.security import generate_password_hash, check_password_hash
+import pandas as pd
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 
-# ------------------------------------------------------------
-# Flask Configuration
-# ------------------------------------------------------------
+# ---------------------------------------------------------
+# LOGGING + EMAIL SUPPORT
+# ---------------------------------------------------------
+
+import logging
+import smtplib
+from email.mime.text import MIMEText
+
+SMTP_SERVER = "smtp.gmail.com"
+SMTP_PORT = 587
+EMAIL_USER = os.getenv("EMAIL_USER")
+EMAIL_PASS = os.getenv("EMAIL_PASS")
+
+logging.basicConfig(
+    filename="app.log",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
+# ---------------------------------------------------------
+# LOAD CONFIG
+# ---------------------------------------------------------
+
+load_dotenv()
 app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY", "dev_secret_key")
-DB_NAME = "data_entry.db"
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "dev_secret_change_me")
+DB_NAME = os.getenv("DATABASE_NAME", "data_entry.db")
+
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=60)
+app.config['SESSION_COOKIE_HTTPONLY'] = True
+app.config['SESSION_COOKIE_SECURE'] = False
+
+import secrets
+
+@app.before_request
+def csrf_protect():
+    if request.method == "POST":
+        token = session.get("_csrf_token")
+        form_token = request.form.get("_csrf_token")
+        if not token or token != form_token:
+            abort(403)
+
+def generate_csrf_token():
+    if "_csrf_token" not in session:
+        session["_csrf_token"] = secrets.token_hex(16)
+    return session["_csrf_token"]
+
+app.jinja_env.globals["csrf_token"] = generate_csrf_token
 
 
-# ------------------------------------------------------------
-# Database Utilities
-# ------------------------------------------------------------
+# ---------------------------------------------------------
+# DATABASE HELPER
+# ---------------------------------------------------------
+
 def get_db_connection():
     conn = sqlite3.connect(DB_NAME)
     conn.row_factory = sqlite3.Row
     return conn
 
 
-def init_db():
-    conn = get_db_connection()
-    conn.execute('''CREATE TABLE IF NOT EXISTS users (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        username TEXT NOT NULL,
-                        email TEXT UNIQUE NOT NULL,
-                        password TEXT NOT NULL,
-                        is_admin INTEGER DEFAULT 0
-                    )''')
+# ---------------------------------------------------------
+# AUTH DECORATORS
+# ---------------------------------------------------------
 
-    conn.execute('''CREATE TABLE IF NOT EXISTS entries (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        user_id INTEGER NOT NULL,
-                        name TEXT,
-                        gender TEXT,
-                        amount REAL,
-                        date TEXT,
-                        FOREIGN KEY (user_id) REFERENCES users (id)
-                    )''')
-    conn.commit()
-    conn.close()
+def login_required(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        if not session.get("user_id"):
+            flash("Please log in first.", "warning")
+            return redirect(url_for("login"))
+        return f(*args, **kwargs)
+    return wrapper
 
 
-init_db()
+def admin_required(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        if not session.get("is_admin"):
+            flash("Admins only.", "danger")
+            return redirect(url_for("dashboard"))
+        return f(*args, **kwargs)
+    return wrapper
 
 
-# ------------------------------------------------------------
-# Helper: Send Email (demo)
-# ------------------------------------------------------------
-def send_email(receiver, subject, message):
-    """Simple email sender (for demo, replace with Flask-Mail or SMTP setup)"""
-    print(f"[EMAIL] To: {receiver}\nSubject: {subject}\nMessage: {message}")
+# ---------------------------------------------------------
+# OTP SYSTEM
+# ---------------------------------------------------------
+
+OTP_TTL = 300
+
+def generate_and_store_otp(email):
+    otp = random.randint(100000, 999999)
+    session["otp"] = str(otp)
+    session["otp_email"] = email
+    session["otp_exp"] = time.time() + OTP_TTL
+    return otp
 
 
-# ------------------------------------------------------------
-# Authentication
-# ------------------------------------------------------------
-@app.route('/')
+def validate_otp(entered):
+    otp = session.get("otp")
+    exp = session.get("otp_exp")
+    if not otp:
+        return False, "No OTP found."
+    if time.time() > exp:
+        session.pop("otp", None)
+        session.pop("otp_exp", None)
+        return False, "OTP expired."
+    if str(entered) != otp:
+        return False, "Invalid OTP."
+    session.pop("otp", None)
+    session.pop("otp_exp", None)
+    return True, "OTP correct."
+
+def send_otp_email(receiver_email, otp):
+    if not EMAIL_USER or not EMAIL_PASS:
+        logging.error("Email credentials not configured.")
+        return False
+
+    try:
+        msg = MIMEText(
+            f"Your OTP for Data Vault password reset is: {otp}\n\nValid for 5 minutes."
+        )
+        msg["Subject"] = "Data Vault - OTP Verification"
+        msg["From"] = EMAIL_USER
+        msg["To"] = receiver_email
+
+        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+        server.starttls()
+        server.login(EMAIL_USER, EMAIL_PASS)
+        server.sendmail(EMAIL_USER, receiver_email, msg.as_string())
+        server.quit()
+
+        logging.info(f"OTP sent to {receiver_email}")
+        return True
+
+    except Exception as e:
+        logging.error(f"Email error: {e}")
+        return False
+
+
+# ---------------------------------------------------------
+# INDEX
+# ---------------------------------------------------------
+
+@app.route("/")
 def index():
-    if 'user_id' in session:
-        return redirect(url_for('dashboard'))
-    return render_template('index.html')
+    if session.get("user_id"):
+        return redirect(url_for("dashboard"))
+    return render_template("index.html")
 
 
-@app.route('/register', methods=['GET', 'POST'])
+# ---------------------------------------------------------
+# REGISTER
+# ---------------------------------------------------------
+
+@app.route("/register", methods=["GET", "POST"])
 def register():
-    if request.method == 'POST':
-        username = request.form['username'].strip()
-        email = request.form['email'].strip()
-        password = request.form['password']
-        confirm = request.form['confirm_password']
+    if request.method == "POST":
+        username = request.form["username"].strip()
+        email = request.form["email"].strip().lower()
+        password = request.form["password"]
 
-        if password != confirm:
-            flash("Passwords do not match!", "danger")
-            return redirect(url_for('register'))
+        if not username or not email or not password:
+            flash("All fields required.", "warning")
+            return redirect(url_for("register"))
+
+        pwd_hash = generate_password_hash(password)
 
         conn = get_db_connection()
-        existing = conn.execute("SELECT * FROM users WHERE email=?", (email,)).fetchone()
-        if existing:
-            flash("Email already registered.", "warning")
+        try:
+            conn.execute(
+                "INSERT INTO users (username, email, password, is_admin) VALUES (?, ?, ?, ?)",
+                (username, email, pwd_hash, 0)
+            )
+            conn.commit()
+        except sqlite3.IntegrityError:
+            flash("Email already registered.", "danger")
             conn.close()
-            return redirect(url_for('login'))
+            return redirect(url_for("register"))
 
-        conn.execute("INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
-                     (username, email, generate_password_hash(password)))
-        conn.commit()
         conn.close()
+        flash("Registered successfully! Log in now.", "success")
+        return redirect(url_for("login"))
 
-        flash("Account created successfully!", "success")
-        return redirect(url_for('login'))
-
-    return render_template('register.html')
+    return render_template("register.html")
 
 
-@app.route('/login', methods=['GET', 'POST'])
+# ---------------------------------------------------------
+# LOGIN
+# ---------------------------------------------------------
+
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    if request.method == 'POST':
-        email = request.form['email'].strip()
-        password = request.form['password']
+    if request.method == "POST":
+        email = request.form["email"].strip().lower()
+        password = request.form["password"]
 
         conn = get_db_connection()
         user = conn.execute("SELECT * FROM users WHERE email=?", (email,)).fetchone()
         conn.close()
 
-        if user and check_password_hash(user['password'], password):
-            session['user_id'] = user['id']
-            session['username'] = user['username']
-            session['is_admin'] = bool(user['is_admin'])
-            flash(f"Welcome, {user['username']}!", "success")
-            return redirect(url_for('dashboard'))
+        if not user or not check_password_hash(user["password"], password):
+            logging.warning(f"Failed login attempt: {email}")
+            logging.info(f"User logged in: {email}")
+            flash("Invalid email or password.", "danger")
+            return redirect(url_for("login"))
 
-        flash("Invalid email or password.", "danger")
+        session.clear()
+        session["user_id"] = user["id"]
+        session["username"] = user["username"]
+        session["email"] = user["email"]
+        session["is_admin"] = bool(user["is_admin"])
 
-    return render_template('login.html')
+        flash(f"Welcome, {user['username']}!", "success")
+        return redirect(url_for("dashboard"))
+
+    return render_template("login.html")
 
 
-@app.route('/logout')
+# ---------------------------------------------------------
+# LOGOUT
+# ---------------------------------------------------------
+
+@app.route("/logout")
 def logout():
+    logging.info(f"User logged out: {session.get('email')}")
     session.clear()
-    flash("You have been logged out.", "info")
-    return redirect(url_for('login'))
+    flash("Logged out.", "info")
+    return redirect(url_for("index"))
 
 
-# ------------------------------------------------------------
-# Forgot / Reset Password Flow
-# ------------------------------------------------------------
-@app.route('/forgot', methods=['GET', 'POST'])
-def forgot_password():
-    if request.method == 'POST':
-        email = request.form['email'].strip()
+# ---------------------------------------------------------
+# FORGOT PASSWORD (OTP)
+# ---------------------------------------------------------
+
+@app.route("/forget", methods=["GET", "POST"])
+def forget():
+    if request.method == "POST":
+        email = request.form["email"].strip().lower()
+
         conn = get_db_connection()
         user = conn.execute("SELECT * FROM users WHERE email=?", (email,)).fetchone()
         conn.close()
 
         if not user:
-            flash("Email not registered.", "danger")
-            return redirect(url_for('forgot_password'))
+            flash("Email not found.", "danger")
+            return redirect(url_for("forget"))
 
-        otp = str(random.randint(100000, 999999))
-        session['reset_email'] = email
-        session['otp'] = otp
-        send_email(email, "Your OTP Code", f"Your OTP for password reset is: {otp}")
+        otp = generate_and_store_otp(email)
 
-        flash("OTP sent to your email (check console in demo).", "info")
-        return redirect(url_for('verify_otp'))
-
-    return render_template('forget.html')
-
-
-@app.route('/verify_otp', methods=['GET', 'POST'])
-def verify_otp():
-    if request.method == 'POST':
-        otp_input = request.form['otp'].strip()
-        if otp_input == session.get('otp'):
-            session['otp_verified'] = True
-            flash("OTP verified successfully.", "success")
-            return redirect(url_for('reset_password'))
+        if send_otp_email(email, otp):
+            flash("OTP sent to your registered email.", "info")
         else:
-            flash("Invalid OTP. Please try again.", "danger")
+            flash("Failed to send OTP email. Contact admin.", "danger")
+            return redirect(url_for("forget"))
 
-    return render_template('otp.html')
+        return redirect(url_for("otp"))
+
+    return render_template("forget.html")
 
 
-@app.route('/reset', methods=['GET', 'POST'])
+@app.route("/otp", methods=["GET", "POST"])
+def otp():
+    if request.method == "POST":
+        entered = request.form["otp"]
+        ok, msg = validate_otp(entered)
+
+        if ok:
+            session["reset_email"] = session.get("otp_email")
+            flash("OTP verified.", "success")
+            return redirect(url_for("reset_password"))
+
+        flash(msg, "danger")
+        return redirect(url_for("otp"))
+
+    return render_template("otp.html")
+
+
+@app.route("/reset", methods=["GET", "POST"])
 def reset_password():
-    if not session.get('otp_verified'):
-        flash("Please verify OTP first.", "warning")
-        return redirect(url_for('forgot_password'))
+    email = session.get("reset_email")
+    if not email:
+        flash("No OTP verification found.", "warning")
+        return redirect(url_for("forget"))
 
-    if request.method == 'POST':
-        new_password = request.form['new_password']
-        confirm = request.form['confirm_password']
-        email = session.get('reset_email')
-
-        if new_password != confirm:
-            flash("Passwords do not match.", "danger")
-            return redirect(url_for('reset_password'))
+    if request.method == "POST":
+        new_pw = request.form["password"]
+        hashed = generate_password_hash(new_pw)
 
         conn = get_db_connection()
-        conn.execute("UPDATE users SET password=? WHERE email=?",
-                     (generate_password_hash(new_password), email))
+        conn.execute("UPDATE users SET password=? WHERE email=?", (hashed, email))
         conn.commit()
         conn.close()
 
-        session.pop('otp', None)
-        session.pop('otp_verified', None)
-        session.pop('reset_email', None)
-        flash("Password reset successful! Please login.", "success")
-        return redirect(url_for('login'))
+        session.pop("reset_email", None)
+        flash("Password updated.", "success")
+        return redirect(url_for("login"))
 
-    return render_template('reset.html')
+    return render_template("reset.html")
 
 
-# ------------------------------------------------------------
-# Dashboard & CRUD
-# ------------------------------------------------------------
+# ---------------------------------------------------------
+# DASHBOARD
+# ---------------------------------------------------------
+
 @app.route('/dashboard')
 def dashboard():
     if 'user_id' not in session:
-        flash("Please login first.", "warning")
+        flash("Please login first", "warning")
         return redirect(url_for('login'))
 
     conn = get_db_connection()
-    entries = conn.execute("SELECT * FROM entries WHERE user_id=? ORDER BY id DESC",
-                           (session['user_id'],)).fetchall()
-    conn.close()
 
+    # 👑 ADMIN → see ALL entries + user name
+    if session.get('is_admin'):
+        entries = conn.execute("""
+            SELECT 
+                entries.id,
+                entries.name,
+                entries.gender,
+                entries.amount,
+                entries.date,
+                users.username AS owner_name
+            FROM entries
+            JOIN users ON entries.user_id = users.id
+            ORDER BY entries.id DESC
+        """).fetchall()
+
+    # 👤 NORMAL USER → see only own entries
+    else:
+        entries = conn.execute("""
+            SELECT id, name, gender, amount, date
+            FROM entries
+            WHERE user_id = ?
+            ORDER BY id DESC
+        """, (session['user_id'],)).fetchall()
+
+    # 📊 Stats
     total_entries = len(entries)
-    total_amount = sum([e['amount'] or 0 for e in entries])
+    total_amount = sum(e['amount'] or 0 for e in entries)
     male_count = len([e for e in entries if e['gender'] == 'Male'])
     female_count = len([e for e in entries if e['gender'] == 'Female'])
+    other_count = len([e for e in entries if e['gender'] == 'Other'])
 
-    return render_template('dashboard.html',
-                           entries=entries,
-                           total_entries=total_entries,
-                           total_amount=total_amount,
-                           male_count=male_count,
-                           female_count=female_count,
-                           username=session.get('username'))
+    conn.close()
 
+    return render_template(
+        'dashboard.html',
+        entries=entries,
+        total_entries=total_entries,
+        total_amount=total_amount,
+        male_count=male_count,
+        female_count=female_count,
+        other_count=other_count,
+        username=session.get('username')
+    )
+
+
+# ---------------------------------------------------------
+# ADD ENTRY
+# ---------------------------------------------------------
 
 @app.route('/add_entry', methods=['POST'])
 def add_entry():
     if 'user_id' not in session:
-        flash("Please login first.", "warning")
+        flash("Please log in first.", "warning")
         return redirect(url_for('login'))
 
     name = request.form['name'].strip()
@@ -234,209 +391,344 @@ def add_entry():
     amount = request.form['amount']
     date = request.form['date']
 
-    if not name or not gender:
-        flash("Name and Gender are required.", "warning")
+    conn = get_db_connection()
+
+    # 🔍 DUPLICATE CHECK
+    duplicate = conn.execute("""
+        SELECT 1 FROM entries
+        WHERE user_id = ?
+          AND name = ?
+          AND gender = ?
+          AND amount = ?
+          AND date = ?
+    """, (session['user_id'], name, gender, amount, date)).fetchone()
+
+    if duplicate:
+        conn.close()
+        flash("⚠️ Duplicate entry detected. Entry already exists.", "warning")
         return redirect(url_for('dashboard'))
 
-    conn = get_db_connection()
-    conn.execute("INSERT INTO entries (user_id, name, gender, amount, date) VALUES (?, ?, ?, ?, ?)",
-                 (session['user_id'], name, gender, amount, date))
+    # ✅ INSERT IF NOT DUPLICATE
+    conn.execute("""
+        INSERT INTO entries (user_id, name, gender, amount, date)
+        VALUES (?, ?, ?, ?, ?)
+    """, (session['user_id'], name, gender, amount, date))
+
     conn.commit()
     conn.close()
-    flash("Entry added successfully!", "success")
+
+    flash("✅ Entry added successfully!", "success")
     return redirect(url_for('dashboard'))
 
 
-@app.route('/edit_entry/<int:entry_id>', methods=['GET', 'POST'])
-def edit_entry(entry_id):
-    if 'user_id' not in session:
-        flash("Please login first.", "warning")
-        return redirect(url_for('login'))
+# ---------------------------------------------------------
+# VIEW ENTRY
+# ---------------------------------------------------------
 
+@app.route("/view/<int:entry_id>")
+@login_required
+def view_entry(entry_id):
     conn = get_db_connection()
-    entry = conn.execute("SELECT * FROM entries WHERE id=? AND user_id=?",
-                         (entry_id, session['user_id'])).fetchone()
+
+    if session.get("is_admin"):
+        entry = conn.execute(
+            "SELECT e.*, u.username AS owner_name FROM entries e JOIN users u ON e.user_id=u.id WHERE e.id=?",
+            (entry_id,)
+        ).fetchone()
+    else:
+        entry = conn.execute(
+            "SELECT * FROM entries WHERE id=? AND user_id=?",
+            (entry_id, session["user_id"])
+        ).fetchone()
+
+    conn.close()
+
+    if not entry:
+        flash("Entry not found.", "danger")
+        return redirect(url_for("dashboard"))
+
+    return render_template("view_entry.html", entry=entry)
+
+
+# ---------------------------------------------------------
+# EDIT ENTRY
+# ---------------------------------------------------------
+
+@app.route("/edit/<int:entry_id>", methods=["GET", "POST"])
+@login_required
+def edit_entry(entry_id):
+    conn = get_db_connection()
+
+    if session.get("is_admin"):
+        entry = conn.execute("SELECT * FROM entries WHERE id=?", (entry_id,)).fetchone()
+    else:
+        entry = conn.execute(
+            "SELECT * FROM entries WHERE id=? AND user_id=?",
+            (entry_id, session["user_id"])
+        ).fetchone()
 
     if not entry:
         conn.close()
         flash("Entry not found.", "danger")
-        return redirect(url_for('dashboard'))
+        return redirect(url_for("dashboard"))
 
-    if request.method == 'POST':
-        name = request.form['name']
-        gender = request.form['gender']
-        amount = request.form['amount']
-        date = request.form['date']
-        conn.execute("UPDATE entries SET name=?, gender=?, amount=?, date=? WHERE id=?",
-                     (name, gender, amount, date, entry_id))
+    if request.method == "POST":
+        name = request.form["name"]
+        gender = request.form["gender"]
+        amount = request.form["amount"]
+        date = request.form["date"]
+
+        conn.execute(
+            "UPDATE entries SET name=?, gender=?, amount=?, date=? WHERE id=?",
+            (name, gender, amount, date, entry_id)
+        )
         conn.commit()
         conn.close()
-        flash("Entry updated successfully!", "success")
-        return redirect(url_for('dashboard'))
+
+        flash("Entry updated!", "success")
+        return redirect(url_for("dashboard"))
 
     conn.close()
-    return render_template('edit_entry.html', entry=entry)
+    return render_template("edit_entry.html", entry=entry)
 
 
-@app.route('/delete_entry/<int:entry_id>')
+# ---------------------------------------------------------
+# DELETE ENTRY
+# ---------------------------------------------------------
+
+@app.route("/delete/<int:entry_id>")
+@login_required
 def delete_entry(entry_id):
-    if 'user_id' not in session:
-        flash("Please login first.", "warning")
-        return redirect(url_for('login'))
-
     conn = get_db_connection()
-    conn.execute("DELETE FROM entries WHERE id=? AND user_id=?", (entry_id, session['user_id']))
+
+    if session.get("is_admin"):
+        conn.execute("DELETE FROM entries WHERE id=?", (entry_id,))
+    else:
+        conn.execute("DELETE FROM entries WHERE id=? AND user_id=?", (entry_id, session["user_id"]))
+
     conn.commit()
     conn.close()
-    flash("Entry deleted successfully.", "info")
-    return redirect(url_for('dashboard'))
+
+    flash("Entry deleted.", "info")
+    return redirect(url_for("dashboard"))
 
 
-# ------------------------------------------------------------
-# Export Routes
-# ------------------------------------------------------------
-@app.route('/export/<string:filetype>')
-def export_entries(filetype):
-    if 'user_id' not in session:
-        flash("Please login first.", "warning")
-        return redirect(url_for('login'))
+# ---------------------------------------------------------
+# PROFILE
+# ---------------------------------------------------------
 
-    conn = get_db_connection()
-    entries = conn.execute("SELECT name, gender, amount, date FROM entries WHERE user_id=?",
-                           (session['user_id'],)).fetchall()
-    conn.close()
-
-    df = pd.DataFrame(entries, columns=['name', 'gender', 'amount', 'date'])
-    output = BytesIO()
-
-    if filetype == 'csv':
-        df.to_csv(output, index=False)
-        output.seek(0)
-        return send_file(output, mimetype='text/csv', as_attachment=True, download_name='entries.csv')
-
-    elif filetype == 'excel':
-        df.to_excel(output, index=False, engine='openpyxl')
-        output.seek(0)
-        return send_file(output,
-                         mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-                         as_attachment=True, download_name='entries.xlsx')
-
-    elif filetype == 'pdf':
-        c = canvas.Canvas(output, pagesize=letter)
-        width, height = letter
-        y = height - 50
-        c.setFont("Helvetica-Bold", 14)
-        c.drawString(200, y, "User Entries Report")
-        y -= 30
-        c.setFont("Helvetica", 10)
-        for _, row in df.iterrows():
-            c.drawString(50, y, f"{row['name']} | {row['gender']} | {row['amount']} | {row['date']}")
-            y -= 15
-            if y < 50:
-                c.showPage()
-                y = height - 50
-        c.save()
-        output.seek(0)
-        return send_file(output, mimetype='application/pdf', as_attachment=True, download_name='entries.pdf')
-
-    flash("Invalid file type.", "danger")
-    return redirect(url_for('dashboard'))
-
-
-# ------------------------------------------------------------
-# Profile
-# ------------------------------------------------------------
-@app.route('/profile', methods=['GET', 'POST'])
+@app.route("/profile", methods=["GET", "POST"])
+@login_required
 def profile():
-    if 'user_id' not in session:
-        flash("Please login first.", "warning")
-        return redirect(url_for('login'))
+    conn = get_db_connection()
+    user = conn.execute("SELECT * FROM users WHERE id=?", (session["user_id"],)).fetchone()
 
-    if request.method == 'POST':
-        old = request.form['old_password']
-        new = request.form['new_password']
-        confirm = request.form['confirm_password']
+    if request.method == "POST":
+        old = request.form["old_password"]
+        new = request.form["new_password"]
+        confirm = request.form["confirm_password"]
 
-        conn = get_db_connection()
-        user = conn.execute("SELECT * FROM users WHERE id=?", (session['user_id'],)).fetchone()
-        if not check_password_hash(user['password'], old):
+        if not check_password_hash(user["password"], old):
             flash("Old password incorrect.", "danger")
-        elif new != confirm:
-            flash("New passwords do not match.", "warning")
-        else:
-            conn.execute("UPDATE users SET password=? WHERE id=?",
-                         (generate_password_hash(new), session['user_id']))
-            conn.commit()
-            flash("Password updated successfully!", "success")
+            conn.close()
+            return redirect(url_for("profile"))
+
+        if new != confirm:
+            flash("Passwords do not match.", "warning")
+            conn.close()
+            return redirect(url_for("profile"))
+
+        new_hash = generate_password_hash(new)
+        conn.execute("UPDATE users SET password=? WHERE id=?", (new_hash, session["user_id"]))
+        conn.commit()
         conn.close()
 
-    return render_template('profile.html')
+        flash("Password updated!", "success")
+        return redirect(url_for("profile"))
 
-
-# ------------------------------------------------------------
-# Admin Dashboard
-# ------------------------------------------------------------
-@app.route('/admin')
-def admin():
-    if not session.get('is_admin'):
-        flash("Access denied.", "danger")
-        return redirect(url_for('dashboard'))
-
-    conn = get_db_connection()
-    users = conn.execute('''SELECT u.id, u.username, u.email, COUNT(e.id) AS entry_count, u.is_admin
-                            FROM users u
-                            LEFT JOIN entries e ON u.id = e.user_id
-                            GROUP BY u.id''').fetchall()
     conn.close()
-    return render_template('admin.html', users=users)
+    return render_template("profile.html", user=user)
 
 
-@app.route('/make_admin/<int:user_id>')
-def make_admin(user_id):
-    if not session.get('is_admin'):
-        flash("Access denied.", "danger")
-        return redirect(url_for('dashboard'))
+# ---------------------------------------------------------
+# ADMIN: USERS LIST
+# ---------------------------------------------------------
 
+@app.route("/admin")
+@admin_required
+def admin():
+    conn = get_db_connection()
+    users = conn.execute("SELECT id, username, email, is_admin FROM users ORDER BY id DESC").fetchall()
+    conn.close()
+    return render_template("admin.html", users=users)
+
+
+@app.route("/admin/promote/<int:user_id>", methods=["POST"])
+@admin_required
+def admin_promote(user_id):
     conn = get_db_connection()
     conn.execute("UPDATE users SET is_admin=1 WHERE id=?", (user_id,))
     conn.commit()
     conn.close()
-    flash("User promoted to admin.", "success")
-    return redirect(url_for('admin'))
+    flash("User promoted!", "success")
+    return redirect(url_for("admin"))
 
 
-@app.route('/delete_user/<int:user_id>')
-def delete_user(user_id):
-    if not session.get('is_admin'):
-        flash("Access denied.", "danger")
-        return redirect(url_for('dashboard'))
+@app.route("/admin/demote/<int:user_id>", methods=["POST"])
+@admin_required
+def admin_demote(user_id):
+    if session["user_id"] == user_id:
+        flash("You cannot demote yourself.", "warning")
+        return redirect(url_for("admin"))
+
+    conn = get_db_connection()
+    conn.execute("UPDATE users SET is_admin=0 WHERE id=?", (user_id,))
+    conn.commit()
+    conn.close()
+    flash("User demoted.", "info")
+    return redirect(url_for("admin"))
+
+
+@app.route("/admin/delete_user/<int:user_id>", methods=["POST"])
+@admin_required
+def admin_delete_user(user_id):
+    if session["user_id"] == user_id:
+        flash("You cannot delete your own account.", "warning")
+        return redirect(url_for("admin"))
 
     conn = get_db_connection()
     conn.execute("DELETE FROM entries WHERE user_id=?", (user_id,))
     conn.execute("DELETE FROM users WHERE id=?", (user_id,))
     conn.commit()
     conn.close()
-    flash("User and their entries deleted.", "info")
-    return redirect(url_for('admin'))
+
+    flash("User deleted.", "info")
+    return redirect(url_for("admin"))
 
 
-# ------------------------------------------------------------
-# Error Handlers
-# ------------------------------------------------------------
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('error.html', error_message="404 - Page Not Found"), 404
+# ---------------------------------------------------------
+# ADMIN: ENTRIES LIST
+# ---------------------------------------------------------
+
+@app.route("/admin/entries")
+@admin_required
+def admin_entries():
+    conn = get_db_connection()
+    rows = conn.execute("""
+        SELECT 
+            e.id,
+            e.name,
+            e.gender,
+            e.amount,
+            e.date,
+            u.username AS owner_name
+        FROM entries e
+        JOIN users u ON e.user_id=u.id
+        ORDER BY e.date DESC
+    """).fetchall()
+    conn.close()
+
+    return render_template("admin_entries.html", entries=rows)
 
 
-@app.errorhandler(500)
-def internal_error(e):
-    return render_template('error.html', error_message="500 - Internal Server Error"), 500
+# ---------------------------------------------------------
+# EXPORT DATA
+# ---------------------------------------------------------
+
+@app.route("/export/<string:fmt>")
+@login_required
+def export(fmt):
+
+    conn = get_db_connection()
+
+    if session.get("is_admin"):
+        rows = conn.execute("""
+            SELECT e.name, e.gender, e.amount, e.date, u.username AS owner_name
+            FROM entries e
+            JOIN users u ON e.user_id=u.id
+            ORDER BY e.date DESC
+        """).fetchall()
+    else:
+        rows = conn.execute("""
+            SELECT name, gender, amount, date
+            FROM entries
+            WHERE user_id=?
+            ORDER BY date DESC
+        """, (session["user_id"],)).fetchall()
+
+    conn.close()
+
+    df = pd.DataFrame([dict(r) for r in rows])
+
+    if session.get("is_admin"):
+        columns = ["owner_name", "name", "gender", "amount", "date"]
+        df = df[columns].rename(columns={"owner_name": "User"})
+    else:
+        df = df[["name", "gender", "amount", "date"]]
+
+    now_str = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    if fmt == "csv":
+        buf = BytesIO()
+        df.to_csv(buf, index=False)
+        buf.seek(0)
+        return send_file(buf, as_attachment=True, download_name=f"export_{now_str}.csv")
+
+    if fmt == "xlsx":
+        buf = BytesIO()
+        df.to_excel(buf, index=False, engine="openpyxl")
+        buf.seek(0)
+        return send_file(buf, as_attachment=True, download_name=f"export_{now_str}.xlsx")
+
+    if fmt == "pdf":
+        buf = BytesIO()
+        p = canvas.Canvas(buf, pagesize=letter)
+
+        width, height = letter
+        y = height - 50
+
+        p.setFont("Helvetica-Bold", 12)
+        p.drawString(40, y, f"Export: {now_str}")
+        y -= 20
+        p.setFont("Helvetica", 10)
+
+        header = " | ".join(df.columns)
+        p.drawString(40, y, header)
+        y -= 15
+
+        for row in df.itertuples(index=False, name=None):
+            if y < 40:
+                p.showPage()
+                y = height - 50
+            line = " | ".join([str(col) for col in row])
+            p.drawString(40, y, line)
+            y -= 15
+
+        p.save()
+        buf.seek(0)
+        return send_file(buf, as_attachment=True, download_name=f"export_{now_str}.pdf")
+
+    abort(400)
 
 
-# ------------------------------------------------------------
-# Run App
-# ------------------------------------------------------------
-if __name__ == '__main__':
-    if not os.path.exists(DB_NAME):
-        init_db()
-    app.run(debug=True)
+# ---------------------------------------------------------
+# HEALTH CHECK
+# ---------------------------------------------------------
+
+@app.route("/health")
+def health():
+    try:
+        conn = get_db_connection()
+        conn.execute("SELECT 1")
+        conn.close()
+        return "OK"
+    except Exception as e:
+        return f"ERR: {e}"
+
+
+# ---------------------------------------------------------
+# RUN SERVER
+# ---------------------------------------------------------
+
+if __name__ == "__main__":
+    app.run()

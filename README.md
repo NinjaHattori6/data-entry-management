@@ -1,4 +1,4 @@
-\# 🧮 Data Entry Management System
+﻿\# ðŸ§® Data Vault
 
 
 
@@ -12,11 +12,11 @@ Includes user authentication, admin control, PDF/Excel/CSV exports, and password
 
 
 
-\## 🚀 Features
+\## ðŸš€ Features
 
 
 
-\### 👤 User Features
+\### ðŸ‘¤ User Features
 
 \- Register, Login, Logout
 
@@ -30,7 +30,7 @@ Includes user authentication, admin control, PDF/Excel/CSV exports, and password
 
 
 
-\### 🧑‍💼 Admin Features
+\### ðŸ§‘â€ðŸ’¼ Admin Features
 
 \- View all registered users and their entry counts
 
@@ -42,7 +42,7 @@ Includes user authentication, admin control, PDF/Excel/CSV exports, and password
 
 
 
-\### 🔐 Security
+\### ðŸ” Security
 
 \- Passwords hashed using `werkzeug.security`
 
@@ -58,7 +58,7 @@ Includes user authentication, admin control, PDF/Excel/CSV exports, and password
 
 
 
-\## 🧰 Tech Stack
+\## ðŸ§° Tech Stack
 
 
 
@@ -82,11 +82,11 @@ Includes user authentication, admin control, PDF/Excel/CSV exports, and password
 
 
 
-\## ⚙️ Project Setup (Local)
+\## âš™ï¸ Project Setup (Local)
 
 
 
-\### 1️⃣ Clone the Repository
+\### 1ï¸âƒ£ Clone the Repository
 
 ```bash
 

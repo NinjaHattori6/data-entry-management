@@ -1,75 +1,50 @@
-edit_entry.html
-{% extends "layout.html" %}
-{% block title %}Edit Entry | Data Entry Management System{% endblock %}
-
+﻿{% extends "layout.html" %}
+{% block title %}Edit Entry{% endblock %}
 {% block content %}
 
 <div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
-      <div class="card shadow-lg border-0 p-4 rounded-4">
 
-        <h3 class="text-center text-primary mb-3 fw-bold">
-          <i class="fa-solid fa-pen-to-square me-2"></i>Edit Entry
-        </h3>
-        <p class="text-center text-muted mb-4">Modify the details of your existing record.</p>
+  <div class="card shadow-lg border-0 rounded-4 p-4 mx-auto" style="max-width:500px;">
 
-        <!-- Flask Flash Messages -->
-        {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-            {% for category, message in messages %}
-              <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-            {% endfor %}
-          {% endif %}
-        {% endwith %}
+    <h3 class="text-center text-primary fw-bold mb-4">Edit Entry</h3>
 
-        <!-- Edit Entry Form -->
-        <form method="POST" action="{{ url_for('edit_entry', entry_id=entry['id']) }}">
-          <div class="mb-3">
-            <label for="name" class="form-label fw-semibold">Full Name</label>
-            <input type="text" class="form-control" id="name" name="name"
-                   value="{{ entry['name'] }}" required>
-          </div>
+    <form method="POST">
 
-          <div class="mb-3">
-            <label for="gender" class="form-label fw-semibold">Gender</label>
-            <select class="form-select" id="gender" name="gender" required>
-              <option value="">Select gender</option>
-              <option value="Male" {% if entry['gender'] == 'Male' %}selected{% endif %}>Male</option>
-              <option value="Female" {% if entry['gender'] == 'Female' %}selected{% endif %}>Female</option>
-              <option value="Other" {% if entry['gender'] == 'Other' %}selected{% endif %}>Other</option>
-            </select>
-          </div>
-
-          <div class="mb-3">
-            <label for="amount" class="form-label fw-semibold">Amount</label>
-            <input type="number" step="any" class="form-control" id="amount" name="amount"
-                   value="{{ entry['amount'] }}">
-          </div>
-
-          <div class="mb-3">
-            <label for="date" class="form-label fw-semibold">Date</label>
-            <input type="date" class="form-control" id="date" name="date"
-                   value="{{ entry['date'] }}">
-          </div>
-
-          <button type="submit" class="btn btn-success w-100 fw-semibold">
-            <i class="fa-solid fa-save me-2"></i>Update Entry
-          </button>
-        </form>
-
-        <div class="text-center mt-3">
-          <a href="{{ url_for('dashboard') }}" class="btn btn-secondary w-100 fw-semibold">
-            <i class="fa-solid fa-arrow-left me-2"></i>Back to Dashboard
-          </a>
-        </div>
-
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Name</label>
+        <input type="text" name="name" class="form-control" value="{{ entry['name'] }}" required>
       </div>
-    </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Gender</label>
+        <select name="gender" class="form-select" required>
+          <option value="Male" {% if entry['gender']=='Male' %}selected{% endif %}>Male</option>
+          <option value="Female" {% if entry['gender']=='Female' %}selected{% endif %}>Female</option>
+          <option value="Other" {% if entry['gender']=='Other' %}selected{% endif %}>Other</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Amount</label>
+        <input type="number" step="any" name="amount" class="form-control" value="{{ entry['amount'] }}">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Date</label>
+        <input type="date" name="date" class="form-control" value="{{ entry['date'] }}">
+      </div>
+
+      <button class="btn btn-success w-100 fw-semibold">Update Entry</button>
+
+    </form>
+
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary w-100 mt-3">
+      Back to Dashboard
+    </a>
+
   </div>
+
 </div>
 
 {% endblock %}
+

@@ -1,43 +1,67 @@
-{% extends "layout.html" %}
-{% block title %}Forgot Password | Data Entry Management System{% endblock %}
+﻿{% extends "layout.html" %}
+{% block title %}Forgot Password | Data Vault{% endblock %}
 {% block content %}
 
 <div class="container py-5">
   <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
+    <div class="col-md-5">
       <div class="card shadow-lg border-0 p-4 rounded-4">
-        <h3 class="text-center text-primary fw-bold mb-3">
-          <i class="fa-solid fa-unlock-keyhole me-2"></i>Forgot Password
-        </h3>
-        <p class="text-center text-muted mb-4">Enter your registered email address to receive an OTP.</p>
 
+        <!-- Header -->
+        <h3 class="text-center text-primary fw-bold mb-3">
+          <i class="fa-solid fa-envelope-circle-check me-2"></i> Forgot Password
+        </h3>
+        <p class="text-center text-muted mb-4">
+          Enter your registered email address and will send you an OTP to reset your password.
+        </p>
+
+        <!-- Flash Messages -->
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% for category, message in messages %}
-            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            <div class="alert alert-{{ category }} alert-dismissible fade show text-center fw-semibold" role="alert">
               {{ message }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           {% endfor %}
         {% endwith %}
 
-        <form method="POST" action="{{ url_for('forgot_password') }}">
+        <!-- Forgot Password Form -->
+        <form method="POST" action="{{ url_for('forget') }}" id="forgetForm" novalidate>
           <div class="mb-3">
-            <label for="email" class="form-label fw-semibold">Email Address</label>
-            <input type="email" name="email" id="email" class="form-control" placeholder="Enter your registered email" required>
+            <label for="email" class="form-label fw-semibold">Registered Email</label>
+            <input type="email" id="email" name="email" class="form-control"
+                   placeholder="e.g. user@example.com"
+                   title="Enter the email address you used to create your account"
+                   required>
           </div>
+
           <button type="submit" class="btn btn-primary w-100 fw-semibold">
-            <i class="fa-solid fa-paper-plane me-2"></i>Send OTP
+            <i class="fa-solid fa-paper-plane me-2"></i> Send OTP
           </button>
         </form>
 
+        <!-- Navigation Link -->
         <div class="text-center mt-3">
-          <a href="{{ url_for('login') }}" class="text-decoration-none text-primary fw-semibold">
-            Back to Login
+          <a href="{{ url_for('login') }}" class="text-decoration-none fw-semibold text-primary">
+            <i class="fa-solid fa-arrow-left me-1"></i> Back to Login
           </a>
         </div>
+
       </div>
     </div>
   </div>
 </div>
 
+<!-- Client-side validation -->
+<script>
+document.getElementById('forgetForm').addEventListener('submit', function(e) {
+  const email = document.getElementById('email').value.trim();
+  if (!email) {
+    e.preventDefault();
+    alert("Please enter your registered email address.");
+  }
+});
+</script>
+
 {% endblock %}
+

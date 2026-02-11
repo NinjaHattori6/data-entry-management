@@ -1,84 +1,96 @@
-index.html
-{% extends "layout.html" %}
-{% block title %}Home | Data Entry Management System{% endblock %}
+﻿{% extends "layout.html" %}
+{% block title %}Home | Data Vault{% endblock %}
 
 {% block content %}
 
-<!-- 🌟 Hero Section -->
-<section class="text-center py-5" style="background: linear-gradient(135deg, #00cec9, #0984e3); border-radius: 20px; color: white;">
-  <div class="container py-5">
-    <h1 class="fw-bold display-5 mb-3">Welcome to the Data Entry Management System</h1>
-    <p class="lead mb-4">
-      Manage your data efficiently — add, update, and analyze your entries with secure login and downloadable reports.
+<!-- Hero Section -->
+<section class="text-center py-5 hero-section">
+  <div class="container py-5 px-3">
+    <h1 class="fw-bold display-5 mb-3">
+      Welcome to the <span class="text-warning">Data Vault</span>
+    </h1>
+    <p class="lead mb-4 mx-auto" style="max-width: 700px;">
+      A simple, secure, and efficient way to manage your data by add, view, update, and export records effortlessly.
     </p>
 
     <div class="d-flex justify-content-center gap-3 flex-wrap">
-      <a href="{{ url_for('login') }}" class="btn btn-light btn-lg fw-semibold px-4">
-        <i class="fa-solid fa-right-to-bracket me-2"></i>Login
+      <a href="{{ url_for('login') }}"
+         class="btn btn-light btn-lg fw-semibold px-4 shadow-sm login-btn text-primary">
+        <i class="fa-solid fa-right-to-bracket me-2"></i> Login
       </a>
-      <a href="{{ url_for('register') }}" class="btn btn-outline-light btn-lg fw-semibold px-4">
-        <i class="fa-solid fa-user-plus me-2"></i>Register
+
+      <a href="{{ url_for('register') }}"
+         class="btn btn-light btn-lg fw-semibold px-4 shadow-sm register-btn text-primary">
+        <i class="fa-solid fa-user-plus me-2"></i> Register
       </a>
     </div>
   </div>
 </section>
 
-<!-- 💡 Features Section -->
+<!-- Features Section -->
 <section class="container text-center my-5">
-  <h2 class="fw-bold text-primary mb-4">Why Use This System?</h2>
+  <h2 class="fw-bold text-primary mb-4">Why Choose This System?</h2>
   <div class="row g-4">
 
     <div class="col-md-4">
-      <div class="card shadow-sm border-0 p-4 h-100">
+      <div class="card shadow-sm border-0 p-4 h-100 rounded-4">
         <div class="mb-3 text-primary">
           <i class="fa-solid fa-database fa-2x"></i>
         </div>
-        <h5 class="fw-semibold">Easy Data Management</h5>
-        <p class="text-muted small">Add, view, and manage your data from one clean dashboard.</p>
+        <h5 class="fw-semibold">Seamless Data Management</h5>
+        <p class="text-muted small mb-0">
+          Add, edit, and delete your data with a clean and easy-to-use dashboard.
+        </p>
       </div>
     </div>
 
     <div class="col-md-4">
-      <div class="card shadow-sm border-0 p-4 h-100">
+      <div class="card shadow-sm border-0 p-4 h-100 rounded-4">
         <div class="mb-3 text-success">
           <i class="fa-solid fa-file-export fa-2x"></i>
         </div>
-        <h5 class="fw-semibold">Instant Report Export</h5>
-        <p class="text-muted small">Download your data instantly as CSV, Excel, or PDF reports.</p>
+        <h5 class="fw-semibold">Instant Data Export</h5>
+        <p class="text-muted small mb-0">
+          Export your records instantly to CSV, Excel, or PDF &mdash; ready for reports and sharing.
+        </p>
       </div>
     </div>
 
     <div class="col-md-4">
-      <div class="card shadow-sm border-0 p-4 h-100">
+      <div class="card shadow-sm border-0 p-4 h-100 rounded-4">
         <div class="mb-3 text-danger">
           <i class="fa-solid fa-chart-pie fa-2x"></i>
         </div>
         <h5 class="fw-semibold">Smart Insights</h5>
-        <p class="text-muted small">See summaries and key statistics on your dashboard at a glance.</p>
+        <p class="text-muted small mb-0">
+          See summaries, total counts, and entry statistics at a glance.
+        </p>
       </div>
     </div>
+
   </div>
 </section>
 
-<!-- 📦 About Section -->
-<section class="py-5" style="background-color: #f8f9fa;">
+<!-- About Section -->
+<section class="py-5 bg-light">
   <div class="container text-center">
-    <h3 class="fw-bold text-primary mb-3">About the Project</h3>
+    <h3 class="fw-bold text-primary mb-3">About This Project</h3>
     <p class="text-muted mx-auto" style="max-width: 700px;">
-      This web-based Data Entry System is built using <strong>Flask</strong> and <strong>SQLite</strong>.
-      It allows users to securely manage their data entries, generate reports in multiple formats,
-      and access personalized dashboards — with admin control features for managing users.
+      The <strong>Data Vault</strong> is a Flask-based web application built with
+      <strong>Python</strong>, <strong>SQLite</strong>, and <strong>Bootstrap 5</strong>.
+      It enables users to securely manage their records, download formatted reports,
+      and provides an admin dashboard for advanced data oversight.
     </p>
   </div>
 </section>
 
-<!-- 🚀 Call-to-Action Section -->
-<section class="text-center py-5" style="background: linear-gradient(135deg, #0984e3, #00cec9); color: white;">
-  <div class="container">
+<!-- Call-to-Action Section -->
+<section class="text-center py-5 cta-section">
+  <div class="container px-3">
     <h2 class="fw-bold mb-3">Get Started Today!</h2>
-    <p class="mb-4">Join now to start managing your data efficiently and securely.</p>
-    <a href="{{ url_for('register') }}" class="btn btn-light btn-lg fw-semibold px-4">
-      <i class="fa-solid fa-user-plus me-2"></i>Create Your Account
+    <p class="mb-4">Sign up now and start managing your data the smart way.</p>
+    <a href="{{ url_for('register') }}" class="btn btn-light btn-lg fw-semibold px-4 shadow-sm">
+      <i class="fa-solid fa-user-plus me-2"></i> Create Your Account
     </a>
   </div>
 </section>

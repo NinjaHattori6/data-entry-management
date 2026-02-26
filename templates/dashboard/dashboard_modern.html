@@ -1,0 +1,388 @@
+{% extends "layout_modern.html" %}
+
+{% block title %}Dashboard - OncoBloom{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Dashboard</h1>
+    <p class="page-subtitle">Patient Management Overview</p>
+</div>
+
+<!-- Statistics Cards -->
+<div class="stats-grid">
+    <div class="stats-card primary">
+        <div class="stats-icon">
+            <i class="fas fa-users"></i>
+        </div>
+        <div class="stats-number">{{ total_patients }}</div>
+        <div class="stats-label">Total Patients</div>
+    </div>
+    
+    <div class="stats-card success">
+        <div class="stats-icon">
+            <i class="fas fa-heartbeat"></i>
+        </div>
+        <div class="stats-number">{{ active_cases }}</div>
+        <div class="stats-label">Active Cases</div>
+    </div>
+    
+    <div class="stats-card danger">
+        <div class="stats-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <div class="stats-number">{{ stage_iv_patients }}</div>
+        <div class="stats-label">High Risk</div>
+    </div>
+    
+    <div class="stats-card info">
+        <div class="stats-icon">
+            <i class="fas fa-calendar-check"></i>
+        </div>
+        <div class="stats-number">{{ recovered_patients }}</div>
+        <div class="stats-label">Recovered</div>
+    </div>
+</div>
+
+<!-- Recent Patients & Analytics -->
+<div class="dashboard-grid">
+    <!-- Recent Patients -->
+    <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="card-title">Recent Patients</h2>
+                <a href="{{ url_for('add_patient') }}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-plus"></i>
+                    Add Patient
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            {% if recent_patients %}
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Patient ID</th>
+                            <th>Name</th>
+                            <th>Cancer Type</th>
+                            <th>Stage</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for patient in recent_patients %}
+                        <tr>
+                            <td><span class="badge badge-secondary">{{ patient['patient_id'] }}</span></td>
+                            <td><strong>{{ patient['full_name'] }}</strong></td>
+                            <td>{{ patient['cancer_type'] }}</td>
+                            <td>
+                                {% if patient['cancer_stage'] == 'Stage I' %}
+                                    <span class="badge badge-success">{{ patient['cancer_stage'] }}</span>
+                                {% elif patient['cancer_stage'] == 'Stage II' %}
+                                    <span class="badge badge-info">{{ patient['cancer_stage'] }}</span>
+                                {% elif patient['cancer_stage'] == 'Stage III' %}
+                                    <span class="badge badge-warning">{{ patient['cancer_stage'] }}</span>
+                                {% elif patient['cancer_stage'] == 'Stage IV' %}
+                                    <span class="badge badge-danger">{{ patient['cancer_stage'] }}</span>
+                                {% else %}
+                                    <span class="badge badge-secondary">{{ patient['cancer_stage'] }}</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if patient['current_status'] == 'Active Treatment' %}
+                                    <span class="badge badge-primary">{{ patient['current_status'] }}</span>
+                                {% elif patient['current_status'] == 'Recovered' %}
+                                    <span class="badge badge-success">{{ patient['current_status'] }}</span>
+                                {% elif patient['current_status'] == 'Critical' %}
+                                    <span class="badge badge-danger">{{ patient['current_status'] }}</span>
+                                {% elif patient['current_status'] == 'Under Observation' %}
+                                    <span class="badge badge-warning">{{ patient['current_status'] }}</span>
+                                {% elif patient['current_status'] == 'Remission' %}
+                                    <span class="badge badge-info">{{ patient['current_status'] }}</span>
+                                {% else %}
+                                    <span class="badge badge-secondary">{{ patient['current_status'] }}</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <a href="{{ url_for('records') }}?search={{ patient['patient_id'] }}" 
+                                       class="btn btn-outline-primary btn-sm" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ url_for('edit_record', patient_id=patient['id']) }}" 
+                                       class="btn btn-outline-warning btn-sm" title="Edit Patient">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="empty-state">
+                <i class="fas fa-users fa-4x text-muted mb-3"></i>
+                <h4>No patients found</h4>
+                <p class="text-muted">Start by adding your first patient to the system.</p>
+                <a href="{{ url_for('add_patient') }}" class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Add First Patient
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Analytics Section -->
+    <div class="analytics-section">
+        <!-- Stage Distribution -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Cancer Stage Distribution</h2>
+            </div>
+            <div class="card-body">
+                {% if stage_distribution %}
+                <div class="chart-container">
+                    <canvas id="stageChart" height="250"></canvas>
+                </div>
+                {% else %}
+                <div class="empty-state">
+                    <i class="fas fa-chart-pie fa-4x text-muted mb-3"></i>
+                    <h4>No data available</h4>
+                    <p class="text-muted">Patient data will appear here once patients are added.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Status Distribution -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Patient Status Overview</h2>
+            </div>
+            <div class="card-body">
+                {% if status_distribution %}
+                <div class="status-list">
+                    {% for status, count in status_distribution.items() %}
+                    <div class="status-item">
+                        <div class="status-info">
+                            <span class="status-name">{{ status }}</span>
+                            <span class="status-count">{{ count }}</span>
+                        </div>
+                        <div class="status-bar">
+                            <div class="status-progress" style="width: {{ (count / status_distribution.values() | list | sum * 100) }}%"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="empty-state">
+                    <i class="fas fa-chart-bar fa-4x text-muted mb-3"></i>
+                    <h4>No data available</h4>
+                    <p class="text-muted">Patient status data will appear here once patients are added.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Quick Actions</h2>
+    </div>
+    <div class="card-body">
+        <div class="quick-actions">
+            <a href="{{ url_for('add_patient') }}" class="btn btn-primary">
+                <i class="fas fa-user-plus"></i>
+                Register New Patient
+            </a>
+            <a href="{{ url_for('records') }}" class="btn btn-outline-primary">
+                <i class="fas fa-list"></i>
+                View All Patients
+            </a>
+            <a href="{{ url_for('analytics') }}" class="btn btn-outline-success">
+                <i class="fas fa-chart-line"></i>
+                View Analytics
+            </a>
+            <a href="{{ url_for('profile') }}" class="btn btn-outline-secondary">
+                <i class="fas fa-user"></i>
+                My Profile
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+{% if stage_distribution %}
+// Stage Distribution Chart
+const stageCtx = document.getElementById('stageChart').getContext('2d');
+const stageChart = createDoughnutChart(stageCtx, {
+    labels: {{ stage_distribution.keys() | list | tojson }},
+    datasets: [{
+        data: {{ stage_distribution.values() | list | tojson }},
+        backgroundColor: [
+            '#16A34A',  // Stage I - Green
+            '#06B6D4',  // Stage II - Cyan
+            '#F59E0B',  // Stage III - Yellow
+            '#DC2626'   // Stage IV - Red
+        ],
+        borderWidth: 2,
+        borderColor: '#fff'
+    }]
+});
+{% endif %}
+
+// Initialize search functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.querySelector('.search-input');
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value.trim();
+                if (searchTerm) {
+                    window.location.href = `/records?search=${encodeURIComponent(searchTerm)}`;
+                }
+            }
+        });
+    }
+});
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Dashboard Specific Styles */
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.analytics-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-muted);
+}
+
+.empty-state i {
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-state h4 {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.status-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.status-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.status-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.status-count {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.status-bar {
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.status-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+}
+</style>
+{% endblock %}

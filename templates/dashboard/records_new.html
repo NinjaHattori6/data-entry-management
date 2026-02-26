@@ -1,0 +1,192 @@
+{% extends "layout_modern.html" %}
+
+{% block title %}Patient Records - Oncology Tracking System{% endblock %}
+
+{% block page_title %}Patient Records{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <!-- Filters and Search -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <i class="fas fa-filter"></i>
+                Filters & Search
+            </h5>
+        </div>
+        <div class="card-body">
+            <form method="GET" action="{{ url_for('records') }}">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <select class="form-select" id="status" name="status">
+                            <option value="">All Statuses</option>
+                            {% for status in statuses %}
+                            <option value="{{ status['current_status'] }}" {% if current_status == status['current_status'] %}selected{% endif %}>
+                                {{ status['current_status'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-3 mb-3">
+                        <label for="cancer_type" class="form-label">Cancer Type</label>
+                        <select class="form-select" id="cancer_type" name="cancer_type">
+                            <option value="">All Types</option>
+                            {% for cancer in cancer_types %}
+                            <option value="{{ cancer['cancer_type'] }}" {% if current_cancer == cancer['cancer_type'] %}selected{% endif %}>
+                                {{ cancer['cancer_type'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-4 mb-3">
+                        <label for="search" class="form-label">Search</label>
+                        <input type="text" class="form-control" id="search" name="search" 
+                               value="{{ current_search }}" placeholder="Search by name or notes...">
+                    </div>
+                    
+                    <div class="col-md-2 mb-3">
+                        <label class="form-label">&nbsp;</label>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-12">
+                        <a href="{{ url_for('records') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-times"></i> Clear Filters
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Export Options -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h5 class="mb-0">
+                        <i class="fas fa-download"></i>
+                        Export Data
+                    </h5>
+                </div>
+                <div class="col-auto">
+                    <form method="POST" action="{{ url_for('export_data') }}" class="d-inline">
+                        <input type="hidden" name="status" value="{{ current_status }}">
+                        <input type="hidden" name="cancer_type" value="{{ current_cancer }}">
+                        <input type="hidden" name="search" value="{{ current_search }}">
+                        
+                        <div class="btn-group">
+                            <button type="submit" name="format" value="csv" class="btn btn-outline-success">
+                                <i class="fas fa-file-csv"></i> CSV
+                            </button>
+                            <button type="submit" name="format" value="excel" class="btn btn-outline-success">
+                                <i class="fas fa-file-excel"></i> Excel
+                            </button>
+                            <button type="submit" name="format" value="pdf" class="btn btn-outline-success">
+                                <i class="fas fa-file-pdf"></i> PDF
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Patients Table -->
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">
+                <i class="fas fa-users"></i>
+                Patient Records
+                <span class="badge bg-secondary ms-2">{{ patients|length }}</span>
+            </h5>
+            <a href="{{ url_for('add_patient') }}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Add New Patient
+            </a>
+        </div>
+        <div class="card-body">
+            {% if patients %}
+            <div class="table-responsive">
+                <table class="table table-hover" id="patientTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Cancer Type</th>
+                            <th>Status</th>
+                            <th>Diagnosis Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for patient in patients %}
+                        <tr>
+                            <td>
+                                <strong>{{ patient['full_name'] }}</strong>
+                                <br><small class="text-muted">{{ patient['patient_id'] }}</small>
+                            </td>
+                            <td>{{ patient['age'] }}</td>
+                            <td>{{ patient['gender'] }}</td>
+                            <td>{{ patient['cancer_type'] }}</td>
+                            <td>
+                                {% if patient['current_status'] == 'Active Treatment' %}
+                                    <span class="badge bg-primary">{{ patient['current_status'] }}</span>
+                                {% elif patient['current_status'] == 'Recovered' %}
+                                    <span class="badge bg-success">{{ patient['current_status'] }}</span>
+                                {% elif patient['current_status'] == 'Critical' %}
+                                    <span class="badge bg-danger">{{ patient['current_status'] }}</span>
+                                {% elif patient['current_status'] == 'Under Observation' %}
+                                    <span class="badge bg-warning">{{ patient['current_status'] }}</span>
+                                {% elif patient['current_status'] == 'Remission' %}
+                                    <span class="badge bg-info">{{ patient['current_status'] }}</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">{{ patient['current_status'] }}</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ patient['diagnosis_date'] }}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="{{ url_for('edit_record', patient_id=patient['id']) }}" 
+                                       class="btn btn-outline-primary" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <form method="POST" action="{{ url_for('delete_record', patient_id=patient['id']) }}" 
+                                          class="d-inline" onsubmit="return confirm('Are you sure you want to delete this patient record?');">
+                                        <button type="submit" class="btn btn-outline-danger" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="text-center py-5">
+                <i class="fas fa-users fa-4x text-muted mb-3"></i>
+                <h4>No Patients Found</h4>
+                <p class="text-muted">
+                    {% if current_search or current_status or current_cancer %}
+                        No patients match your current filters. <a href="{{ url_for('records') }}">Clear filters</a>
+                    {% else %}
+                        You haven't added any patients yet. <a href="{{ url_for('add_record') }}">Add your first patient</a>
+                    {% endif %}
+                </p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

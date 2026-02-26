@@ -1,31 +1,35 @@
-﻿{% extends "layout.html" %}
-{% block title %}Error | Data Vault{% endblock %}
+{% extends "layout_modern.html" %}
+
+{% block title %}Error - OncoBloom{% endblock %}
+
 {% block content %}
-
-<div class="d-flex justify-content-center align-items-center px-3" style="min-height: 80vh;">
-  <div class="card shadow-lg border-0 p-5 rounded-4 text-center" style="max-width: 500px; width: 100%;">
-    <h1 class="display-4 text-danger fw-bold mb-3">
-      <i class="fa-solid fa-triangle-exclamation"></i>
-    </h1>
-    <h3 class="fw-bold text-primary mb-2">
-      Oops! Something went wrong
-    </h3>
-
-    {% if error %}
-      <p class="text-muted mb-4 small">{{ error }}</p>
-    {% else %}
-      <p class="text-muted mb-4 small">An unexpected error occurred. Please try again later.</p>
-    {% endif %}
-
-    {% if request.endpoint %}
-      <p class="text-secondary small">Route: <code>{{ request.endpoint }}</code></p>
-    {% endif %}
-
-    <a href="{{ url_for('index') }}" class="btn btn-primary fw-semibold mt-3">
-      <i class="fa-solid fa-house me-2"></i> Go Home
-    </a>
-  </div>
+<div class="page-header">
+    <h1 class="page-title">Error</h1>
+    <p class="page-subtitle">Something went wrong</p>
 </div>
 
+<div class="card">
+    <div class="card-body">
+        <div class="alert alert-danger">
+            <h4 class="alert-heading">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                Error Occurred
+            </h4>
+            <p class="mb-0">{{ error or "An unexpected error occurred. Please try again." }}</p>
+        </div>
+        
+        <div class="mt-4">
+            <a href="{{ url_for('index') }}" class="btn btn-primary">
+                <i class="fas fa-home me-2"></i>
+                Go to Homepage
+            </a>
+            {% if session.user_id %}
+            <a href="{{ url_for('dashboard') }}" class="btn btn-outline-primary ms-2">
+                <i class="fas fa-tachometer-alt me-2"></i>
+                Dashboard
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}
-

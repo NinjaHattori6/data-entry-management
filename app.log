@@ -40,3 +40,1368 @@
 2026-02-11 20:42:29,009 - INFO -  * Restarting with stat
 2026-02-11 20:42:29,937 - WARNING -  * Debugger is active!
 2026-02-11 20:42:29,942 - INFO -  * Debugger PIN: 110-568-352
+2026-02-11 20:57:31,683 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-11 20:57:31,683 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-11 20:57:31,685 - INFO -  * Restarting with stat
+2026-02-11 20:57:32,407 - WARNING -  * Debugger is active!
+2026-02-11 20:57:32,411 - INFO -  * Debugger PIN: 110-568-352
+2026-02-11 21:00:37,704 - INFO - 127.0.0.1 - - [11/Feb/2026 21:00:37] "[32mGET /admin HTTP/1.1[0m" 302 -
+2026-02-11 21:00:37,714 - INFO - 127.0.0.1 - - [11/Feb/2026 21:00:37] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2026-02-11 21:00:37,732 - INFO - 127.0.0.1 - - [11/Feb/2026 21:00:37] "GET /login HTTP/1.1" 200 -
+2026-02-11 21:00:37,819 - INFO - 127.0.0.1 - - [11/Feb/2026 21:00:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-11 21:00:52,697 - INFO - 127.0.0.1 - - [11/Feb/2026 21:00:52] "[31m[1mPOST /login HTTP/1.1[0m" 403 -
+2026-02-11 21:01:31,620 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-11 21:01:31,621 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-11 21:01:31,622 - INFO -  * Restarting with stat
+2026-02-11 21:01:32,350 - WARNING -  * Debugger is active!
+2026-02-11 21:01:32,354 - INFO -  * Debugger PIN: 110-568-352
+2026-02-11 21:05:51,687 - INFO - 127.0.0.1 - - [11/Feb/2026 21:05:51] "GET / HTTP/1.1" 200 -
+2026-02-11 21:05:51,734 - INFO - 127.0.0.1 - - [11/Feb/2026 21:05:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-11 21:05:56,865 - INFO - 127.0.0.1 - - [11/Feb/2026 21:05:56] "GET /login HTTP/1.1" 200 -
+2026-02-11 21:05:56,894 - INFO - 127.0.0.1 - - [11/Feb/2026 21:05:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-11 21:06:09,444 - INFO - 127.0.0.1 - - [11/Feb/2026 21:06:09] "[31m[1mPOST /login HTTP/1.1[0m" 403 -
+2026-02-11 21:09:33,183 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app.py", reloading
+2026-02-11 21:09:33,290 - INFO -  * Restarting with stat
+2026-02-11 21:09:33,442 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app.py", reloading
+2026-02-11 21:09:33,549 - INFO -  * Restarting with stat
+2026-02-11 21:09:34,134 - WARNING -  * Debugger is active!
+2026-02-11 21:09:34,138 - INFO -  * Debugger PIN: 110-568-352
+2026-02-11 21:09:34,385 - WARNING -  * Debugger is active!
+2026-02-11 21:09:34,389 - INFO -  * Debugger PIN: 110-568-352
+2026-02-11 21:09:40,146 - WARNING - Failed login attempt: vedantwarekar3@gmail.com
+2026-02-11 21:09:40,147 - INFO - User logged in: vedantwarekar3@gmail.com
+2026-02-11 21:09:40,148 - INFO - 127.0.0.1 - - [11/Feb/2026 21:09:40] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-11 21:09:40,162 - INFO - 127.0.0.1 - - [11/Feb/2026 21:09:40] "GET /login HTTP/1.1" 200 -
+2026-02-11 21:09:40,215 - INFO - 127.0.0.1 - - [11/Feb/2026 21:09:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-11 21:09:45,803 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-11 21:09:45,803 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-11 21:09:45,804 - INFO -  * Restarting with stat
+2026-02-11 21:09:46,563 - WARNING -  * Debugger is active!
+2026-02-11 21:09:46,567 - INFO -  * Debugger PIN: 110-568-352
+2026-02-11 21:10:06,632 - INFO - 127.0.0.1 - - [11/Feb/2026 21:10:06] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-11 21:10:06,649 - INFO - 127.0.0.1 - - [11/Feb/2026 21:10:06] "GET /dashboard HTTP/1.1" 200 -
+2026-02-11 21:10:06,678 - INFO - 127.0.0.1 - - [11/Feb/2026 21:10:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-11 21:12:45,149 - INFO - 127.0.0.1 - - [11/Feb/2026 21:12:45] "GET /export/csv HTTP/1.1" 200 -
+2026-02-12 19:24:06,705 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-12 19:24:06,706 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-12 19:24:06,710 - INFO -  * Restarting with stat
+2026-02-12 19:24:11,879 - WARNING -  * Debugger is active!
+2026-02-12 19:24:11,889 - INFO -  * Debugger PIN: 110-568-352
+2026-02-12 19:24:32,687 - INFO - 127.0.0.1 - - [12/Feb/2026 19:24:32] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2026-02-12 19:24:33,560 - INFO - 127.0.0.1 - - [12/Feb/2026 19:24:33] "GET /login HTTP/1.1" 200 -
+2026-02-12 19:24:33,899 - INFO - 127.0.0.1 - - [12/Feb/2026 19:24:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-12 19:24:51,698 - INFO - 127.0.0.1 - - [12/Feb/2026 19:24:51] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-12 19:24:51,723 - INFO - 127.0.0.1 - - [12/Feb/2026 19:24:51] "GET /dashboard HTTP/1.1" 200 -
+2026-02-12 19:24:51,896 - INFO - 127.0.0.1 - - [12/Feb/2026 19:24:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 19:24:54,968 - INFO - 127.0.0.1 - - [12/Feb/2026 19:24:54] "GET /admin HTTP/1.1" 200 -
+2026-02-12 19:24:55,061 - INFO - 127.0.0.1 - - [12/Feb/2026 19:24:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 19:24:59,666 - INFO - 127.0.0.1 - - [12/Feb/2026 19:24:59] "GET /profile HTTP/1.1" 200 -
+2026-02-12 19:24:59,746 - INFO - 127.0.0.1 - - [12/Feb/2026 19:24:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 19:25:06,331 - INFO - User logged out: vedantwarekar3@gmail.com
+2026-02-12 19:25:06,332 - INFO - 127.0.0.1 - - [12/Feb/2026 19:25:06] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-02-12 19:25:06,350 - INFO - 127.0.0.1 - - [12/Feb/2026 19:25:06] "GET / HTTP/1.1" 200 -
+2026-02-12 19:25:06,411 - INFO - 127.0.0.1 - - [12/Feb/2026 19:25:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 19:25:08,230 - INFO - 127.0.0.1 - - [12/Feb/2026 19:25:08] "GET /login HTTP/1.1" 200 -
+2026-02-12 19:25:08,288 - INFO - 127.0.0.1 - - [12/Feb/2026 19:25:08] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 19:25:11,304 - INFO - 127.0.0.1 - - [12/Feb/2026 19:25:11] "GET /forget HTTP/1.1" 200 -
+2026-02-12 19:25:11,357 - INFO - 127.0.0.1 - - [12/Feb/2026 19:25:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 19:25:19,793 - ERROR - Email credentials not configured.
+2026-02-12 19:25:19,794 - INFO - 127.0.0.1 - - [12/Feb/2026 19:25:19] "[32mPOST /forget HTTP/1.1[0m" 302 -
+2026-02-12 19:25:19,812 - INFO - 127.0.0.1 - - [12/Feb/2026 19:25:19] "GET /forget HTTP/1.1" 200 -
+2026-02-12 19:25:19,877 - INFO - 127.0.0.1 - - [12/Feb/2026 19:25:19] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 19:25:28,855 - INFO - 127.0.0.1 - - [12/Feb/2026 19:25:28] "GET /login HTTP/1.1" 200 -
+2026-02-12 19:25:28,929 - INFO - 127.0.0.1 - - [12/Feb/2026 19:25:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 19:25:30,640 - INFO - 127.0.0.1 - - [12/Feb/2026 19:25:30] "GET /register HTTP/1.1" 200 -
+2026-02-12 19:25:30,723 - INFO - 127.0.0.1 - - [12/Feb/2026 19:25:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 19:25:53,267 - INFO - 127.0.0.1 - - [12/Feb/2026 19:25:53] "GET /login HTTP/1.1" 200 -
+2026-02-12 19:25:53,368 - INFO - 127.0.0.1 - - [12/Feb/2026 19:25:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 19:27:52,038 - INFO - 127.0.0.1 - - [12/Feb/2026 19:27:52] "GET / HTTP/1.1" 200 -
+2026-02-12 19:27:52,085 - INFO - 127.0.0.1 - - [12/Feb/2026 19:27:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 19:44:23,874 - INFO - 127.0.0.1 - - [12/Feb/2026 19:44:23] "GET /login HTTP/1.1" 200 -
+2026-02-12 19:44:23,907 - INFO - 127.0.0.1 - - [12/Feb/2026 19:44:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 19:44:37,558 - WARNING - Failed login attempt: vedantwarekar3@gmail.com
+2026-02-12 19:44:37,558 - INFO - User logged in: vedantwarekar3@gmail.com
+2026-02-12 19:44:37,559 - INFO - 127.0.0.1 - - [12/Feb/2026 19:44:37] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-12 19:44:37,568 - INFO - 127.0.0.1 - - [12/Feb/2026 19:44:37] "GET /login HTTP/1.1" 200 -
+2026-02-12 19:44:37,587 - INFO - 127.0.0.1 - - [12/Feb/2026 19:44:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 19:44:47,610 - INFO - 127.0.0.1 - - [12/Feb/2026 19:44:47] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-12 19:44:47,620 - INFO - 127.0.0.1 - - [12/Feb/2026 19:44:47] "GET /dashboard HTTP/1.1" 200 -
+2026-02-12 19:44:47,648 - INFO - 127.0.0.1 - - [12/Feb/2026 19:44:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 20:18:14,611 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-12 20:18:14,612 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-12 20:18:14,613 - INFO -  * Restarting with stat
+2026-02-12 20:18:15,520 - WARNING -  * Debugger is active!
+2026-02-12 20:18:15,524 - INFO -  * Debugger PIN: 110-568-352
+2026-02-12 20:30:48,921 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-12 20:30:48,921 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-12 20:30:48,922 - INFO -  * Restarting with stat
+2026-02-12 20:30:49,661 - WARNING -  * Debugger is active!
+2026-02-12 20:30:49,666 - INFO -  * Debugger PIN: 110-568-352
+2026-02-12 20:30:57,453 - INFO - 127.0.0.1 - - [12/Feb/2026 20:30:57] "[32mGET / HTTP/1.1[0m" 302 -
+2026-02-12 20:30:57,476 - INFO - 127.0.0.1 - - [12/Feb/2026 20:30:57] "GET /dashboard HTTP/1.1" 200 -
+2026-02-12 20:30:57,576 - INFO - 127.0.0.1 - - [12/Feb/2026 20:30:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 20:36:32,062 - INFO - 127.0.0.1 - - [12/Feb/2026 20:36:32] "[32mPOST /add_entry HTTP/1.1[0m" 302 -
+2026-02-12 20:36:32,071 - INFO - 127.0.0.1 - - [12/Feb/2026 20:36:32] "GET /dashboard HTTP/1.1" 200 -
+2026-02-12 20:36:32,095 - INFO - 127.0.0.1 - - [12/Feb/2026 20:36:32] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:02:22,219 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-12 21:02:22,219 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-12 21:02:22,220 - INFO -  * Restarting with stat
+2026-02-12 21:02:23,230 - WARNING -  * Debugger is active!
+2026-02-12 21:02:23,243 - INFO -  * Debugger PIN: 110-568-352
+2026-02-12 21:02:33,584 - INFO - User logged out: vedantwarekar3@gmail.com
+2026-02-12 21:02:33,585 - INFO - 127.0.0.1 - - [12/Feb/2026 21:02:33] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-02-12 21:02:33,601 - INFO - 127.0.0.1 - - [12/Feb/2026 21:02:33] "GET / HTTP/1.1" 200 -
+2026-02-12 21:02:33,660 - INFO - 127.0.0.1 - - [12/Feb/2026 21:02:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:02:35,102 - INFO - 127.0.0.1 - - [12/Feb/2026 21:02:35] "GET /login HTTP/1.1" 200 -
+2026-02-12 21:02:35,126 - INFO - 127.0.0.1 - - [12/Feb/2026 21:02:35] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:02:44,390 - WARNING - Failed login attempt: vedantwarekar3@gmail.com
+2026-02-12 21:02:44,390 - INFO - User logged in: vedantwarekar3@gmail.com
+2026-02-12 21:02:44,390 - INFO - 127.0.0.1 - - [12/Feb/2026 21:02:44] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-12 21:02:44,397 - INFO - 127.0.0.1 - - [12/Feb/2026 21:02:44] "GET /login HTTP/1.1" 200 -
+2026-02-12 21:02:44,418 - INFO - 127.0.0.1 - - [12/Feb/2026 21:02:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:02:49,224 - INFO - 127.0.0.1 - - [12/Feb/2026 21:02:49] "GET /register HTTP/1.1" 200 -
+2026-02-12 21:02:49,243 - INFO - 127.0.0.1 - - [12/Feb/2026 21:02:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:03:20,850 - INFO - 127.0.0.1 - - [12/Feb/2026 21:03:20] "[32mPOST /register HTTP/1.1[0m" 302 -
+2026-02-12 21:03:20,856 - INFO - 127.0.0.1 - - [12/Feb/2026 21:03:20] "GET /login HTTP/1.1" 200 -
+2026-02-12 21:03:20,894 - INFO - 127.0.0.1 - - [12/Feb/2026 21:03:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:03:33,026 - INFO - 127.0.0.1 - - [12/Feb/2026 21:03:33] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-12 21:03:33,038 - INFO - 127.0.0.1 - - [12/Feb/2026 21:03:33] "GET /dashboard HTTP/1.1" 200 -
+2026-02-12 21:03:33,064 - INFO - 127.0.0.1 - - [12/Feb/2026 21:03:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:06:14,049 - INFO - 127.0.0.1 - - [12/Feb/2026 21:06:14] "[32mPOST /add_entry HTTP/1.1[0m" 302 -
+2026-02-12 21:06:14,057 - INFO - 127.0.0.1 - - [12/Feb/2026 21:06:14] "GET /dashboard HTTP/1.1" 200 -
+2026-02-12 21:06:14,082 - INFO - 127.0.0.1 - - [12/Feb/2026 21:06:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:07:42,738 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-12 21:07:42,738 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-12 21:07:42,739 - INFO -  * Restarting with stat
+2026-02-12 21:07:43,619 - WARNING -  * Debugger is active!
+2026-02-12 21:07:43,623 - INFO -  * Debugger PIN: 110-568-352
+2026-02-12 21:13:05,267 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-12 21:13:05,268 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-12 21:13:05,269 - INFO -  * Restarting with stat
+2026-02-12 21:13:06,008 - WARNING -  * Debugger is active!
+2026-02-12 21:13:06,012 - INFO -  * Debugger PIN: 110-568-352
+2026-02-12 21:13:06,033 - INFO - User logged out: vedantwarekar3@gmail.com
+2026-02-12 21:13:06,034 - INFO - 127.0.0.1 - - [12/Feb/2026 21:13:06] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-02-12 21:13:06,047 - INFO - 127.0.0.1 - - [12/Feb/2026 21:13:06] "GET / HTTP/1.1" 200 -
+2026-02-12 21:13:06,111 - INFO - 127.0.0.1 - - [12/Feb/2026 21:13:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:13:11,870 - INFO - 127.0.0.1 - - [12/Feb/2026 21:13:11] "GET /login HTTP/1.1" 200 -
+2026-02-12 21:13:11,892 - INFO - 127.0.0.1 - - [12/Feb/2026 21:13:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:13:23,131 - WARNING - Failed login attempt: vedantwarekar3@gmail.com
+2026-02-12 21:13:23,131 - INFO - User logged in: vedantwarekar3@gmail.com
+2026-02-12 21:13:23,132 - INFO - 127.0.0.1 - - [12/Feb/2026 21:13:23] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-12 21:13:23,137 - INFO - 127.0.0.1 - - [12/Feb/2026 21:13:23] "GET /login HTTP/1.1" 200 -
+2026-02-12 21:13:23,158 - INFO - 127.0.0.1 - - [12/Feb/2026 21:13:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:13:26,439 - INFO - 127.0.0.1 - - [12/Feb/2026 21:13:26] "GET /register HTTP/1.1" 200 -
+2026-02-12 21:13:26,461 - INFO - 127.0.0.1 - - [12/Feb/2026 21:13:26] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:14:10,849 - INFO - 127.0.0.1 - - [12/Feb/2026 21:14:10] "[32mPOST /register HTTP/1.1[0m" 302 -
+2026-02-12 21:14:10,856 - INFO - 127.0.0.1 - - [12/Feb/2026 21:14:10] "GET /login HTTP/1.1" 200 -
+2026-02-12 21:14:10,883 - INFO - 127.0.0.1 - - [12/Feb/2026 21:14:10] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:14:31,226 - INFO - 127.0.0.1 - - [12/Feb/2026 21:14:31] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-12 21:14:31,238 - INFO - 127.0.0.1 - - [12/Feb/2026 21:14:31] "GET /dashboard HTTP/1.1" 200 -
+2026-02-12 21:14:31,261 - INFO - 127.0.0.1 - - [12/Feb/2026 21:14:31] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:16:11,309 - INFO - 127.0.0.1 - - [12/Feb/2026 21:16:11] "[32mPOST /add_entry HTTP/1.1[0m" 302 -
+2026-02-12 21:16:11,315 - INFO - 127.0.0.1 - - [12/Feb/2026 21:16:11] "GET /dashboard HTTP/1.1" 200 -
+2026-02-12 21:16:11,333 - INFO - 127.0.0.1 - - [12/Feb/2026 21:16:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:18:22,573 - INFO - 127.0.0.1 - - [12/Feb/2026 21:18:22] "[35m[1mGET /view/1 HTTP/1.1[0m" 500 -
+2026-02-12 21:18:22,617 - INFO - 127.0.0.1 - - [12/Feb/2026 21:18:22] "GET /view/1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-02-12 21:18:22,635 - INFO - 127.0.0.1 - - [12/Feb/2026 21:18:22] "GET /view/1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-02-12 21:18:22,674 - INFO - 127.0.0.1 - - [12/Feb/2026 21:18:22] "GET /view/1?__debugger__=yes&cmd=resource&f=console.png&s=C0KxFWj3JQ46Xc8riN8Z HTTP/1.1" 200 -
+2026-02-12 21:18:22,682 - INFO - 127.0.0.1 - - [12/Feb/2026 21:18:22] "GET /view/1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-02-12 21:25:43,503 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-12 21:25:43,503 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-12 21:25:43,505 - INFO -  * Restarting with stat
+2026-02-12 21:25:44,223 - WARNING -  * Debugger is active!
+2026-02-12 21:25:44,226 - INFO -  * Debugger PIN: 110-568-352
+2026-02-12 21:25:49,893 - INFO - 127.0.0.1 - - [12/Feb/2026 21:25:49] "GET /view/1 HTTP/1.1" 200 -
+2026-02-12 21:25:49,952 - INFO - 127.0.0.1 - - [12/Feb/2026 21:25:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:26:00,362 - INFO - 127.0.0.1 - - [12/Feb/2026 21:26:00] "GET /dashboard HTTP/1.1" 200 -
+2026-02-12 21:26:00,385 - INFO - 127.0.0.1 - - [12/Feb/2026 21:26:00] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:26:21,167 - INFO - 127.0.0.1 - - [12/Feb/2026 21:26:21] "GET /edit/1 HTTP/1.1" 200 -
+2026-02-12 21:26:21,190 - INFO - 127.0.0.1 - - [12/Feb/2026 21:26:21] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:27:02,354 - INFO - 127.0.0.1 - - [12/Feb/2026 21:27:02] "[32mPOST /edit/1 HTTP/1.1[0m" 302 -
+2026-02-12 21:27:02,363 - INFO - 127.0.0.1 - - [12/Feb/2026 21:27:02] "GET /dashboard HTTP/1.1" 200 -
+2026-02-12 21:27:02,388 - INFO - 127.0.0.1 - - [12/Feb/2026 21:27:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:28:48,832 - INFO - 127.0.0.1 - - [12/Feb/2026 21:28:48] "[32mPOST /add_entry HTTP/1.1[0m" 302 -
+2026-02-12 21:28:48,840 - INFO - 127.0.0.1 - - [12/Feb/2026 21:28:48] "GET /dashboard HTTP/1.1" 200 -
+2026-02-12 21:28:48,861 - INFO - 127.0.0.1 - - [12/Feb/2026 21:28:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:28:57,057 - INFO - 127.0.0.1 - - [12/Feb/2026 21:28:57] "GET /edit/1 HTTP/1.1" 200 -
+2026-02-12 21:28:57,079 - INFO - 127.0.0.1 - - [12/Feb/2026 21:28:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:29:06,146 - INFO - 127.0.0.1 - - [12/Feb/2026 21:29:06] "GET /edit/2 HTTP/1.1" 200 -
+2026-02-12 21:29:06,172 - INFO - 127.0.0.1 - - [12/Feb/2026 21:29:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:29:42,579 - INFO - 127.0.0.1 - - [12/Feb/2026 21:29:42] "[32mPOST /edit/2 HTTP/1.1[0m" 302 -
+2026-02-12 21:29:42,584 - INFO - 127.0.0.1 - - [12/Feb/2026 21:29:42] "GET /dashboard HTTP/1.1" 200 -
+2026-02-12 21:29:42,607 - INFO - 127.0.0.1 - - [12/Feb/2026 21:29:42] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-12 21:31:42,293 - INFO - 127.0.0.1 - - [12/Feb/2026 21:31:42] "[32mPOST /add_entry HTTP/1.1[0m" 302 -
+2026-02-12 21:31:42,300 - INFO - 127.0.0.1 - - [12/Feb/2026 21:31:42] "GET /dashboard HTTP/1.1" 200 -
+2026-02-12 21:31:42,320 - INFO - 127.0.0.1 - - [12/Feb/2026 21:31:42] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:39:03,819 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-15 18:39:03,819 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-15 18:39:03,828 - INFO -  * Restarting with stat
+2026-02-15 18:39:06,496 - WARNING -  * Debugger is active!
+2026-02-15 18:39:06,502 - INFO -  * Debugger PIN: 759-286-862
+2026-02-15 18:39:11,036 - INFO - 127.0.0.1 - - [15/Feb/2026 18:39:11] "[32mGET /view/3 HTTP/1.1[0m" 302 -
+2026-02-15 18:39:11,083 - INFO - 127.0.0.1 - - [15/Feb/2026 18:39:11] "GET /login HTTP/1.1" 200 -
+2026-02-15 18:39:11,239 - INFO - 127.0.0.1 - - [15/Feb/2026 18:39:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:39:11,337 - INFO - 127.0.0.1 - - [15/Feb/2026 18:39:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-15 18:39:25,361 - INFO - 127.0.0.1 - - [15/Feb/2026 18:39:25] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-15 18:39:25,374 - INFO - 127.0.0.1 - - [15/Feb/2026 18:39:25] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:39:25,403 - INFO - 127.0.0.1 - - [15/Feb/2026 18:39:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:55:44,277 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-15 18:55:44,277 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-15 18:55:44,281 - INFO -  * Restarting with stat
+2026-02-15 18:55:46,405 - WARNING -  * Debugger is active!
+2026-02-15 18:55:46,412 - INFO -  * Debugger PIN: 759-286-862
+2026-02-15 18:55:58,216 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-15 18:55:58,216 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-15 18:55:58,218 - INFO -  * Restarting with stat
+2026-02-15 18:56:00,312 - WARNING -  * Debugger is active!
+2026-02-15 18:56:00,319 - INFO -  * Debugger PIN: 759-286-862
+2026-02-15 18:58:50,839 - INFO - 127.0.0.1 - - [15/Feb/2026 18:58:50] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:58:50,909 - INFO - 127.0.0.1 - - [15/Feb/2026 18:58:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:58:53,600 - INFO - 127.0.0.1 - - [15/Feb/2026 18:58:53] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:58:53,629 - INFO - 127.0.0.1 - - [15/Feb/2026 18:58:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:58:53,800 - INFO - 127.0.0.1 - - [15/Feb/2026 18:58:53] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:58:53,827 - INFO - 127.0.0.1 - - [15/Feb/2026 18:58:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:58:54,012 - INFO - 127.0.0.1 - - [15/Feb/2026 18:58:54] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:58:54,030 - INFO - 127.0.0.1 - - [15/Feb/2026 18:58:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:00,630 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:00] "GET /profile HTTP/1.1" 200 -
+2026-02-15 18:59:00,668 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:00] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:04,000 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:04] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:59:04,030 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:15,645 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-15 18:59:15,645 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-15 18:59:15,647 - INFO -  * Restarting with stat
+2026-02-15 18:59:16,404 - WARNING -  * Debugger is active!
+2026-02-15 18:59:16,408 - INFO -  * Debugger PIN: 759-286-862
+2026-02-15 18:59:27,664 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:27] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:59:27,721 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:28,664 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:28] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:59:28,694 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:28,836 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:28] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:59:28,855 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:28,992 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:28] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:59:29,013 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:29,167 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:29] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:59:29,187 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:29,350 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:29] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:59:29,373 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:29,526 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:29] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:59:29,551 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:29,702 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:29] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:59:29,721 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:29,901 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:29] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:59:29,924 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:30,066 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:30] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:59:30,085 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:30,239 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:30] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:59:30,254 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:30,404 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:30] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:59:30,419 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:30,594 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:30] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:59:30,613 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:30,754 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:30] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:59:30,773 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 18:59:30,962 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:30] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 18:59:30,988 - INFO - 127.0.0.1 - - [15/Feb/2026 18:59:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 19:00:53,002 - INFO - 127.0.0.1 - - [15/Feb/2026 19:00:53] "[32mGET / HTTP/1.1[0m" 302 -
+2026-02-15 19:00:53,011 - INFO - 127.0.0.1 - - [15/Feb/2026 19:00:53] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:00:53,075 - INFO - 127.0.0.1 - - [15/Feb/2026 19:00:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 19:06:48,897 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-15 19:06:48,897 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-15 19:06:48,898 - INFO -  * Restarting with stat
+2026-02-15 19:06:49,643 - WARNING -  * Debugger is active!
+2026-02-15 19:06:49,648 - INFO -  * Debugger PIN: 759-286-862
+2026-02-15 19:07:28,408 - INFO - 127.0.0.1 - - [15/Feb/2026 19:07:28] "[32mGET / HTTP/1.1[0m" 302 -
+2026-02-15 19:07:28,433 - INFO - 127.0.0.1 - - [15/Feb/2026 19:07:28] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:07:28,516 - INFO - 127.0.0.1 - - [15/Feb/2026 19:07:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 19:11:08,029 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-15 19:11:08,029 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-15 19:11:08,030 - INFO -  * Restarting with stat
+2026-02-15 19:11:08,843 - WARNING -  * Debugger is active!
+2026-02-15 19:11:08,847 - INFO -  * Debugger PIN: 759-286-862
+2026-02-15 19:11:13,477 - INFO - 127.0.0.1 - - [15/Feb/2026 19:11:13] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:11:13,504 - INFO - 127.0.0.1 - - [15/Feb/2026 19:11:13] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 19:11:18,718 - INFO - 127.0.0.1 - - [15/Feb/2026 19:11:18] "GET /export/csv HTTP/1.1" 200 -
+2026-02-15 19:11:49,256 - INFO - 127.0.0.1 - - [15/Feb/2026 19:11:49] "GET /export/xlsx HTTP/1.1" 200 -
+2026-02-15 19:12:07,403 - INFO - 127.0.0.1 - - [15/Feb/2026 19:12:07] "GET /export/pdf HTTP/1.1" 200 -
+2026-02-15 19:12:23,362 - INFO - 127.0.0.1 - - [15/Feb/2026 19:12:23] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2026-02-15 19:12:23,389 - INFO - 127.0.0.1 - - [15/Feb/2026 19:12:23] "GET /login HTTP/1.1" 200 -
+2026-02-15 19:12:24,765 - INFO - 127.0.0.1 - - [15/Feb/2026 19:12:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-15 19:12:36,977 - INFO - 127.0.0.1 - - [15/Feb/2026 19:12:36] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-15 19:12:36,988 - INFO - 127.0.0.1 - - [15/Feb/2026 19:12:36] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:12:37,039 - INFO - 127.0.0.1 - - [15/Feb/2026 19:12:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 19:55:20,899 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-15 19:55:20,900 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-15 19:55:20,902 - INFO -  * Restarting with stat
+2026-02-15 19:55:22,934 - WARNING -  * Debugger is active!
+2026-02-15 19:55:22,942 - INFO -  * Debugger PIN: 759-286-862
+2026-02-15 19:55:53,282 - INFO - 127.0.0.1 - - [15/Feb/2026 19:55:53] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:58:30,248 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-15 19:58:30,249 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-15 19:58:30,250 - INFO -  * Restarting with stat
+2026-02-15 19:58:30,950 - WARNING -  * Debugger is active!
+2026-02-15 19:58:30,954 - INFO -  * Debugger PIN: 759-286-862
+2026-02-15 19:58:57,425 - INFO - 127.0.0.1 - - [15/Feb/2026 19:58:57] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:58:58,709 - INFO - 127.0.0.1 - - [15/Feb/2026 19:58:58] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:58:59,352 - INFO - 127.0.0.1 - - [15/Feb/2026 19:58:59] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:58:59,524 - INFO - 127.0.0.1 - - [15/Feb/2026 19:58:59] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:58:59,820 - INFO - 127.0.0.1 - - [15/Feb/2026 19:58:59] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:58:59,955 - INFO - 127.0.0.1 - - [15/Feb/2026 19:58:59] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:59:00,694 - INFO - 127.0.0.1 - - [15/Feb/2026 19:59:00] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:59:00,871 - INFO - 127.0.0.1 - - [15/Feb/2026 19:59:00] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:59:01,083 - INFO - 127.0.0.1 - - [15/Feb/2026 19:59:01] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:59:01,260 - INFO - 127.0.0.1 - - [15/Feb/2026 19:59:01] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:59:07,363 - INFO - 127.0.0.1 - - [15/Feb/2026 19:59:07] "GET /view/3 HTTP/1.1" 200 -
+2026-02-15 19:59:07,393 - INFO - 127.0.0.1 - - [15/Feb/2026 19:59:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 19:59:17,270 - INFO - 127.0.0.1 - - [15/Feb/2026 19:59:17] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:59:17,445 - INFO - 127.0.0.1 - - [15/Feb/2026 19:59:17] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 19:59:17,668 - INFO - 127.0.0.1 - - [15/Feb/2026 19:59:17] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:02:00,422 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app.py", reloading
+2026-02-15 20:02:00,685 - INFO -  * Restarting with stat
+2026-02-15 20:02:01,433 - WARNING -  * Debugger is active!
+2026-02-15 20:02:01,436 - INFO -  * Debugger PIN: 759-286-862
+2026-02-15 20:02:08,498 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-15 20:02:08,498 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-15 20:02:08,499 - INFO -  * Restarting with stat
+2026-02-15 20:02:09,221 - WARNING -  * Debugger is active!
+2026-02-15 20:02:09,224 - INFO -  * Debugger PIN: 759-286-862
+2026-02-15 20:02:17,286 - INFO - 127.0.0.1 - - [15/Feb/2026 20:02:17] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:02:18,145 - INFO - 127.0.0.1 - - [15/Feb/2026 20:02:18] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:02:18,321 - INFO - 127.0.0.1 - - [15/Feb/2026 20:02:18] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:02:18,501 - INFO - 127.0.0.1 - - [15/Feb/2026 20:02:18] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:02:18,670 - INFO - 127.0.0.1 - - [15/Feb/2026 20:02:18] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:02:18,880 - INFO - 127.0.0.1 - - [15/Feb/2026 20:02:18] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:02:19,060 - INFO - 127.0.0.1 - - [15/Feb/2026 20:02:19] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:02:20,561 - INFO - 127.0.0.1 - - [15/Feb/2026 20:02:20] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:02:20,731 - INFO - 127.0.0.1 - - [15/Feb/2026 20:02:20] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:02:20,887 - INFO - 127.0.0.1 - - [15/Feb/2026 20:02:20] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:02:21,123 - INFO - 127.0.0.1 - - [15/Feb/2026 20:02:21] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:04:10,174 - INFO - 127.0.0.1 - - [15/Feb/2026 20:04:10] "[32mGET / HTTP/1.1[0m" 302 -
+2026-02-15 20:04:10,182 - INFO - 127.0.0.1 - - [15/Feb/2026 20:04:10] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:13:12,503 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-15 20:13:12,504 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-15 20:13:12,505 - INFO -  * Restarting with stat
+2026-02-15 20:13:13,235 - WARNING -  * Debugger is active!
+2026-02-15 20:13:13,240 - INFO -  * Debugger PIN: 759-286-862
+2026-02-15 20:14:48,937 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-15 20:14:48,937 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-15 20:14:48,938 - INFO -  * Restarting with stat
+2026-02-15 20:14:49,638 - WARNING -  * Debugger is active!
+2026-02-15 20:14:49,642 - INFO -  * Debugger PIN: 759-286-862
+2026-02-15 20:14:54,544 - INFO - 127.0.0.1 - - [15/Feb/2026 20:14:54] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2026-02-15 20:14:54,586 - INFO - 127.0.0.1 - - [15/Feb/2026 20:14:54] "GET /login HTTP/1.1" 200 -
+2026-02-15 20:14:54,694 - INFO - 127.0.0.1 - - [15/Feb/2026 20:14:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 20:15:07,560 - INFO - 127.0.0.1 - - [15/Feb/2026 20:15:07] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-15 20:15:07,620 - INFO - 127.0.0.1 - - [15/Feb/2026 20:15:07] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:15:07,652 - INFO - 127.0.0.1 - - [15/Feb/2026 20:15:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 20:15:37,557 - INFO - 127.0.0.1 - - [15/Feb/2026 20:15:37] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:15:37,587 - INFO - 127.0.0.1 - - [15/Feb/2026 20:15:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 20:15:39,971 - INFO - User logged out: vedantwarekar3@gmail.com
+2026-02-15 20:15:39,971 - INFO - 127.0.0.1 - - [15/Feb/2026 20:15:39] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-02-15 20:15:39,984 - INFO - 127.0.0.1 - - [15/Feb/2026 20:15:39] "GET / HTTP/1.1" 200 -
+2026-02-15 20:15:40,011 - INFO - 127.0.0.1 - - [15/Feb/2026 20:15:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 20:18:45,520 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-15 20:18:45,520 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-15 20:18:45,521 - INFO -  * Restarting with stat
+2026-02-15 20:18:46,228 - WARNING -  * Debugger is active!
+2026-02-15 20:18:46,232 - INFO -  * Debugger PIN: 759-286-862
+2026-02-15 20:18:50,251 - INFO - 127.0.0.1 - - [15/Feb/2026 20:18:50] "GET / HTTP/1.1" 200 -
+2026-02-15 20:18:50,273 - INFO - 127.0.0.1 - - [15/Feb/2026 20:18:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 20:18:51,167 - INFO - 127.0.0.1 - - [15/Feb/2026 20:18:51] "GET / HTTP/1.1" 200 -
+2026-02-15 20:18:51,185 - INFO - 127.0.0.1 - - [15/Feb/2026 20:18:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 20:18:51,368 - INFO - 127.0.0.1 - - [15/Feb/2026 20:18:51] "GET / HTTP/1.1" 200 -
+2026-02-15 20:18:51,384 - INFO - 127.0.0.1 - - [15/Feb/2026 20:18:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 20:18:51,576 - INFO - 127.0.0.1 - - [15/Feb/2026 20:18:51] "GET / HTTP/1.1" 200 -
+2026-02-15 20:18:51,604 - INFO - 127.0.0.1 - - [15/Feb/2026 20:18:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 20:18:51,793 - INFO - 127.0.0.1 - - [15/Feb/2026 20:18:51] "GET / HTTP/1.1" 200 -
+2026-02-15 20:18:51,812 - INFO - 127.0.0.1 - - [15/Feb/2026 20:18:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 20:18:52,015 - INFO - 127.0.0.1 - - [15/Feb/2026 20:18:52] "GET / HTTP/1.1" 200 -
+2026-02-15 20:18:52,035 - INFO - 127.0.0.1 - - [15/Feb/2026 20:18:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 20:20:16,331 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-15 20:20:16,331 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-15 20:20:16,333 - INFO -  * Restarting with stat
+2026-02-15 20:20:17,051 - WARNING -  * Debugger is active!
+2026-02-15 20:20:17,055 - INFO -  * Debugger PIN: 759-286-862
+2026-02-15 20:20:18,287 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-15 20:20:18,288 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-15 20:20:18,289 - INFO -  * Restarting with stat
+2026-02-15 20:20:18,996 - WARNING -  * Debugger is active!
+2026-02-15 20:20:19,000 - INFO -  * Debugger PIN: 759-286-862
+2026-02-15 20:20:24,123 - INFO - 127.0.0.1 - - [15/Feb/2026 20:20:24] "GET / HTTP/1.1" 200 -
+2026-02-15 20:20:24,147 - INFO - 127.0.0.1 - - [15/Feb/2026 20:20:24] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 20:20:27,414 - INFO - 127.0.0.1 - - [15/Feb/2026 20:20:27] "GET /login HTTP/1.1" 200 -
+2026-02-15 20:20:27,442 - INFO - 127.0.0.1 - - [15/Feb/2026 20:20:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 20:20:44,967 - INFO - 127.0.0.1 - - [15/Feb/2026 20:20:44] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-15 20:20:44,984 - INFO - 127.0.0.1 - - [15/Feb/2026 20:20:44] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:20:45,011 - INFO - 127.0.0.1 - - [15/Feb/2026 20:20:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-15 20:25:38,060 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-15 20:25:38,061 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-15 20:25:38,062 - INFO -  * Restarting with stat
+2026-02-15 20:25:38,799 - WARNING -  * Debugger is active!
+2026-02-15 20:25:38,803 - INFO -  * Debugger PIN: 759-286-862
+2026-02-15 20:25:42,061 - INFO - 127.0.0.1 - - [15/Feb/2026 20:25:42] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:25:42,085 - INFO - 127.0.0.1 - - [15/Feb/2026 20:25:42] "GET /static/style.css HTTP/1.1" 200 -
+2026-02-15 20:25:42,641 - INFO - 127.0.0.1 - - [15/Feb/2026 20:25:42] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-15 20:25:50,550 - INFO - 127.0.0.1 - - [15/Feb/2026 20:25:50] "GET /dashboard HTTP/1.1" 200 -
+2026-02-15 20:25:50,575 - INFO - 127.0.0.1 - - [15/Feb/2026 20:25:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:26:42,373 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-16 09:26:42,373 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-16 09:26:42,377 - INFO -  * Restarting with stat
+2026-02-16 09:26:45,433 - WARNING -  * Debugger is active!
+2026-02-16 09:26:45,448 - INFO -  * Debugger PIN: 759-286-862
+2026-02-16 09:27:04,658 - INFO - 127.0.0.1 - - [16/Feb/2026 09:27:04] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2026-02-16 09:27:04,708 - INFO - 127.0.0.1 - - [16/Feb/2026 09:27:04] "GET /login HTTP/1.1" 200 -
+2026-02-16 09:27:05,253 - INFO - 127.0.0.1 - - [16/Feb/2026 09:27:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:27:14,542 - INFO - 127.0.0.1 - - [16/Feb/2026 09:27:14] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-16 09:27:20,578 - INFO - 127.0.0.1 - - [16/Feb/2026 09:27:20] "GET / HTTP/1.1" 200 -
+2026-02-16 09:27:20,688 - INFO - 127.0.0.1 - - [16/Feb/2026 09:27:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:27:56,079 - INFO - 127.0.0.1 - - [16/Feb/2026 09:27:56] "GET /login HTTP/1.1" 200 -
+2026-02-16 09:27:56,188 - INFO - 127.0.0.1 - - [16/Feb/2026 09:27:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:28:15,057 - INFO - 127.0.0.1 - - [16/Feb/2026 09:28:15] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-16 09:28:15,120 - INFO - 127.0.0.1 - - [16/Feb/2026 09:28:15] "GET /dashboard HTTP/1.1" 200 -
+2026-02-16 09:28:15,226 - INFO - 127.0.0.1 - - [16/Feb/2026 09:28:15] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:28:37,287 - INFO - 127.0.0.1 - - [16/Feb/2026 09:28:37] "GET /view/3 HTTP/1.1" 200 -
+2026-02-16 09:28:37,348 - INFO - 127.0.0.1 - - [16/Feb/2026 09:28:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:28:42,253 - INFO - 127.0.0.1 - - [16/Feb/2026 09:28:42] "GET /dashboard HTTP/1.1" 200 -
+2026-02-16 09:28:42,319 - INFO - 127.0.0.1 - - [16/Feb/2026 09:28:42] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:28:44,533 - INFO - 127.0.0.1 - - [16/Feb/2026 09:28:44] "GET /edit/3 HTTP/1.1" 200 -
+2026-02-16 09:28:45,444 - INFO - 127.0.0.1 - - [16/Feb/2026 09:28:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:28:53,513 - INFO - 127.0.0.1 - - [16/Feb/2026 09:28:53] "GET /dashboard HTTP/1.1" 200 -
+2026-02-16 09:28:53,590 - INFO - 127.0.0.1 - - [16/Feb/2026 09:28:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:31:18,008 - INFO - 127.0.0.1 - - [16/Feb/2026 09:31:18] "GET /dashboard?search=&form_no=1002&sex=&status=&primary_site= HTTP/1.1" 200 -
+2026-02-16 09:31:18,093 - INFO - 127.0.0.1 - - [16/Feb/2026 09:31:18] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:31:24,660 - INFO - 127.0.0.1 - - [16/Feb/2026 09:31:24] "GET /dashboard HTTP/1.1" 200 -
+2026-02-16 09:31:24,720 - INFO - 127.0.0.1 - - [16/Feb/2026 09:31:24] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:31:25,823 - INFO - 127.0.0.1 - - [16/Feb/2026 09:31:25] "GET /profile HTTP/1.1" 200 -
+2026-02-16 09:31:25,878 - INFO - 127.0.0.1 - - [16/Feb/2026 09:31:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:31:29,106 - INFO - 127.0.0.1 - - [16/Feb/2026 09:31:29] "GET /dashboard HTTP/1.1" 200 -
+2026-02-16 09:31:29,151 - INFO - 127.0.0.1 - - [16/Feb/2026 09:31:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:47:02,368 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-16 09:47:02,369 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-16 09:47:02,373 - INFO -  * Restarting with stat
+2026-02-16 09:47:04,452 - WARNING -  * Debugger is active!
+2026-02-16 09:47:04,468 - INFO -  * Debugger PIN: 759-286-862
+2026-02-16 09:47:04,805 - INFO - 127.0.0.1 - - [16/Feb/2026 09:47:04] "[32mGET / HTTP/1.1[0m" 302 -
+2026-02-16 09:47:04,909 - INFO - 127.0.0.1 - - [16/Feb/2026 09:47:04] "GET /dashboard HTTP/1.1" 200 -
+2026-02-16 09:47:05,093 - INFO - 127.0.0.1 - - [16/Feb/2026 09:47:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:52:55,325 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-16 09:52:55,325 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-16 09:52:55,326 - INFO -  * Restarting with stat
+2026-02-16 09:52:56,108 - WARNING -  * Debugger is active!
+2026-02-16 09:52:56,114 - INFO -  * Debugger PIN: 160-173-820
+2026-02-16 09:53:26,838 - INFO - 127.0.0.1 - - [16/Feb/2026 09:53:26] "GET /dashboard HTTP/1.1" 200 -
+2026-02-16 09:53:27,018 - INFO - 127.0.0.1 - - [16/Feb/2026 09:53:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:53:27,152 - INFO - 127.0.0.1 - - [16/Feb/2026 09:53:27] "GET /dashboard HTTP/1.1" 200 -
+2026-02-16 09:53:27,177 - INFO - 127.0.0.1 - - [16/Feb/2026 09:53:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:53:27,359 - INFO - 127.0.0.1 - - [16/Feb/2026 09:53:27] "GET /dashboard HTTP/1.1" 200 -
+2026-02-16 09:53:27,386 - INFO - 127.0.0.1 - - [16/Feb/2026 09:53:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-16 09:57:04,358 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-16 09:57:04,358 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-16 09:57:04,361 - INFO -  * Restarting with stat
+2026-02-16 09:57:06,110 - WARNING -  * Debugger is active!
+2026-02-16 09:57:06,122 - INFO -  * Debugger PIN: 160-173-820
+2026-02-17 18:41:45,393 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-17 18:41:45,394 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-17 18:41:45,396 - INFO -  * Restarting with stat
+2026-02-17 18:41:47,609 - WARNING -  * Debugger is active!
+2026-02-17 18:41:47,626 - INFO -  * Debugger PIN: 160-173-820
+2026-02-17 18:49:47,340 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-17 18:49:47,341 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-17 18:49:47,344 - INFO -  * Restarting with stat
+2026-02-17 18:49:49,037 - WARNING -  * Debugger is active!
+2026-02-17 18:49:49,045 - INFO -  * Debugger PIN: 160-173-820
+2026-02-17 19:03:37,310 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-17 19:03:37,311 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-17 19:03:37,312 - INFO -  * Restarting with stat
+2026-02-17 19:03:38,110 - WARNING -  * Debugger is active!
+2026-02-17 19:03:38,116 - INFO -  * Debugger PIN: 160-173-820
+2026-02-17 19:03:44,397 - INFO - 127.0.0.1 - - [17/Feb/2026 19:03:44] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2026-02-17 19:03:44,436 - INFO - 127.0.0.1 - - [17/Feb/2026 19:03:44] "GET /login HTTP/1.1" 200 -
+2026-02-17 19:03:44,636 - INFO - 127.0.0.1 - - [17/Feb/2026 19:03:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-17 19:03:44,758 - INFO - 127.0.0.1 - - [17/Feb/2026 19:03:44] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-17 19:03:56,868 - INFO - 127.0.0.1 - - [17/Feb/2026 19:03:56] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-17 19:03:56,905 - INFO - 127.0.0.1 - - [17/Feb/2026 19:03:56] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-17 19:03:56,953 - INFO - 127.0.0.1 - - [17/Feb/2026 19:03:56] "GET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-02-17 19:03:56,953 - INFO - 127.0.0.1 - - [17/Feb/2026 19:03:56] "GET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-02-17 19:03:56,966 - INFO - 127.0.0.1 - - [17/Feb/2026 19:03:56] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=NTSWGpu4BWzehxe9t7ug HTTP/1.1" 200 -
+2026-02-17 19:03:57,006 - INFO - 127.0.0.1 - - [17/Feb/2026 19:03:57] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-02-17 19:05:44,581 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-17 19:05:44,581 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-17 19:05:44,582 - INFO -  * Restarting with stat
+2026-02-17 19:05:45,342 - WARNING -  * Debugger is active!
+2026-02-17 19:05:45,347 - INFO -  * Debugger PIN: 160-173-820
+2026-02-17 19:05:51,593 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:51] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-17 19:05:51,683 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:51] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-17 19:05:51,684 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:51] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-17 19:05:51,706 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:51] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=BwFjjX04udsrl4mNVe1V HTTP/1.1" 200 -
+2026-02-17 19:05:51,713 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:51] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-17 19:05:52,633 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:52] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-17 19:05:52,658 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:52] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-17 19:05:52,660 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:52] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-17 19:05:52,673 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:52] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=BwFjjX04udsrl4mNVe1V HTTP/1.1[0m" 304 -
+2026-02-17 19:05:52,686 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:52] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-17 19:05:53,052 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:53] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-17 19:05:53,078 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:53] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-17 19:05:53,082 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:53] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-17 19:05:53,093 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:53] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=BwFjjX04udsrl4mNVe1V HTTP/1.1[0m" 304 -
+2026-02-17 19:05:53,109 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:53] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-17 19:05:53,218 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:53] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-17 19:05:53,247 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:53] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-17 19:05:53,248 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:53] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-17 19:05:53,257 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:53] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=BwFjjX04udsrl4mNVe1V HTTP/1.1[0m" 304 -
+2026-02-17 19:05:53,271 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:53] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-17 19:05:53,431 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:53] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-17 19:05:53,457 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:53] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-17 19:05:53,465 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:53] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-17 19:05:53,475 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:53] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=BwFjjX04udsrl4mNVe1V HTTP/1.1[0m" 304 -
+2026-02-17 19:05:53,488 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:53] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-17 19:05:56,417 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:56] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-17 19:05:56,435 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:56] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-17 19:05:56,472 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:56] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-17 19:05:56,473 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:56] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-17 19:05:56,479 - INFO - 127.0.0.1 - - [17/Feb/2026 19:05:56] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=BwFjjX04udsrl4mNVe1V HTTP/1.1[0m" 304 -
+2026-02-17 19:09:34,926 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-17 19:09:34,927 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-17 19:09:34,928 - INFO -  * Restarting with stat
+2026-02-17 19:09:35,684 - WARNING -  * Debugger is active!
+2026-02-17 19:09:35,690 - INFO -  * Debugger PIN: 160-173-820
+2026-02-17 19:09:41,815 - INFO - 127.0.0.1 - - [17/Feb/2026 19:09:41] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-17 19:09:41,905 - INFO - 127.0.0.1 - - [17/Feb/2026 19:09:41] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-17 19:09:41,906 - INFO - 127.0.0.1 - - [17/Feb/2026 19:09:41] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-17 19:09:41,924 - INFO - 127.0.0.1 - - [17/Feb/2026 19:09:41] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=0ZgDqmkpW7ZSRl6PwgFC HTTP/1.1" 200 -
+2026-02-17 19:09:41,933 - INFO - 127.0.0.1 - - [17/Feb/2026 19:09:41] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-17 19:09:45,562 - INFO - 127.0.0.1 - - [17/Feb/2026 19:09:45] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-17 19:09:45,590 - INFO - 127.0.0.1 - - [17/Feb/2026 19:09:45] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-17 19:09:45,592 - INFO - 127.0.0.1 - - [17/Feb/2026 19:09:45] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-17 19:09:45,601 - INFO - 127.0.0.1 - - [17/Feb/2026 19:09:45] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=0ZgDqmkpW7ZSRl6PwgFC HTTP/1.1[0m" 304 -
+2026-02-17 19:09:45,611 - INFO - 127.0.0.1 - - [17/Feb/2026 19:09:45] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-17 19:09:48,947 - INFO - 127.0.0.1 - - [17/Feb/2026 19:09:48] "[32mGET / HTTP/1.1[0m" 302 -
+2026-02-17 19:09:48,966 - INFO - 127.0.0.1 - - [17/Feb/2026 19:09:48] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-17 19:09:49,007 - INFO - 127.0.0.1 - - [17/Feb/2026 19:09:49] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-17 19:09:49,007 - INFO - 127.0.0.1 - - [17/Feb/2026 19:09:49] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-17 19:09:49,014 - INFO - 127.0.0.1 - - [17/Feb/2026 19:09:49] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=0ZgDqmkpW7ZSRl6PwgFC HTTP/1.1[0m" 304 -
+2026-02-17 19:11:45,756 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-17 19:11:45,757 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-17 19:11:45,760 - INFO -  * Restarting with stat
+2026-02-17 19:11:47,891 - WARNING -  * Debugger is active!
+2026-02-17 19:11:47,901 - INFO -  * Debugger PIN: 759-286-862
+2026-02-17 19:12:50,184 - INFO - 127.0.0.1 - - [17/Feb/2026 19:12:50] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-17 19:12:50,262 - INFO - 127.0.0.1 - - [17/Feb/2026 19:12:50] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-17 19:12:50,263 - INFO - 127.0.0.1 - - [17/Feb/2026 19:12:50] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-17 19:12:50,328 - INFO - 127.0.0.1 - - [17/Feb/2026 19:12:50] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=0ZgDqmkpW7ZSRl6PwgFC HTTP/1.1[0m" 304 -
+2026-02-17 19:12:50,365 - INFO - 127.0.0.1 - - [17/Feb/2026 19:12:50] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-17 19:12:50,746 - INFO - 127.0.0.1 - - [17/Feb/2026 19:12:50] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-17 19:12:50,767 - INFO - 127.0.0.1 - - [17/Feb/2026 19:12:50] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-17 19:12:50,793 - INFO - 127.0.0.1 - - [17/Feb/2026 19:12:50] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-17 19:12:50,808 - INFO - 127.0.0.1 - - [17/Feb/2026 19:12:50] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=0ZgDqmkpW7ZSRl6PwgFC HTTP/1.1[0m" 304 -
+2026-02-17 19:12:50,821 - INFO - 127.0.0.1 - - [17/Feb/2026 19:12:50] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-17 19:12:50,956 - INFO - 127.0.0.1 - - [17/Feb/2026 19:12:50] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-17 19:12:50,982 - INFO - 127.0.0.1 - - [17/Feb/2026 19:12:50] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-17 19:12:50,987 - INFO - 127.0.0.1 - - [17/Feb/2026 19:12:50] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-17 19:12:51,000 - INFO - 127.0.0.1 - - [17/Feb/2026 19:12:51] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=0ZgDqmkpW7ZSRl6PwgFC HTTP/1.1[0m" 304 -
+2026-02-17 19:12:51,013 - INFO - 127.0.0.1 - - [17/Feb/2026 19:12:51] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-17 19:18:24,374 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2026-02-17 19:18:24,375 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-17 19:18:24,376 - INFO -  * Restarting with stat
+2026-02-17 19:18:25,188 - WARNING -  * Debugger is active!
+2026-02-17 19:18:25,192 - INFO -  * Debugger PIN: 759-286-862
+2026-02-17 19:18:38,297 - INFO - 127.0.0.1 - - [17/Feb/2026 19:18:38] "[32mGET / HTTP/1.1[0m" 302 -
+2026-02-17 19:18:38,343 - INFO - 127.0.0.1 - - [17/Feb/2026 19:18:38] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-17 19:18:38,482 - INFO - 127.0.0.1 - - [17/Feb/2026 19:18:38] "GET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-02-17 19:18:38,498 - INFO - 127.0.0.1 - - [17/Feb/2026 19:18:38] "GET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-02-17 19:18:38,563 - INFO - 127.0.0.1 - - [17/Feb/2026 19:18:38] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=rfeUAvhIAu6npOWmZhSU HTTP/1.1" 200 -
+2026-02-17 19:18:38,585 - INFO - 127.0.0.1 - - [17/Feb/2026 19:18:38] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-02-17 19:26:15,407 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2026-02-17 19:26:15,408 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-17 19:26:15,409 - INFO -  * Restarting with stat
+2026-02-17 19:26:16,190 - WARNING -  * Debugger is active!
+2026-02-17 19:26:16,194 - INFO -  * Debugger PIN: 759-286-862
+2026-02-17 19:26:19,937 - INFO - 127.0.0.1 - - [17/Feb/2026 19:26:19] "[33mGET /dashboard HTTP/1.1[0m" 404 -
+2026-02-17 19:26:19,985 - INFO - 127.0.0.1 - - [17/Feb/2026 19:26:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-17 19:27:06,133 - INFO - 127.0.0.1 - - [17/Feb/2026 19:27:06] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-17 19:27:06,210 - INFO - 127.0.0.1 - - [17/Feb/2026 19:27:06] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-02-17 19:27:06,211 - INFO - 127.0.0.1 - - [17/Feb/2026 19:27:06] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-02-17 19:27:06,229 - INFO - 127.0.0.1 - - [17/Feb/2026 19:27:06] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=Yevn0JxzNOAb5tsS06Or HTTP/1.1" 200 -
+2026-02-17 19:27:06,242 - INFO - 127.0.0.1 - - [17/Feb/2026 19:27:06] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-02-17 19:27:25,361 - INFO - 127.0.0.1 - - [17/Feb/2026 19:27:25] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-17 19:27:25,384 - INFO - 127.0.0.1 - - [17/Feb/2026 19:27:25] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-17 19:27:25,385 - INFO - 127.0.0.1 - - [17/Feb/2026 19:27:25] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-17 19:27:25,437 - INFO - 127.0.0.1 - - [17/Feb/2026 19:27:25] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png&s=Yevn0JxzNOAb5tsS06Or HTTP/1.1[0m" 304 -
+2026-02-17 20:12:50,354 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-17 20:12:50,355 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-17 20:12:50,358 - INFO -  * Restarting with stat
+2026-02-17 20:12:51,273 - WARNING -  * Debugger is active!
+2026-02-17 20:12:51,277 - INFO -  * Debugger PIN: 759-286-862
+2026-02-18 11:00:23,357 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-18 11:00:23,357 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-18 11:00:23,359 - INFO -  * Restarting with stat
+2026-02-18 11:00:24,158 - WARNING -  * Debugger is active!
+2026-02-18 11:00:24,162 - INFO -  * Debugger PIN: 110-568-352
+2026-02-18 11:03:37,183 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-18 11:03:37,184 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-18 11:03:37,185 - INFO -  * Restarting with stat
+2026-02-18 11:03:37,990 - WARNING -  * Debugger is active!
+2026-02-18 11:03:37,994 - INFO -  * Debugger PIN: 110-568-352
+2026-02-18 11:13:26,182 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-18 11:13:26,182 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-18 11:13:26,184 - INFO -  * Restarting with stat
+2026-02-18 11:13:26,943 - WARNING -  * Debugger is active!
+2026-02-18 11:13:26,947 - INFO -  * Debugger PIN: 747-746-012
+2026-02-18 11:32:03,810 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-18 11:32:03,810 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-18 11:32:03,811 - INFO -  * Restarting with stat
+2026-02-18 11:32:04,589 - WARNING -  * Debugger is active!
+2026-02-18 11:32:04,594 - INFO -  * Debugger PIN: 747-746-012
+2026-02-18 11:33:51,091 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-18 11:33:51,091 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-18 11:33:51,092 - INFO -  * Restarting with stat
+2026-02-18 11:33:51,868 - WARNING -  * Debugger is active!
+2026-02-18 11:33:51,872 - INFO -  * Debugger PIN: 747-746-012
+2026-02-18 11:34:10,939 - INFO - 127.0.0.1 - - [18/Feb/2026 11:34:10] "GET / HTTP/1.1" 200 -
+2026-02-18 11:34:11,279 - INFO - 127.0.0.1 - - [18/Feb/2026 11:34:11] "GET /static/style.css HTTP/1.1" 200 -
+2026-02-18 11:34:11,445 - INFO - 127.0.0.1 - - [18/Feb/2026 11:34:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-18 11:34:13,726 - INFO - 127.0.0.1 - - [18/Feb/2026 11:34:13] "GET /login HTTP/1.1" 200 -
+2026-02-18 11:34:13,986 - INFO - 127.0.0.1 - - [18/Feb/2026 11:34:13] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-18 11:34:23,181 - INFO - 127.0.0.1 - - [18/Feb/2026 11:34:23] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-18 11:34:23,509 - INFO - 127.0.0.1 - - [18/Feb/2026 11:34:23] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-18 11:34:23,754 - INFO - 127.0.0.1 - - [18/Feb/2026 11:34:23] "GET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-02-18 11:34:23,846 - INFO - 127.0.0.1 - - [18/Feb/2026 11:34:23] "GET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-02-18 11:34:23,890 - INFO - 127.0.0.1 - - [18/Feb/2026 11:34:23] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=u5tTQLxbRGqwXrlBeZdN HTTP/1.1" 200 -
+2026-02-18 11:34:24,200 - INFO - 127.0.0.1 - - [18/Feb/2026 11:34:24] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-02-18 11:35:16,615 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-18 11:35:16,615 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-18 11:35:16,616 - INFO -  * Restarting with stat
+2026-02-18 11:35:17,381 - WARNING -  * Debugger is active!
+2026-02-18 11:35:17,385 - INFO -  * Debugger PIN: 747-746-012
+2026-02-18 11:35:30,342 - INFO - 127.0.0.1 - - [18/Feb/2026 11:35:30] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 11:35:30,618 - INFO - 127.0.0.1 - - [18/Feb/2026 11:35:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-18 11:35:44,890 - INFO - 127.0.0.1 - - [18/Feb/2026 11:35:44] "[32mGET / HTTP/1.1[0m" 302 -
+2026-02-18 11:35:45,208 - INFO - 127.0.0.1 - - [18/Feb/2026 11:35:45] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 11:35:45,472 - INFO - 127.0.0.1 - - [18/Feb/2026 11:35:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-18 11:47:47,865 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-18 11:47:47,865 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-18 11:47:47,866 - INFO -  * Restarting with stat
+2026-02-18 11:47:48,632 - WARNING -  * Debugger is active!
+2026-02-18 11:47:48,636 - INFO -  * Debugger PIN: 747-746-012
+2026-02-18 11:47:55,456 - INFO - 127.0.0.1 - - [18/Feb/2026 11:47:55] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 11:47:55,722 - INFO - 127.0.0.1 - - [18/Feb/2026 11:47:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-18 11:48:16,112 - INFO - 127.0.0.1 - - [18/Feb/2026 11:48:16] "GET /profile HTTP/1.1" 200 -
+2026-02-18 11:48:16,465 - INFO - 127.0.0.1 - - [18/Feb/2026 11:48:16] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-18 11:48:19,925 - INFO - 127.0.0.1 - - [18/Feb/2026 11:48:19] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 11:48:20,268 - INFO - 127.0.0.1 - - [18/Feb/2026 11:48:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-18 11:49:36,351 - INFO - 127.0.0.1 - - [18/Feb/2026 11:49:36] "[32mPOST /add_patient HTTP/1.1[0m" 302 -
+2026-02-18 11:49:36,612 - INFO - 127.0.0.1 - - [18/Feb/2026 11:49:36] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 11:49:36,665 - INFO - 127.0.0.1 - - [18/Feb/2026 11:49:36] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-18 11:49:56,613 - INFO - 127.0.0.1 - - [18/Feb/2026 11:49:56] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 11:49:56,869 - INFO - 127.0.0.1 - - [18/Feb/2026 11:49:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2026-02-18 11:50:15,923 - INFO - 127.0.0.1 - - [18/Feb/2026 11:50:15] "GET /export_excel HTTP/1.1" 200 -
+2026-02-18 11:56:43,340 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-18 11:56:43,340 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-18 11:56:43,342 - INFO -  * Restarting with stat
+2026-02-18 11:56:44,050 - WARNING -  * Debugger is active!
+2026-02-18 11:56:44,054 - INFO -  * Debugger PIN: 747-746-012
+2026-02-18 11:56:50,309 - INFO - 127.0.0.1 - - [18/Feb/2026 11:56:50] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-18 11:56:50,560 - INFO - 127.0.0.1 - - [18/Feb/2026 11:56:50] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-18 11:56:50,659 - INFO - 127.0.0.1 - - [18/Feb/2026 11:56:50] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-18 11:56:50,677 - INFO - 127.0.0.1 - - [18/Feb/2026 11:56:50] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=ANjDZHSKY9CRQgWqZn0f HTTP/1.1" 200 -
+2026-02-18 11:56:51,023 - INFO - 127.0.0.1 - - [18/Feb/2026 11:56:51] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-18 12:02:52,361 - INFO - 127.0.0.1 - - [18/Feb/2026 12:02:52] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-18 12:02:52,550 - INFO - 127.0.0.1 - - [18/Feb/2026 12:02:52] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-18 12:02:52,722 - INFO - 127.0.0.1 - - [18/Feb/2026 12:02:52] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-18 12:02:52,754 - INFO - 127.0.0.1 - - [18/Feb/2026 12:02:52] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=ANjDZHSKY9CRQgWqZn0f HTTP/1.1[0m" 304 -
+2026-02-18 12:02:53,076 - INFO - 127.0.0.1 - - [18/Feb/2026 12:02:53] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-18 12:03:41,662 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-18 12:03:41,662 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-18 12:03:41,663 - INFO -  * Restarting with stat
+2026-02-18 12:03:42,455 - WARNING -  * Debugger is active!
+2026-02-18 12:03:42,460 - INFO -  * Debugger PIN: 747-746-012
+2026-02-18 12:03:55,532 - INFO - 127.0.0.1 - - [18/Feb/2026 12:03:55] "GET / HTTP/1.1" 200 -
+2026-02-18 12:03:55,957 - INFO - 127.0.0.1 - - [18/Feb/2026 12:03:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-18 12:04:05,355 - INFO - 127.0.0.1 - - [18/Feb/2026 12:04:05] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 12:04:55,600 - INFO - 127.0.0.1 - - [18/Feb/2026 12:04:55] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 12:04:57,963 - INFO - 127.0.0.1 - - [18/Feb/2026 12:04:57] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 12:04:59,361 - INFO - 127.0.0.1 - - [18/Feb/2026 12:04:59] "GET /profile HTTP/1.1" 200 -
+2026-02-18 12:05:07,433 - INFO - 127.0.0.1 - - [18/Feb/2026 12:05:07] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 12:08:49,846 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app.py", reloading
+2026-02-18 12:08:50,113 - INFO -  * Restarting with stat
+2026-02-18 12:08:51,461 - WARNING -  * Debugger is active!
+2026-02-18 12:08:51,469 - INFO -  * Debugger PIN: 747-746-012
+2026-02-18 12:11:53,982 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-18 12:11:53,982 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-18 12:11:53,983 - INFO -  * Restarting with stat
+2026-02-18 12:11:54,705 - WARNING -  * Debugger is active!
+2026-02-18 12:11:54,709 - INFO -  * Debugger PIN: 747-746-012
+2026-02-18 12:12:02,616 - INFO - 127.0.0.1 - - [18/Feb/2026 12:12:02] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 12:12:08,476 - INFO - 127.0.0.1 - - [18/Feb/2026 12:12:08] "GET /records HTTP/1.1" 200 -
+2026-02-18 12:12:16,402 - INFO - 127.0.0.1 - - [18/Feb/2026 12:12:16] "GET /analytics HTTP/1.1" 200 -
+2026-02-18 12:12:19,738 - INFO - 127.0.0.1 - - [18/Feb/2026 12:12:19] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 12:12:28,103 - INFO - 127.0.0.1 - - [18/Feb/2026 12:12:28] "GET /profile HTTP/1.1" 200 -
+2026-02-18 12:12:51,931 - INFO - 127.0.0.1 - - [18/Feb/2026 12:12:51] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 12:15:48,796 - INFO - 127.0.0.1 - - [18/Feb/2026 12:15:48] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 12:15:57,063 - INFO - 127.0.0.1 - - [18/Feb/2026 12:15:57] "GET /profile HTTP/1.1" 200 -
+2026-02-18 12:17:21,925 - INFO - 127.0.0.1 - - [18/Feb/2026 12:17:21] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 12:52:53,458 - INFO - 127.0.0.1 - - [18/Feb/2026 12:52:53] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 12:52:55,961 - INFO - 127.0.0.1 - - [18/Feb/2026 12:52:55] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 12:52:59,105 - INFO - 127.0.0.1 - - [18/Feb/2026 12:52:59] "GET /records HTTP/1.1" 200 -
+2026-02-18 12:53:59,676 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\generate_test_data_simple.py", reloading
+2026-02-18 12:54:00,098 - INFO -  * Restarting with stat
+2026-02-18 12:54:01,152 - WARNING -  * Debugger is active!
+2026-02-18 12:54:01,157 - INFO -  * Debugger PIN: 747-746-012
+2026-02-18 12:54:03,342 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\generate_test_data_simple.py", reloading
+2026-02-18 12:54:03,453 - INFO -  * Restarting with stat
+2026-02-18 12:54:04,214 - WARNING -  * Debugger is active!
+2026-02-18 12:54:04,218 - INFO -  * Debugger PIN: 747-746-012
+2026-02-18 12:54:24,737 - INFO - 127.0.0.1 - - [18/Feb/2026 12:54:24] "GET /records HTTP/1.1" 200 -
+2026-02-18 12:54:31,883 - INFO - 127.0.0.1 - - [18/Feb/2026 12:54:31] "GET /view_patient/51 HTTP/1.1" 200 -
+2026-02-18 12:54:37,680 - INFO - 127.0.0.1 - - [18/Feb/2026 12:54:37] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 12:54:41,603 - INFO - 127.0.0.1 - - [18/Feb/2026 12:54:41] "GET /records HTTP/1.1" 200 -
+2026-02-18 12:55:20,115 - INFO - 127.0.0.1 - - [18/Feb/2026 12:55:20] "GET /records?search=Ajay+Kumar&cancer_type=&stage=&status=&doctor=&date_from=&date_to= HTTP/1.1" 200 -
+2026-02-18 12:58:39,001 - INFO - 127.0.0.1 - - [18/Feb/2026 12:58:39] "GET /records?search=Ajay+Kumar&cancer_type=&stage=&status=&doctor=&date_from=&date_to= HTTP/1.1" 200 -
+2026-02-18 12:58:44,721 - INFO - 127.0.0.1 - - [18/Feb/2026 12:58:44] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 12:59:03,498 - INFO - 127.0.0.1 - - [18/Feb/2026 12:59:03] "GET /profile HTTP/1.1" 200 -
+2026-02-18 12:59:11,602 - INFO - 127.0.0.1 - - [18/Feb/2026 12:59:11] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 12:59:14,120 - INFO - 127.0.0.1 - - [18/Feb/2026 12:59:14] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 13:01:56,111 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\admin_tools.py", reloading
+2026-02-18 13:01:56,272 - INFO -  * Restarting with stat
+2026-02-18 13:01:57,248 - WARNING -  * Debugger is active!
+2026-02-18 13:01:57,252 - INFO -  * Debugger PIN: 747-746-012
+2026-02-18 13:02:37,350 - INFO - 127.0.0.1 - - [18/Feb/2026 13:02:37] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 13:02:41,128 - INFO - 127.0.0.1 - - [18/Feb/2026 13:02:41] "GET /records HTTP/1.1" 200 -
+2026-02-18 13:02:52,560 - INFO - 127.0.0.1 - - [18/Feb/2026 13:02:52] "GET /analytics HTTP/1.1" 200 -
+2026-02-18 13:02:54,227 - INFO - 127.0.0.1 - - [18/Feb/2026 13:02:54] "GET /profile HTTP/1.1" 200 -
+2026-02-18 13:02:58,185 - INFO - 127.0.0.1 - - [18/Feb/2026 13:02:58] "GET /dashboard HTTP/1.1" 200 -
+2026-02-18 13:05:51,768 - INFO - 127.0.0.1 - - [18/Feb/2026 13:05:51] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2026-02-18 13:05:52,038 - INFO - 127.0.0.1 - - [18/Feb/2026 13:05:52] "GET /login HTTP/1.1" 200 -
+2026-02-18 13:05:56,314 - INFO - 127.0.0.1 - - [18/Feb/2026 13:05:56] "GET / HTTP/1.1" 200 -
+2026-02-18 13:06:25,692 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-18 13:06:25,692 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-18 13:06:25,693 - INFO -  * Restarting with stat
+2026-02-18 13:06:26,446 - WARNING -  * Debugger is active!
+2026-02-18 13:06:26,450 - INFO -  * Debugger PIN: 747-746-012
+2026-02-18 13:06:31,546 - INFO - 127.0.0.1 - - [18/Feb/2026 13:06:31] "GET / HTTP/1.1" 200 -
+2026-02-18 13:06:32,466 - INFO - 127.0.0.1 - - [18/Feb/2026 13:06:32] "GET / HTTP/1.1" 200 -
+2026-02-18 13:06:32,951 - INFO - 127.0.0.1 - - [18/Feb/2026 13:06:32] "GET / HTTP/1.1" 200 -
+2026-02-18 13:06:33,208 - INFO - 127.0.0.1 - - [18/Feb/2026 13:06:33] "GET / HTTP/1.1" 200 -
+2026-02-18 13:06:34,832 - INFO - 127.0.0.1 - - [18/Feb/2026 13:06:34] "GET / HTTP/1.1" 200 -
+2026-02-18 13:06:35,580 - INFO - 127.0.0.1 - - [18/Feb/2026 13:06:35] "GET / HTTP/1.1" 200 -
+2026-02-18 13:06:37,302 - INFO - 127.0.0.1 - - [18/Feb/2026 13:06:37] "GET /login HTTP/1.1" 200 -
+2026-02-18 13:06:38,848 - INFO - 127.0.0.1 - - [18/Feb/2026 13:06:38] "GET /register HTTP/1.1" 200 -
+2026-02-18 13:06:40,525 - INFO - 127.0.0.1 - - [18/Feb/2026 13:06:40] "GET / HTTP/1.1" 200 -
+2026-02-18 13:06:57,088 - INFO - 127.0.0.1 - - [18/Feb/2026 13:06:57] "GET / HTTP/1.1" 200 -
+2026-02-18 13:07:34,637 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app.py", reloading
+2026-02-18 13:07:34,799 - INFO -  * Restarting with stat
+2026-02-18 13:07:35,623 - WARNING -  * Debugger is active!
+2026-02-18 13:07:35,630 - INFO -  * Debugger PIN: 747-746-012
+2026-02-18 13:07:55,118 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-18 13:07:55,118 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-18 13:07:55,119 - INFO -  * Restarting with stat
+2026-02-18 13:07:55,851 - WARNING -  * Debugger is active!
+2026-02-18 13:07:55,855 - INFO -  * Debugger PIN: 747-746-012
+2026-02-18 13:08:00,181 - INFO - 127.0.0.1 - - [18/Feb/2026 13:08:00] "GET / HTTP/1.1" 200 -
+2026-02-18 13:08:01,323 - INFO - 127.0.0.1 - - [18/Feb/2026 13:08:01] "GET / HTTP/1.1" 200 -
+2026-02-18 13:08:01,863 - INFO - 127.0.0.1 - - [18/Feb/2026 13:08:01] "GET / HTTP/1.1" 200 -
+2026-02-18 13:08:02,113 - INFO - 127.0.0.1 - - [18/Feb/2026 13:08:02] "GET / HTTP/1.1" 200 -
+2026-02-18 13:08:02,262 - INFO - 127.0.0.1 - - [18/Feb/2026 13:08:02] "GET / HTTP/1.1" 200 -
+2026-02-18 13:08:05,848 - INFO - 127.0.0.1 - - [18/Feb/2026 13:08:05] "GET / HTTP/1.1" 200 -
+2026-02-18 13:08:06,350 - INFO - 127.0.0.1 - - [18/Feb/2026 13:08:06] "GET / HTTP/1.1" 200 -
+2026-02-18 13:08:13,870 - INFO - 127.0.0.1 - - [18/Feb/2026 13:08:13] "GET / HTTP/1.1" 200 -
+2026-02-18 13:08:13,990 - INFO - 127.0.0.1 - - [18/Feb/2026 13:08:13] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-18 13:12:37,752 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-18 13:12:37,752 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-18 13:12:37,753 - INFO -  * Restarting with stat
+2026-02-18 13:12:38,561 - WARNING -  * Debugger is active!
+2026-02-18 13:12:38,565 - INFO -  * Debugger PIN: 110-568-352
+2026-02-18 13:12:43,283 - INFO - 127.0.0.1 - - [18/Feb/2026 13:12:43] "GET / HTTP/1.1" 200 -
+2026-02-18 13:12:44,047 - INFO - 127.0.0.1 - - [18/Feb/2026 13:12:44] "GET / HTTP/1.1" 200 -
+2026-02-18 13:12:44,263 - INFO - 127.0.0.1 - - [18/Feb/2026 13:12:44] "GET / HTTP/1.1" 200 -
+2026-02-18 13:14:11,439 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-18 13:14:11,439 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-18 13:14:11,440 - INFO -  * Restarting with stat
+2026-02-18 13:14:12,258 - WARNING -  * Debugger is active!
+2026-02-18 13:14:12,262 - INFO -  * Debugger PIN: 110-568-352
+2026-02-18 13:14:32,726 - INFO - 127.0.0.1 - - [18/Feb/2026 13:14:32] "GET / HTTP/1.1" 200 -
+2026-02-18 13:16:13,823 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-18 13:16:13,823 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-18 13:16:13,825 - INFO -  * Restarting with stat
+2026-02-18 13:16:14,635 - WARNING -  * Debugger is active!
+2026-02-18 13:16:14,638 - INFO -  * Debugger PIN: 110-568-352
+2026-02-18 13:17:25,975 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:25] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:26,608 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:26] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:26,777 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:26] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:26,927 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:26] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:27,158 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:27] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:27,821 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:27] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:28,000 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:28] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:28,176 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:28] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:28,400 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:28] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:35,874 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:35] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:39,233 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:39] "GET /register HTTP/1.1" 200 -
+2026-02-18 13:17:39,894 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:39] "GET /login HTTP/1.1" 200 -
+2026-02-18 13:17:40,839 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:40] "GET /register HTTP/1.1" 200 -
+2026-02-18 13:17:42,115 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:42] "GET /login HTTP/1.1" 200 -
+2026-02-18 13:17:42,666 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:42] "GET /login HTTP/1.1" 200 -
+2026-02-18 13:17:42,847 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:42] "GET /login HTTP/1.1" 200 -
+2026-02-18 13:17:42,999 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:42] "GET /login HTTP/1.1" 200 -
+2026-02-18 13:17:43,793 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:43] "GET /register HTTP/1.1" 200 -
+2026-02-18 13:17:45,274 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:45] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:45,467 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:45] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:45,646 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:45] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:45,807 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:45] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:45,980 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:45] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:46,144 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:46] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:46,304 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:46] "GET / HTTP/1.1" 200 -
+2026-02-18 13:17:46,515 - INFO - 127.0.0.1 - - [18/Feb/2026 13:17:46] "GET / HTTP/1.1" 200 -
+2026-02-20 11:25:36,071 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-20 11:25:36,071 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-20 11:25:36,075 - INFO -  * Restarting with stat
+2026-02-20 11:25:38,862 - WARNING -  * Debugger is active!
+2026-02-20 11:25:38,874 - INFO -  * Debugger PIN: 759-286-862
+2026-02-20 11:26:01,091 - INFO - 127.0.0.1 - - [20/Feb/2026 11:26:01] "GET / HTTP/1.1" 200 -
+2026-02-20 11:26:01,323 - INFO - 127.0.0.1 - - [20/Feb/2026 11:26:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-20 11:28:14,174 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-20 11:28:14,175 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-20 11:28:14,178 - INFO -  * Restarting with stat
+2026-02-20 11:28:16,065 - WARNING -  * Debugger is active!
+2026-02-20 11:28:16,075 - INFO -  * Debugger PIN: 759-286-862
+2026-02-20 11:28:25,176 - INFO - 127.0.0.1 - - [20/Feb/2026 11:28:25] "GET / HTTP/1.1" 200 -
+2026-02-20 11:28:25,611 - INFO - 127.0.0.1 - - [20/Feb/2026 11:28:25] "GET / HTTP/1.1" 200 -
+2026-02-20 11:28:25,835 - INFO - 127.0.0.1 - - [20/Feb/2026 11:28:25] "GET / HTTP/1.1" 200 -
+2026-02-20 11:28:31,263 - INFO - 127.0.0.1 - - [20/Feb/2026 11:28:31] "GET / HTTP/1.1" 200 -
+2026-02-20 11:28:31,628 - INFO - 127.0.0.1 - - [20/Feb/2026 11:28:31] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-20 11:44:38,969 - INFO - 127.0.0.1 - - [20/Feb/2026 11:44:38] "GET / HTTP/1.1" 200 -
+2026-02-20 12:09:37,373 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-20 12:09:37,373 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-20 12:09:37,376 - INFO -  * Restarting with stat
+2026-02-20 12:09:38,327 - WARNING -  * Debugger is active!
+2026-02-20 12:09:38,331 - INFO -  * Debugger PIN: 759-286-862
+2026-02-20 12:10:16,197 - INFO - 127.0.0.1 - - [20/Feb/2026 12:10:16] "GET / HTTP/1.1" 200 -
+2026-02-20 12:10:17,889 - INFO - 127.0.0.1 - - [20/Feb/2026 12:10:17] "GET / HTTP/1.1" 200 -
+2026-02-20 12:10:18,070 - INFO - 127.0.0.1 - - [20/Feb/2026 12:10:18] "GET / HTTP/1.1" 200 -
+2026-02-20 12:10:18,254 - INFO - 127.0.0.1 - - [20/Feb/2026 12:10:18] "GET / HTTP/1.1" 200 -
+2026-02-20 12:10:18,452 - INFO - 127.0.0.1 - - [20/Feb/2026 12:10:18] "GET / HTTP/1.1" 200 -
+2026-02-20 12:10:18,622 - INFO - 127.0.0.1 - - [20/Feb/2026 12:10:18] "GET / HTTP/1.1" 200 -
+2026-02-20 12:10:18,848 - INFO - 127.0.0.1 - - [20/Feb/2026 12:10:18] "GET / HTTP/1.1" 200 -
+2026-02-20 12:10:42,154 - INFO - 127.0.0.1 - - [20/Feb/2026 12:10:42] "GET / HTTP/1.1" 200 -
+2026-02-20 12:12:46,976 - INFO - 127.0.0.1 - - [20/Feb/2026 12:12:46] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-20 12:12:47,059 - INFO - 127.0.0.1 - - [20/Feb/2026 12:12:47] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-02-20 12:12:47,069 - INFO - 127.0.0.1 - - [20/Feb/2026 12:12:47] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-02-20 12:12:47,131 - INFO - 127.0.0.1 - - [20/Feb/2026 12:12:47] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=5zYioo0WA28HeWAGTHlB HTTP/1.1" 200 -
+2026-02-20 12:12:47,146 - INFO - 127.0.0.1 - - [20/Feb/2026 12:12:47] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-02-20 12:12:47,479 - INFO - 127.0.0.1 - - [20/Feb/2026 12:12:47] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-20 12:12:47,502 - INFO - 127.0.0.1 - - [20/Feb/2026 12:12:47] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-20 12:12:47,503 - INFO - 127.0.0.1 - - [20/Feb/2026 12:12:47] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-20 12:12:47,526 - INFO - 127.0.0.1 - - [20/Feb/2026 12:12:47] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png&s=5zYioo0WA28HeWAGTHlB HTTP/1.1[0m" 304 -
+2026-02-20 12:12:47,537 - INFO - 127.0.0.1 - - [20/Feb/2026 12:12:47] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-20 12:12:47,708 - INFO - 127.0.0.1 - - [20/Feb/2026 12:12:47] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-20 12:12:47,728 - INFO - 127.0.0.1 - - [20/Feb/2026 12:12:47] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-20 12:12:47,729 - INFO - 127.0.0.1 - - [20/Feb/2026 12:12:47] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-20 12:12:47,751 - INFO - 127.0.0.1 - - [20/Feb/2026 12:12:47] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png&s=5zYioo0WA28HeWAGTHlB HTTP/1.1[0m" 304 -
+2026-02-20 12:12:47,760 - INFO - 127.0.0.1 - - [20/Feb/2026 12:12:47] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-20 12:13:26,342 - INFO - 127.0.0.1 - - [20/Feb/2026 12:13:26] "GET / HTTP/1.1" 200 -
+2026-02-20 12:13:27,965 - INFO - 127.0.0.1 - - [20/Feb/2026 12:13:27] "GET / HTTP/1.1" 200 -
+2026-02-20 12:17:29,591 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-20 12:17:29,591 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-20 12:17:29,593 - INFO -  * Restarting with stat
+2026-02-20 12:17:30,458 - WARNING -  * Debugger is active!
+2026-02-20 12:17:30,463 - INFO -  * Debugger PIN: 759-286-862
+2026-02-20 12:17:43,329 - INFO - 127.0.0.1 - - [20/Feb/2026 12:17:43] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-20 12:17:43,403 - INFO - 127.0.0.1 - - [20/Feb/2026 12:17:43] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-20 12:17:43,404 - INFO - 127.0.0.1 - - [20/Feb/2026 12:17:43] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-20 12:17:43,417 - INFO - 127.0.0.1 - - [20/Feb/2026 12:17:43] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=Y7RP8UIwYkR4V1Hpv47z HTTP/1.1" 200 -
+2026-02-20 12:17:43,426 - INFO - 127.0.0.1 - - [20/Feb/2026 12:17:43] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-20 12:18:48,892 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-20 12:18:48,892 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-20 12:18:48,893 - INFO -  * Restarting with stat
+2026-02-20 12:18:49,756 - WARNING -  * Debugger is active!
+2026-02-20 12:18:49,759 - INFO -  * Debugger PIN: 759-286-862
+2026-02-20 12:19:00,333 - INFO - 127.0.0.1 - - [20/Feb/2026 12:19:00] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-20 12:19:00,422 - INFO - 127.0.0.1 - - [20/Feb/2026 12:19:00] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-20 12:19:00,422 - INFO - 127.0.0.1 - - [20/Feb/2026 12:19:00] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-20 12:19:00,438 - INFO - 127.0.0.1 - - [20/Feb/2026 12:19:00] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=tiPADe2hFlZp4WFdvQtL HTTP/1.1" 200 -
+2026-02-20 12:19:00,445 - INFO - 127.0.0.1 - - [20/Feb/2026 12:19:00] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-20 12:19:01,565 - INFO - 127.0.0.1 - - [20/Feb/2026 12:19:01] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-20 12:19:01,592 - INFO - 127.0.0.1 - - [20/Feb/2026 12:19:01] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-20 12:19:01,593 - INFO - 127.0.0.1 - - [20/Feb/2026 12:19:01] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-20 12:19:01,606 - INFO - 127.0.0.1 - - [20/Feb/2026 12:19:01] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png&s=tiPADe2hFlZp4WFdvQtL HTTP/1.1[0m" 304 -
+2026-02-20 12:19:01,618 - INFO - 127.0.0.1 - - [20/Feb/2026 12:19:01] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-20 12:21:41,509 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-20 12:21:41,509 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-20 12:21:41,511 - INFO -  * Restarting with stat
+2026-02-20 12:21:42,323 - WARNING -  * Debugger is active!
+2026-02-20 12:21:42,327 - INFO -  * Debugger PIN: 759-286-862
+2026-02-20 12:22:01,674 - INFO - 127.0.0.1 - - [20/Feb/2026 12:22:01] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-20 12:22:01,765 - INFO - 127.0.0.1 - - [20/Feb/2026 12:22:01] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-20 12:22:01,765 - INFO - 127.0.0.1 - - [20/Feb/2026 12:22:01] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-20 12:22:01,782 - INFO - 127.0.0.1 - - [20/Feb/2026 12:22:01] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=eWHimvQ4bHsLXmW01M2i HTTP/1.1" 200 -
+2026-02-20 12:25:56,206 - INFO - 127.0.0.1 - - [20/Feb/2026 12:25:56] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-20 12:25:56,237 - INFO - 127.0.0.1 - - [20/Feb/2026 12:25:56] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-20 12:25:56,240 - INFO - 127.0.0.1 - - [20/Feb/2026 12:25:56] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-20 12:25:56,260 - INFO - 127.0.0.1 - - [20/Feb/2026 12:25:56] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png&s=eWHimvQ4bHsLXmW01M2i HTTP/1.1[0m" 304 -
+2026-02-20 12:25:56,275 - INFO - 127.0.0.1 - - [20/Feb/2026 12:25:56] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-20 12:30:49,421 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-20 12:30:49,421 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-20 12:30:49,426 - INFO -  * Restarting with stat
+2026-02-20 12:30:50,284 - WARNING -  * Debugger is active!
+2026-02-20 12:30:50,287 - INFO -  * Debugger PIN: 759-286-862
+2026-02-20 12:30:58,034 - INFO - 127.0.0.1 - - [20/Feb/2026 12:30:58] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-20 12:30:58,118 - INFO - 127.0.0.1 - - [20/Feb/2026 12:30:58] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-20 12:30:58,118 - INFO - 127.0.0.1 - - [20/Feb/2026 12:30:58] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-20 12:30:58,135 - INFO - 127.0.0.1 - - [20/Feb/2026 12:30:58] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=BHvGBHTgT4E9PektAmhI HTTP/1.1" 200 -
+2026-02-20 12:30:58,146 - INFO - 127.0.0.1 - - [20/Feb/2026 12:30:58] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-20 12:30:59,026 - INFO - 127.0.0.1 - - [20/Feb/2026 12:30:59] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-20 12:30:59,052 - INFO - 127.0.0.1 - - [20/Feb/2026 12:30:59] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-20 12:30:59,053 - INFO - 127.0.0.1 - - [20/Feb/2026 12:30:59] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-20 12:30:59,072 - INFO - 127.0.0.1 - - [20/Feb/2026 12:30:59] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png&s=BHvGBHTgT4E9PektAmhI HTTP/1.1[0m" 304 -
+2026-02-20 12:30:59,084 - INFO - 127.0.0.1 - - [20/Feb/2026 12:30:59] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-20 12:30:59,521 - INFO - 127.0.0.1 - - [20/Feb/2026 12:30:59] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-20 12:30:59,548 - INFO - 127.0.0.1 - - [20/Feb/2026 12:30:59] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-20 12:30:59,550 - INFO - 127.0.0.1 - - [20/Feb/2026 12:30:59] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-20 12:30:59,562 - INFO - 127.0.0.1 - - [20/Feb/2026 12:30:59] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png&s=BHvGBHTgT4E9PektAmhI HTTP/1.1[0m" 304 -
+2026-02-20 12:30:59,577 - INFO - 127.0.0.1 - - [20/Feb/2026 12:30:59] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-20 12:37:14,945 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-20 12:37:14,945 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-20 12:37:14,946 - INFO -  * Restarting with stat
+2026-02-20 12:37:15,952 - WARNING -  * Debugger is active!
+2026-02-20 12:37:15,957 - INFO -  * Debugger PIN: 759-286-862
+2026-02-20 12:37:57,351 - INFO - 127.0.0.1 - - [20/Feb/2026 12:37:57] "GET / HTTP/1.1" 200 -
+2026-02-20 12:37:57,612 - INFO - 127.0.0.1 - - [20/Feb/2026 12:37:57] "GET / HTTP/1.1" 200 -
+2026-02-20 12:38:08,836 - INFO - 127.0.0.1 - - [20/Feb/2026 12:38:08] "GET / HTTP/1.1" 200 -
+2026-02-20 12:38:10,802 - INFO - 127.0.0.1 - - [20/Feb/2026 12:38:10] "GET /login HTTP/1.1" 200 -
+2026-02-20 12:38:13,368 - INFO - 127.0.0.1 - - [20/Feb/2026 12:38:13] "GET /login HTTP/1.1" 200 -
+2026-02-20 12:38:14,684 - INFO - 127.0.0.1 - - [20/Feb/2026 12:38:14] "GET /login HTTP/1.1" 200 -
+2026-02-20 12:47:57,751 - INFO - 127.0.0.1 - - [20/Feb/2026 12:47:57] "GET / HTTP/1.1" 200 -
+2026-02-20 12:48:05,863 - INFO - 127.0.0.1 - - [20/Feb/2026 12:48:05] "GET /login HTTP/1.1" 200 -
+2026-02-20 12:48:07,374 - INFO - 127.0.0.1 - - [20/Feb/2026 12:48:07] "GET /register HTTP/1.1" 200 -
+2026-02-20 12:48:09,463 - INFO - 127.0.0.1 - - [20/Feb/2026 12:48:09] "GET / HTTP/1.1" 200 -
+2026-02-20 13:45:24,260 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-20 13:45:24,260 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-20 13:45:24,262 - INFO -  * Restarting with stat
+2026-02-20 13:45:25,090 - WARNING -  * Debugger is active!
+2026-02-20 13:45:25,096 - INFO -  * Debugger PIN: 759-286-862
+2026-02-20 13:47:48,535 - INFO - 127.0.0.1 - - [20/Feb/2026 13:47:48] "GET / HTTP/1.1" 200 -
+2026-02-20 13:54:19,161 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\analyze_templates.py", reloading
+2026-02-20 13:54:19,461 - INFO -  * Restarting with stat
+2026-02-20 13:54:20,345 - WARNING -  * Debugger is active!
+2026-02-20 13:54:20,349 - INFO -  * Debugger PIN: 759-286-862
+2026-02-20 13:55:34,294 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\analyze_templates.py", reloading
+2026-02-20 13:55:34,401 - INFO -  * Restarting with stat
+2026-02-20 13:55:35,233 - WARNING -  * Debugger is active!
+2026-02-20 13:55:35,237 - INFO -  * Debugger PIN: 759-286-862
+2026-02-20 13:58:51,924 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-20 13:58:51,924 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-20 13:58:51,926 - INFO -  * Restarting with stat
+2026-02-20 13:58:52,791 - WARNING -  * Debugger is active!
+2026-02-20 13:58:52,795 - INFO -  * Debugger PIN: 759-286-862
+2026-02-20 13:59:10,682 - INFO - 127.0.0.1 - - [20/Feb/2026 13:59:10] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-20 13:59:10,793 - INFO - 127.0.0.1 - - [20/Feb/2026 13:59:10] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-20 13:59:10,795 - INFO - 127.0.0.1 - - [20/Feb/2026 13:59:10] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-20 13:59:10,896 - INFO - 127.0.0.1 - - [20/Feb/2026 13:59:10] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=yqhoIYimaLfiqy3NJrUn HTTP/1.1" 200 -
+2026-02-20 13:59:10,933 - INFO - 127.0.0.1 - - [20/Feb/2026 13:59:10] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-20 14:03:17,422 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-20 14:03:17,422 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-20 14:03:17,424 - INFO -  * Restarting with stat
+2026-02-20 14:03:18,303 - WARNING -  * Debugger is active!
+2026-02-20 14:03:18,307 - INFO -  * Debugger PIN: 759-286-862
+2026-02-20 14:03:39,646 - INFO - 127.0.0.1 - - [20/Feb/2026 14:03:39] "GET / HTTP/1.1" 200 -
+2026-02-20 14:03:45,759 - INFO - 127.0.0.1 - - [20/Feb/2026 14:03:45] "GET /login HTTP/1.1" 200 -
+2026-02-20 14:03:59,400 - WARNING - Failed login attempt: vedantwarekar3@gmail.com
+2026-02-20 14:03:59,402 - INFO - 127.0.0.1 - - [20/Feb/2026 14:03:59] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-20 14:03:59,412 - INFO - 127.0.0.1 - - [20/Feb/2026 14:03:59] "GET /login HTTP/1.1" 200 -
+2026-02-20 14:04:11,244 - WARNING - Failed login attempt: vedantwarekar3@gmail.com
+2026-02-20 14:04:11,245 - INFO - 127.0.0.1 - - [20/Feb/2026 14:04:11] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-20 14:04:11,251 - INFO - 127.0.0.1 - - [20/Feb/2026 14:04:11] "GET /login HTTP/1.1" 200 -
+2026-02-20 14:06:41,152 - INFO - 127.0.0.1 - - [20/Feb/2026 14:06:41] "GET /login HTTP/1.1" 200 -
+2026-02-20 14:06:52,953 - WARNING - Failed login attempt: vedantwarekar3@gmail.com
+2026-02-20 14:06:52,955 - INFO - 127.0.0.1 - - [20/Feb/2026 14:06:52] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-20 14:06:52,960 - INFO - 127.0.0.1 - - [20/Feb/2026 14:06:52] "GET /login HTTP/1.1" 200 -
+2026-02-20 14:08:19,882 - INFO - 127.0.0.1 - - [20/Feb/2026 14:08:19] "GET /login HTTP/1.1" 200 -
+2026-02-20 14:08:26,332 - WARNING - Failed login attempt: vedantwarekar3@gmail.com
+2026-02-20 14:08:26,333 - INFO - 127.0.0.1 - - [20/Feb/2026 14:08:26] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-20 14:08:26,339 - INFO - 127.0.0.1 - - [20/Feb/2026 14:08:26] "GET /login HTTP/1.1" 200 -
+2026-02-20 14:09:06,042 - WARNING - Failed login attempt: vedantwarekar
+2026-02-20 14:09:06,042 - INFO - 127.0.0.1 - - [20/Feb/2026 14:09:06] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-20 14:09:06,052 - INFO - 127.0.0.1 - - [20/Feb/2026 14:09:06] "GET /login HTTP/1.1" 200 -
+2026-02-20 14:09:14,812 - INFO - 127.0.0.1 - - [20/Feb/2026 14:09:14] "GET /forget HTTP/1.1" 200 -
+2026-02-20 14:09:18,722 - ERROR - Email credentials not configured.
+2026-02-20 14:09:18,723 - INFO - 127.0.0.1 - - [20/Feb/2026 14:09:18] "[32mPOST /forget HTTP/1.1[0m" 302 -
+2026-02-20 14:09:18,730 - INFO - 127.0.0.1 - - [20/Feb/2026 14:09:18] "GET /forget HTTP/1.1" 200 -
+2026-02-20 14:09:24,138 - INFO - 127.0.0.1 - - [20/Feb/2026 14:09:24] "GET /login HTTP/1.1" 200 -
+2026-02-20 14:10:13,195 - INFO - 127.0.0.1 - - [20/Feb/2026 14:10:13] "GET /register HTTP/1.1" 200 -
+2026-02-20 14:10:43,064 - INFO - 127.0.0.1 - - [20/Feb/2026 14:10:43] "[32mPOST /register HTTP/1.1[0m" 302 -
+2026-02-20 14:10:43,071 - INFO - 127.0.0.1 - - [20/Feb/2026 14:10:43] "GET /login HTTP/1.1" 200 -
+2026-02-20 14:11:07,870 - INFO - User logged in: vwarekar22bcs@student.mes.ac.in
+2026-02-20 14:11:07,872 - INFO - 127.0.0.1 - - [20/Feb/2026 14:11:07] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-20 14:11:07,892 - INFO - 127.0.0.1 - - [20/Feb/2026 14:11:07] "GET /dashboard HTTP/1.1" 200 -
+2026-02-20 14:11:12,830 - INFO - 127.0.0.1 - - [20/Feb/2026 14:11:12] "GET /add HTTP/1.1" 200 -
+2026-02-20 14:11:14,370 - INFO - 127.0.0.1 - - [20/Feb/2026 14:11:14] "GET /dashboard HTTP/1.1" 200 -
+2026-02-20 14:11:18,623 - INFO - 127.0.0.1 - - [20/Feb/2026 14:11:18] "GET /records HTTP/1.1" 200 -
+2026-02-20 14:11:19,689 - INFO - 127.0.0.1 - - [20/Feb/2026 14:11:19] "GET /profile HTTP/1.1" 200 -
+2026-02-20 14:11:22,197 - INFO - User logged out: vwarekar22bcs@student.mes.ac.in
+2026-02-20 14:11:22,198 - INFO - 127.0.0.1 - - [20/Feb/2026 14:11:22] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-02-20 14:11:22,204 - INFO - 127.0.0.1 - - [20/Feb/2026 14:11:22] "GET / HTTP/1.1" 200 -
+2026-02-20 14:15:06,483 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\template_audit.py", reloading
+2026-02-20 14:15:06,652 - INFO -  * Restarting with stat
+2026-02-20 14:15:07,705 - WARNING -  * Debugger is active!
+2026-02-20 14:15:07,710 - INFO -  * Debugger PIN: 759-286-862
+2026-02-20 14:15:29,053 - INFO - 127.0.0.1 - - [20/Feb/2026 14:15:29] "GET /login HTTP/1.1" 200 -
+2026-02-20 14:15:33,751 - INFO - 127.0.0.1 - - [20/Feb/2026 14:15:33] "GET /forget HTTP/1.1" 200 -
+2026-02-20 14:15:37,374 - ERROR - Email credentials not configured.
+2026-02-20 14:15:37,375 - INFO - 127.0.0.1 - - [20/Feb/2026 14:15:37] "[32mPOST /forget HTTP/1.1[0m" 302 -
+2026-02-20 14:15:37,380 - INFO - 127.0.0.1 - - [20/Feb/2026 14:15:37] "GET /forget HTTP/1.1" 200 -
+2026-02-20 14:15:42,970 - INFO - 127.0.0.1 - - [20/Feb/2026 14:15:42] "GET /login HTTP/1.1" 200 -
+2026-02-20 14:15:54,143 - INFO - User logged in: vwarekar22bcs@student.mes.ac.in
+2026-02-20 14:15:54,144 - INFO - 127.0.0.1 - - [20/Feb/2026 14:15:54] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-20 14:15:54,156 - INFO - 127.0.0.1 - - [20/Feb/2026 14:15:54] "GET /dashboard HTTP/1.1" 200 -
+2026-02-20 14:15:56,984 - INFO - 127.0.0.1 - - [20/Feb/2026 14:15:56] "GET /add HTTP/1.1" 200 -
+2026-02-20 14:16:00,159 - INFO - 127.0.0.1 - - [20/Feb/2026 14:16:00] "GET /dashboard HTTP/1.1" 200 -
+2026-02-20 14:16:02,270 - INFO - 127.0.0.1 - - [20/Feb/2026 14:16:02] "GET /records HTTP/1.1" 200 -
+2026-02-20 14:16:03,280 - INFO - 127.0.0.1 - - [20/Feb/2026 14:16:03] "GET /analytics HTTP/1.1" 200 -
+2026-02-20 14:16:04,070 - INFO - 127.0.0.1 - - [20/Feb/2026 14:16:04] "GET /profile HTTP/1.1" 200 -
+2026-02-20 14:16:04,857 - INFO - User logged out: vwarekar22bcs@student.mes.ac.in
+2026-02-20 14:16:04,858 - INFO - 127.0.0.1 - - [20/Feb/2026 14:16:04] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-02-20 14:16:04,865 - INFO - 127.0.0.1 - - [20/Feb/2026 14:16:04] "GET / HTTP/1.1" 200 -
+2026-02-21 19:48:38,603 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-21 19:48:38,604 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-21 19:48:38,606 - INFO -  * Restarting with stat
+2026-02-21 19:48:39,423 - WARNING -  * Debugger is active!
+2026-02-21 19:48:39,429 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 19:48:47,908 - INFO - 127.0.0.1 - - [21/Feb/2026 19:48:47] "GET / HTTP/1.1" 200 -
+2026-02-21 19:48:48,217 - INFO - 127.0.0.1 - - [21/Feb/2026 19:48:48] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-21 19:48:50,925 - INFO - 127.0.0.1 - - [21/Feb/2026 19:48:50] "GET /login HTTP/1.1" 200 -
+2026-02-21 19:49:02,842 - WARNING - Failed login attempt: vedantwarekar3@gmail.com
+2026-02-21 19:49:02,844 - INFO - 127.0.0.1 - - [21/Feb/2026 19:49:02] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-21 19:49:02,851 - INFO - 127.0.0.1 - - [21/Feb/2026 19:49:02] "GET /login HTTP/1.1" 200 -
+2026-02-21 19:49:17,468 - WARNING - Failed login attempt: vedantwarekar3@gmail.com
+2026-02-21 19:49:17,469 - INFO - 127.0.0.1 - - [21/Feb/2026 19:49:17] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-21 19:49:17,476 - INFO - 127.0.0.1 - - [21/Feb/2026 19:49:17] "GET /login HTTP/1.1" 200 -
+2026-02-21 19:49:26,742 - INFO - 127.0.0.1 - - [21/Feb/2026 19:49:26] "GET /forget HTTP/1.1" 200 -
+2026-02-21 19:49:30,342 - ERROR - Email credentials not configured.
+2026-02-21 19:49:30,342 - INFO - 127.0.0.1 - - [21/Feb/2026 19:49:30] "[32mPOST /forget HTTP/1.1[0m" 302 -
+2026-02-21 19:49:30,350 - INFO - 127.0.0.1 - - [21/Feb/2026 19:49:30] "GET /forget HTTP/1.1" 200 -
+2026-02-21 19:49:33,346 - INFO - 127.0.0.1 - - [21/Feb/2026 19:49:33] "GET /forget HTTP/1.1" 200 -
+2026-02-21 19:49:35,867 - INFO - 127.0.0.1 - - [21/Feb/2026 19:49:35] "GET /login HTTP/1.1" 200 -
+2026-02-21 19:49:57,810 - INFO - User logged in: vwarekar22bcs@student.mes.ac.in
+2026-02-21 19:49:57,811 - INFO - 127.0.0.1 - - [21/Feb/2026 19:49:57] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-21 19:49:57,825 - INFO - 127.0.0.1 - - [21/Feb/2026 19:49:57] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 19:55:10,547 - WARNING - Failed login attempt: vedantwarekar3@gmail.com
+2026-02-21 19:56:25,972 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app.py", reloading
+2026-02-21 19:56:26,380 - INFO -  * Restarting with stat
+2026-02-21 19:56:28,487 - WARNING -  * Debugger is active!
+2026-02-21 19:56:28,491 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 19:56:34,889 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app.py", reloading
+2026-02-21 19:56:35,006 - INFO -  * Restarting with stat
+2026-02-21 19:56:35,823 - WARNING -  * Debugger is active!
+2026-02-21 19:56:35,830 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 19:57:07,827 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-21 19:57:07,827 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-21 19:57:07,828 - INFO -  * Restarting with stat
+2026-02-21 19:57:08,612 - WARNING -  * Debugger is active!
+2026-02-21 19:57:08,615 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 19:57:15,628 - INFO - 127.0.0.1 - - [21/Feb/2026 19:57:15] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 19:57:17,156 - INFO - 127.0.0.1 - - [21/Feb/2026 19:57:17] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 19:57:20,287 - INFO - 127.0.0.1 - - [21/Feb/2026 19:57:20] "GET /add HTTP/1.1" 200 -
+2026-02-21 19:57:21,413 - INFO - 127.0.0.1 - - [21/Feb/2026 19:57:21] "GET /analytics HTTP/1.1" 200 -
+2026-02-21 19:57:22,835 - INFO - 127.0.0.1 - - [21/Feb/2026 19:57:22] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 19:57:53,010 - INFO - User logged in: vedantwarekar3@gmail.com
+2026-02-21 19:58:08,184 - INFO - User logged in: vedantwarekar3@gmail.com
+2026-02-21 19:58:40,989 - WARNING - Failed login attempt: admin@cancermed.com
+2026-02-21 20:01:29,288 - WARNING - Failed login attempt: admin@cancermed.com
+2026-02-21 20:02:11,614 - WARNING - Failed login attempt: admin@cancermed.com
+2026-02-21 20:04:29,204 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\test_query.py", reloading
+2026-02-21 20:04:29,419 - INFO -  * Restarting with stat
+2026-02-21 20:04:30,525 - WARNING -  * Debugger is active!
+2026-02-21 20:04:30,530 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:04:54,866 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-21 20:04:54,866 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-21 20:04:54,868 - INFO -  * Restarting with stat
+2026-02-21 20:04:55,610 - WARNING -  * Debugger is active!
+2026-02-21 20:04:55,614 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:05:03,683 - WARNING - Failed login attempt: admin@cancermed.com
+2026-02-21 20:05:30,749 - INFO - 127.0.0.1 - - [21/Feb/2026 20:05:30] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 20:05:31,580 - INFO - 127.0.0.1 - - [21/Feb/2026 20:05:31] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 20:05:31,745 - INFO - 127.0.0.1 - - [21/Feb/2026 20:05:31] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 20:05:31,910 - INFO - 127.0.0.1 - - [21/Feb/2026 20:05:31] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 20:05:32,064 - INFO - 127.0.0.1 - - [21/Feb/2026 20:05:32] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 20:05:32,287 - INFO - 127.0.0.1 - - [21/Feb/2026 20:05:32] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 20:10:00,230 - INFO - 127.0.0.1 - - [21/Feb/2026 20:10:00] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 20:10:01,003 - INFO - 127.0.0.1 - - [21/Feb/2026 20:10:01] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 20:10:01,219 - INFO - 127.0.0.1 - - [21/Feb/2026 20:10:01] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 20:10:02,226 - INFO - 127.0.0.1 - - [21/Feb/2026 20:10:02] "GET /add HTTP/1.1" 200 -
+2026-02-21 20:10:04,229 - INFO - 127.0.0.1 - - [21/Feb/2026 20:10:04] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 20:25:00,037 - INFO - 127.0.0.1 - - [21/Feb/2026 20:25:00] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 20:26:53,139 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\migrate_db.py", reloading
+2026-02-21 20:26:53,394 - INFO -  * Restarting with stat
+2026-02-21 20:26:54,493 - WARNING -  * Debugger is active!
+2026-02-21 20:26:54,497 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:27:25,023 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\migrate_db.py", reloading
+2026-02-21 20:27:25,168 - INFO -  * Restarting with stat
+2026-02-21 20:27:25,881 - WARNING -  * Debugger is active!
+2026-02-21 20:27:25,885 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:27:39,623 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\migrate_db.py", reloading
+2026-02-21 20:27:39,737 - INFO -  * Restarting with stat
+2026-02-21 20:27:40,474 - WARNING -  * Debugger is active!
+2026-02-21 20:27:40,478 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:30:26,333 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\security.py", reloading
+2026-02-21 20:30:26,457 - INFO -  * Restarting with stat
+2026-02-21 20:30:27,176 - WARNING -  * Debugger is active!
+2026-02-21 20:30:27,180 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:32:45,989 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\runtime_debug.py", reloading
+2026-02-21 20:32:46,109 - INFO -  * Restarting with stat
+2026-02-21 20:32:46,846 - WARNING -  * Debugger is active!
+2026-02-21 20:32:46,851 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:33:00,658 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\runtime_debug.py", reloading
+2026-02-21 20:33:00,791 - INFO -  * Restarting with stat
+2026-02-21 20:33:01,667 - WARNING -  * Debugger is active!
+2026-02-21 20:33:01,671 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:33:37,651 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app.py", reloading
+2026-02-21 20:33:37,778 - INFO -  * Restarting with stat
+2026-02-21 20:46:16,883 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-21 20:46:16,883 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-21 20:46:16,884 - INFO -  * Restarting with stat
+2026-02-21 20:46:17,611 - WARNING -  * Debugger is active!
+2026-02-21 20:46:17,616 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:48:40,126 - INFO - 127.0.0.1 - - [21/Feb/2026 20:48:40] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2026-02-21 20:48:40,266 - INFO - 127.0.0.1 - - [21/Feb/2026 20:48:40] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-21 20:48:40,267 - INFO - 127.0.0.1 - - [21/Feb/2026 20:48:40] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-21 20:48:40,359 - INFO - 127.0.0.1 - - [21/Feb/2026 20:48:40] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=pGF5cEmlc1JLk4HnZo0X HTTP/1.1" 200 -
+2026-02-21 20:48:40,396 - INFO - 127.0.0.1 - - [21/Feb/2026 20:48:40] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-21 20:48:59,308 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-21 20:48:59,309 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-21 20:48:59,310 - INFO -  * Restarting with stat
+2026-02-21 20:49:00,048 - WARNING -  * Debugger is active!
+2026-02-21 20:49:00,052 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:49:21,366 - INFO - 127.0.0.1 - - [21/Feb/2026 20:49:21] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-21 20:49:21,455 - INFO - 127.0.0.1 - - [21/Feb/2026 20:49:21] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-21 20:49:21,456 - INFO - 127.0.0.1 - - [21/Feb/2026 20:49:21] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-21 20:49:21,513 - INFO - 127.0.0.1 - - [21/Feb/2026 20:49:21] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=D1vcHU1mSFEAcXOYniyF HTTP/1.1" 200 -
+2026-02-21 20:49:21,538 - INFO - 127.0.0.1 - - [21/Feb/2026 20:49:21] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-02-21 20:49:33,053 - INFO - 127.0.0.1 - - [21/Feb/2026 20:49:33] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-21 20:49:33,079 - INFO - 127.0.0.1 - - [21/Feb/2026 20:49:33] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2026-02-21 20:49:33,082 - INFO - 127.0.0.1 - - [21/Feb/2026 20:49:33] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2026-02-21 20:49:33,159 - INFO - 127.0.0.1 - - [21/Feb/2026 20:49:33] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png&s=D1vcHU1mSFEAcXOYniyF HTTP/1.1[0m" 304 -
+2026-02-21 20:49:49,474 - INFO - 127.0.0.1 - - [21/Feb/2026 20:49:49] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-02-21 20:49:49,506 - INFO - 127.0.0.1 - - [21/Feb/2026 20:49:49] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-02-21 20:49:49,508 - INFO - 127.0.0.1 - - [21/Feb/2026 20:49:49] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-02-21 20:49:49,614 - INFO - 127.0.0.1 - - [21/Feb/2026 20:49:49] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=D1vcHU1mSFEAcXOYniyF HTTP/1.1" 200 -
+2026-02-21 20:49:49,659 - INFO - 127.0.0.1 - - [21/Feb/2026 20:49:49] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-02-21 20:49:52,798 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app.py", reloading
+2026-02-21 20:49:52,954 - INFO -  * Restarting with stat
+2026-02-21 20:49:54,083 - WARNING -  * Debugger is active!
+2026-02-21 20:49:54,087 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:49:58,386 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app.py", reloading
+2026-02-21 20:49:58,500 - INFO -  * Restarting with stat
+2026-02-21 20:49:59,298 - WARNING -  * Debugger is active!
+2026-02-21 20:49:59,304 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:50:12,015 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app.py", reloading
+2026-02-21 20:50:12,126 - INFO -  * Restarting with stat
+2026-02-21 20:50:12,858 - WARNING -  * Debugger is active!
+2026-02-21 20:50:12,862 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:50:32,905 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app.py", reloading
+2026-02-21 20:50:33,051 - INFO -  * Restarting with stat
+2026-02-21 20:50:49,059 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-21 20:50:49,059 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-21 20:50:49,061 - INFO -  * Restarting with stat
+2026-02-21 20:50:49,857 - WARNING -  * Debugger is active!
+2026-02-21 20:50:49,861 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:51:17,256 - INFO - 127.0.0.1 - - [21/Feb/2026 20:51:17] "GET / HTTP/1.1" 200 -
+2026-02-21 20:51:17,406 - INFO - 127.0.0.1 - - [21/Feb/2026 20:51:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-21 20:51:21,176 - INFO - 127.0.0.1 - - [21/Feb/2026 20:51:21] "GET / HTTP/1.1" 200 -
+2026-02-21 20:51:25,258 - INFO - 127.0.0.1 - - [21/Feb/2026 20:51:25] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:53:39,279 - WARNING - Failed login attempt: vedantwarekar3@gmail.com
+2026-02-21 20:53:39,281 - INFO - 127.0.0.1 - - [21/Feb/2026 20:53:39] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-21 20:53:39,294 - INFO - 127.0.0.1 - - [21/Feb/2026 20:53:39] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:53:42,111 - INFO - 127.0.0.1 - - [21/Feb/2026 20:53:42] "GET /register HTTP/1.1" 200 -
+2026-02-21 20:54:05,286 - INFO - 127.0.0.1 - - [21/Feb/2026 20:54:05] "[32mPOST /register HTTP/1.1[0m" 302 -
+2026-02-21 20:54:05,293 - INFO - 127.0.0.1 - - [21/Feb/2026 20:54:05] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:54:17,597 - WARNING - Failed login attempt: vedantwarekar3@gmail.com
+2026-02-21 20:54:17,597 - INFO - 127.0.0.1 - - [21/Feb/2026 20:54:17] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-21 20:54:17,603 - INFO - 127.0.0.1 - - [21/Feb/2026 20:54:17] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:54:31,443 - WARNING - Failed login attempt: vedantwarekar3@gmail.com
+2026-02-21 20:54:31,444 - INFO - 127.0.0.1 - - [21/Feb/2026 20:54:31] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-21 20:54:31,451 - INFO - 127.0.0.1 - - [21/Feb/2026 20:54:31] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:54:45,922 - WARNING - Failed login attempt: vwarekar22bcs@student.mes.ac.in
+2026-02-21 20:54:45,922 - INFO - 127.0.0.1 - - [21/Feb/2026 20:54:45] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-21 20:54:45,928 - INFO - 127.0.0.1 - - [21/Feb/2026 20:54:45] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:54:49,239 - INFO - 127.0.0.1 - - [21/Feb/2026 20:54:49] "GET /register HTTP/1.1" 200 -
+2026-02-21 20:55:05,962 - INFO - 127.0.0.1 - - [21/Feb/2026 20:55:05] "GET / HTTP/1.1" 200 -
+2026-02-21 20:55:07,648 - INFO - 127.0.0.1 - - [21/Feb/2026 20:55:07] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:55:28,533 - INFO - 127.0.0.1 - - [21/Feb/2026 20:55:28] "GET / HTTP/1.1" 200 -
+2026-02-21 20:57:15,975 - INFO - 127.0.0.1 - - [21/Feb/2026 20:57:15] "GET / HTTP/1.1" 200 -
+2026-02-21 20:57:16,157 - INFO - 127.0.0.1 - - [21/Feb/2026 20:57:16] "GET / HTTP/1.1" 200 -
+2026-02-21 20:57:16,325 - INFO - 127.0.0.1 - - [21/Feb/2026 20:57:16] "GET / HTTP/1.1" 200 -
+2026-02-21 20:57:16,495 - INFO - 127.0.0.1 - - [21/Feb/2026 20:57:16] "GET / HTTP/1.1" 200 -
+2026-02-21 20:57:16,655 - INFO - 127.0.0.1 - - [21/Feb/2026 20:57:16] "GET / HTTP/1.1" 200 -
+2026-02-21 20:57:16,808 - INFO - 127.0.0.1 - - [21/Feb/2026 20:57:16] "GET / HTTP/1.1" 200 -
+2026-02-21 20:57:17,020 - INFO - 127.0.0.1 - - [21/Feb/2026 20:57:17] "GET / HTTP/1.1" 200 -
+2026-02-21 20:57:18,453 - INFO - 127.0.0.1 - - [21/Feb/2026 20:57:18] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:57:29,508 - WARNING - Failed login attempt: vedantwarekar3@gmail.com
+2026-02-21 20:57:29,508 - INFO - 127.0.0.1 - - [21/Feb/2026 20:57:29] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-21 20:57:29,515 - INFO - 127.0.0.1 - - [21/Feb/2026 20:57:29] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:57:33,459 - INFO - 127.0.0.1 - - [21/Feb/2026 20:57:33] "GET /register HTTP/1.1" 200 -
+2026-02-21 20:58:03,152 - INFO - 127.0.0.1 - - [21/Feb/2026 20:58:03] "[32mPOST /register HTTP/1.1[0m" 302 -
+2026-02-21 20:58:03,159 - INFO - 127.0.0.1 - - [21/Feb/2026 20:58:03] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:58:13,802 - WARNING - Failed login attempt: vedantwarekar3@gmail.com
+2026-02-21 20:58:13,803 - INFO - 127.0.0.1 - - [21/Feb/2026 20:58:13] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-21 20:58:13,810 - INFO - 127.0.0.1 - - [21/Feb/2026 20:58:13] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:59:25,307 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app.py", reloading
+2026-02-21 20:59:25,521 - INFO -  * Restarting with stat
+2026-02-21 20:59:26,405 - WARNING -  * Debugger is active!
+2026-02-21 20:59:26,410 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:59:31,749 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app.py", reloading
+2026-02-21 20:59:31,859 - INFO -  * Restarting with stat
+2026-02-21 20:59:32,685 - WARNING -  * Debugger is active!
+2026-02-21 20:59:32,689 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:59:41,517 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-21 20:59:41,518 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-21 20:59:41,519 - INFO -  * Restarting with stat
+2026-02-21 20:59:42,259 - WARNING -  * Debugger is active!
+2026-02-21 20:59:42,263 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 20:59:47,164 - INFO - 127.0.0.1 - - [21/Feb/2026 20:59:47] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:59:47,811 - INFO - 127.0.0.1 - - [21/Feb/2026 20:59:47] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:59:47,952 - INFO - 127.0.0.1 - - [21/Feb/2026 20:59:47] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:59:48,113 - INFO - 127.0.0.1 - - [21/Feb/2026 20:59:48] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:59:48,306 - INFO - 127.0.0.1 - - [21/Feb/2026 20:59:48] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:59:48,468 - INFO - 127.0.0.1 - - [21/Feb/2026 20:59:48] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:59:48,691 - INFO - 127.0.0.1 - - [21/Feb/2026 20:59:48] "GET /login HTTP/1.1" 200 -
+2026-02-21 20:59:50,503 - INFO - 127.0.0.1 - - [21/Feb/2026 20:59:50] "GET / HTTP/1.1" 200 -
+2026-02-21 20:59:57,585 - INFO - 127.0.0.1 - - [21/Feb/2026 20:59:57] "GET /login HTTP/1.1" 200 -
+2026-02-21 21:00:11,211 - INFO - User logged in: vedantwarekar3@gmail.com
+2026-02-21 21:00:11,212 - INFO - 127.0.0.1 - - [21/Feb/2026 21:00:11] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-02-21 21:00:11,257 - INFO - 127.0.0.1 - - [21/Feb/2026 21:00:11] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:00:14,738 - INFO - 127.0.0.1 - - [21/Feb/2026 21:00:14] "GET /add HTTP/1.1" 200 -
+2026-02-21 21:00:15,672 - INFO - 127.0.0.1 - - [21/Feb/2026 21:00:15] "GET /records HTTP/1.1" 200 -
+2026-02-21 21:00:18,276 - INFO - 127.0.0.1 - - [21/Feb/2026 21:00:18] "GET /analytics HTTP/1.1" 200 -
+2026-02-21 21:00:20,123 - INFO - 127.0.0.1 - - [21/Feb/2026 21:00:20] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:02:16,426 - INFO - 127.0.0.1 - - [21/Feb/2026 21:02:16] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:02:16,606 - INFO - 127.0.0.1 - - [21/Feb/2026 21:02:16] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:02:16,771 - INFO - 127.0.0.1 - - [21/Feb/2026 21:02:16] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:02:16,942 - INFO - 127.0.0.1 - - [21/Feb/2026 21:02:16] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:02:17,102 - INFO - 127.0.0.1 - - [21/Feb/2026 21:02:17] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:02:17,268 - INFO - 127.0.0.1 - - [21/Feb/2026 21:02:17] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:02:17,440 - INFO - 127.0.0.1 - - [21/Feb/2026 21:02:17] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:02:17,634 - INFO - 127.0.0.1 - - [21/Feb/2026 21:02:17] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:02:17,795 - INFO - 127.0.0.1 - - [21/Feb/2026 21:02:17] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:02:17,986 - INFO - 127.0.0.1 - - [21/Feb/2026 21:02:17] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:02:18,152 - INFO - 127.0.0.1 - - [21/Feb/2026 21:02:18] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:02:18,351 - INFO - 127.0.0.1 - - [21/Feb/2026 21:02:18] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:07:27,699 - INFO - 127.0.0.1 - - [21/Feb/2026 21:07:27] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:08:21,835 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\debug_dashboard.py", reloading
+2026-02-21 21:08:22,090 - INFO -  * Restarting with stat
+2026-02-21 21:08:23,188 - WARNING -  * Debugger is active!
+2026-02-21 21:08:23,193 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 21:08:30,644 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\debug_dashboard.py", reloading
+2026-02-21 21:08:30,752 - INFO -  * Restarting with stat
+2026-02-21 21:08:31,548 - WARNING -  * Debugger is active!
+2026-02-21 21:08:31,552 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 21:08:43,211 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app.py", reloading
+2026-02-21 21:08:43,491 - INFO -  * Restarting with stat
+2026-02-21 21:08:44,551 - WARNING -  * Debugger is active!
+2026-02-21 21:08:44,555 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 21:08:58,337 - INFO - 127.0.0.1 - - [21/Feb/2026 21:08:58] "GET /?id=a07f0f8a-1249-4940-b84c-dedd8cd3cfa9&vscodeBrowserReqId=1771688338300 HTTP/1.1" 200 -
+2026-02-21 21:09:02,562 - INFO - 127.0.0.1 - - [21/Feb/2026 21:09:02] "GET /login HTTP/1.1" 200 -
+2026-02-21 21:09:36,307 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app.py", reloading
+2026-02-21 21:09:36,507 - INFO -  * Restarting with stat
+2026-02-21 21:09:37,432 - WARNING -  * Debugger is active!
+2026-02-21 21:09:37,436 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 21:09:38,932 - INFO - 127.0.0.1 - - [21/Feb/2026 21:09:38] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:09:41,277 - INFO - 127.0.0.1 - - [21/Feb/2026 21:09:41] "GET /add HTTP/1.1" 200 -
+2026-02-21 21:09:45,505 - INFO - 127.0.0.1 - - [21/Feb/2026 21:09:45] "GET /records HTTP/1.1" 200 -
+2026-02-21 21:09:48,213 - INFO - 127.0.0.1 - - [21/Feb/2026 21:09:48] "GET /analytics HTTP/1.1" 200 -
+2026-02-21 21:09:48,413 - INFO - 127.0.0.1 - - [21/Feb/2026 21:09:48] "GET /analytics HTTP/1.1" 200 -
+2026-02-21 21:09:50,939 - INFO - 127.0.0.1 - - [21/Feb/2026 21:09:50] "GET /profile HTTP/1.1" 200 -
+2026-02-21 21:09:54,262 - INFO - 127.0.0.1 - - [21/Feb/2026 21:09:54] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:10:28,496 - INFO - 127.0.0.1 - - [21/Feb/2026 21:10:28] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:10:28,634 - INFO - 127.0.0.1 - - [21/Feb/2026 21:10:28] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:10:28,793 - INFO - 127.0.0.1 - - [21/Feb/2026 21:10:28] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:10:28,960 - INFO - 127.0.0.1 - - [21/Feb/2026 21:10:28] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:10:29,109 - INFO - 127.0.0.1 - - [21/Feb/2026 21:10:29] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:10:29,262 - INFO - 127.0.0.1 - - [21/Feb/2026 21:10:29] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:10:29,408 - INFO - 127.0.0.1 - - [21/Feb/2026 21:10:29] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:10:29,539 - INFO - 127.0.0.1 - - [21/Feb/2026 21:10:29] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:10:29,692 - INFO - 127.0.0.1 - - [21/Feb/2026 21:10:29] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:10:29,855 - INFO - 127.0.0.1 - - [21/Feb/2026 21:10:29] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:10:29,994 - INFO - 127.0.0.1 - - [21/Feb/2026 21:10:29] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:10:30,141 - INFO - 127.0.0.1 - - [21/Feb/2026 21:10:30] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:10:30,292 - INFO - 127.0.0.1 - - [21/Feb/2026 21:10:30] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:10:30,506 - INFO - 127.0.0.1 - - [21/Feb/2026 21:10:30] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:16:16,833 - INFO -  * Detected change in "C:\\Users\\Warekar's\\PycharmProjects\\Data_entry_app\\app_new.py", reloading
+2026-02-21 21:16:16,942 - INFO -  * Restarting with stat
+2026-02-21 21:16:17,828 - WARNING -  * Debugger is active!
+2026-02-21 21:16:17,832 - INFO -  * Debugger PIN: 160-173-820
+2026-02-21 21:17:39,544 - INFO - 127.0.0.1 - - [21/Feb/2026 21:17:39] "[32mGET / HTTP/1.1[0m" 302 -
+2026-02-21 21:17:39,578 - INFO - 127.0.0.1 - - [21/Feb/2026 21:17:39] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:17:48,430 - INFO - 127.0.0.1 - - [21/Feb/2026 21:17:48] "[32mGET / HTTP/1.1[0m" 302 -
+2026-02-21 21:17:48,443 - INFO - 127.0.0.1 - - [21/Feb/2026 21:17:48] "GET /dashboard HTTP/1.1" 200 -
+2026-02-21 21:17:52,506 - INFO - 127.0.0.1 - - [21/Feb/2026 21:17:52] "GET /add HTTP/1.1" 200 -
+2026-02-21 21:18:01,878 - INFO - 127.0.0.1 - - [21/Feb/2026 21:18:01] "GET /dashboard HTTP/1.1" 200 -

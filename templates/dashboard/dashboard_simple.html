@@ -1,0 +1,150 @@
+{% extends "layout_new.html" %}
+
+{% block title %}Dashboard - Oncology Tracking System{% endblock %}
+
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="stats-card primary">
+                <div class="stats-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stats-number">{{ total_patients }}</div>
+                <div class="stats-label">Total Patients</div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="stats-card success">
+                <div class="stats-icon">
+                    <i class="fas fa-procedures"></i>
+                </div>
+                <div class="stats-number">{{ status_stats.get('Under Treatment', 0) }}</div>
+                <div class="stats-label">Under Treatment</div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="stats-card warning">
+                <div class="stats-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="stats-number">{{ status_stats.get('Remission', 0) }}</div>
+                <div class="stats-label">In Remission</div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="stats-card danger">
+                <div class="stats-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="stats-number">{{ status_stats.get('Relapse', 0) }}</div>
+                <div class="stats-label">Relapse Cases</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recent Patients Table -->
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">
+                <i class="fas fa-clock"></i>
+                Recent Patients
+            </h5>
+            <a href="{{ url_for('records') }}" class="btn btn-sm btn-outline-primary">
+                View All <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="card-body">
+            {% if recent_patients %}
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Cancer Type</th>
+                            <th>Status</th>
+                            <th>Diagnosis Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for patient in recent_patients %}
+                        <tr>
+                            <td>
+                                <strong>{{ patient['name'] }}</strong>
+                            </td>
+                            <td>{{ patient['age'] }}</td>
+                            <td>{{ patient['gender'] }}</td>
+                            <td>{{ patient['cancer_type'] }}</td>
+                            <td>
+                                {% if patient['status'] == 'Under Treatment' %}
+                                    <span class="badge bg-info">{{ patient['status'] }}</span>
+                                {% elif patient['status'] == 'Remission' %}
+                                    <span class="badge bg-success">{{ patient['status'] }}</span>
+                                {% elif patient['status'] == 'Relapse' %}
+                                    <span class="badge bg-warning">{{ patient['status'] }}</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">{{ patient['status'] }}</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ patient['diagnosis_date'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="text-center py-4">
+                <i class="fas fa-users fa-3x text-muted mb-3"></i>
+                <p class="text-muted">No patients found. <a href="{{ url_for('add_record') }}">Add your first patient</a></p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Quick Actions -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-bolt"></i>
+                        Quick Actions
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <a href="{{ url_for('add_record') }}" class="btn btn-primary w-100">
+                                <i class="fas fa-plus-circle"></i> Add New Patient
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a href="{{ url_for('records') }}" class="btn btn-outline-primary w-100">
+                                <i class="fas fa-list"></i> View All Records
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a href="{{ url_for('analytics') }}" class="btn btn-outline-success w-100">
+                                <i class="fas fa-chart-line"></i> View Analytics
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a href="{{ url_for('profile') }}" class="btn btn-outline-secondary w-100">
+                                <i class="fas fa-user"></i> My Profile
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

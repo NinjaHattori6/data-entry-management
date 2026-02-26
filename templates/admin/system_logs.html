@@ -1,0 +1,130 @@
+{% extends "layout_modern.html" %}
+
+{% block title %}System Logs - Oncobloom{% endblock %}
+
+{% block page_title %}System Logs{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <div class="row mb-4">
+        <div class="col-12">
+            <a href="{{ url_for('admin_enhanced.admin_dashboard') }}" class="btn btn-outline-secondary mb-3">
+                <i class="fas fa-arrow-left"></i> Back to Admin Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- Recent Patient Additions -->
+    <div class="row mb-4">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-user-plus"></i>
+                        Recent Patient Additions
+                    </h5>
+                </div>
+div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Patient ID</th>
+                                    <th>Name</th>
+                                    <th>Created By</th>
+                                    <th>Created At</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for patient in recent_additions %}
+                                <tr>
+                                    <td><span class="badge bg-success">{{ patient['patient_id'] }}</span></td>
+                                    <td><strong>{{ patient['full_name'] }}</strong></td>
+                                    <td><small class="text-muted">User {{ patient['created_by'] }}</small></td>
+                                    <td><small class="text-muted">{{ patient['created_at'] }}</small></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-edit"></i>
+                        Recent Updates
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Patient ID</th>
+                                    <th>Name</th>
+                                    <th>Updated At</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for update in recent_updates %}
+                                <tr>
+                                    <td><span class="badge bg-info">{{ update['patient_id'] }}</span></td>
+                                    <td><strong>{{ update['full_name'] }}</strong></td>
+                                    <td><small class="text-muted">{{ update['updated_at'] }}</small></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Statistics -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-chart-bar"></i>
+                        System Activity Summary
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <h3 class="text-primary">{{ recent_additions|length }}</h3>
+                                <p class="text-muted">Patients Added Today</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <h3 class="text-info">{{ recent_updates|length }}</h3>
+                                <p class="text-muted">Records Updated</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <h3 class="text-success">{{ recent_additions|length + recent_updates|length }}</h3>
+                                <p class="text-muted">Total Activities</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <h3 class="text-warning">24h</h3>
+                                <p class="text-muted">Time Period</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

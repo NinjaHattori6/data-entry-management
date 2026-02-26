@@ -1,0 +1,185 @@
+{% extends "layout_modern.html" %}
+
+{% block title %}Analytics - Oncology Tracking System{% endblock %}
+
+{% block page_title %}Analytics{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <!-- Analytics Overview -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-chart-line"></i>
+                        Patient Analytics Overview
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-md-3">
+                            <h4 class="text-primary">{{ status_distribution|length }}</h4>
+                            <p class="text-muted">Status Categories</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h4 class="text-success">{{ cancer_distribution|length }}</h4>
+                            <p class="text-muted">Cancer Types</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h4 class="text-info">{{ gender_distribution|length }}</h4>
+                            <p class="text-muted">Gender Groups</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h4 class="text-warning">{{ age_groups|length }}</h4>
+                            <p class="text-muted">Age Groups</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Data Tables -->
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-table"></i>
+                        Status Breakdown
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Count</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% set total = status_distribution|sum(attribute='count') %}
+                                {% for status in status_distribution %}
+                                <tr>
+                                    <td>
+                                        {% if status['status'] == 'Under Treatment' %}
+                                            <span class="badge bg-info">{{ status['status'] }}</span>
+                                        {% elif status['status'] == 'Remission' %}
+                                            <span class="badge bg-success">{{ status['status'] }}</span>
+                                        {% elif status['status'] == 'Relapse' %}
+                                            <span class="badge bg-warning">{{ status['status'] }}</span>
+                                        {% else %}
+                                            <span class="badge bg-secondary">{{ status['status'] }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ status['count'] }}</td>
+                                    <td>
+                                        <div class="progress" style="height: 20px;">
+                                            <div class="progress-bar" style="width: {{ (status['count'] / total * 100)|round(1) }}%">
+                                                {{ (status['count'] / total * 100)|round(1) }}%
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-table"></i>
+                        Cancer Type Breakdown
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Cancer Type</th>
+                                    <th>Count</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% set total_cancer = cancer_distribution|sum(attribute='count') %}
+                                {% for cancer in cancer_distribution %}
+                                <tr>
+                                    <td>{{ cancer['cancer_type'] }}</td>
+                                    <td>{{ cancer['count'] }}</td>
+                                    <td>
+                                        <div class="progress" style="height: 20px;">
+                                            <div class="progress-bar bg-success" style="width: {{ (cancer['count'] / total_cancer * 100)|round(1) }}%">
+                                                {{ (cancer['count'] / total_cancer * 100)|round(1) }}%
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Simple Charts Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-chart-bar"></i>
+                        Visual Analytics
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Status Distribution</h6>
+                            {% for status in status_distribution %}
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>{{ status['status'] }}</span>
+                                <div class="progress flex-grow-1 mx-3" style="height: 25px;">
+                                    <div class="progress-bar" style="width: {{ status['count'] * 20 }}px; background-color: 
+                                        {% if status['status'] == 'Under Treatment' %}#3182ce
+                                        {% elif status['status'] == 'Remission' %}#38a169
+                                        {% elif status['status'] == 'Relapse' %}#ed8936
+                                        {% else %}#6c757d{% endif %};">
+                                        {{ status['count'] }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6>Cancer Types</h6>
+                            {% for cancer in cancer_distribution %}
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>{{ cancer['cancer_type'] }}</span>
+                                <div class="progress flex-grow-1 mx-3" style="height: 25px;">
+                                    <div class="progress-bar bg-success" style="width: {{ cancer['count'] * 30 }}px;">
+                                        {{ cancer['count'] }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

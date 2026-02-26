@@ -1,0 +1,518 @@
+{% extends "layout_modern.html" %}
+
+{% block title %}Patient Records - OncoBloom{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Patient Records</h1>
+    <p class="page-subtitle">Manage and search patient information</p>
+</div>
+
+<!-- Filters and Search -->
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="card-title">Filters & Search</h2>
+            <a href="{{ url_for('add_patient') }}" class="btn btn-primary">
+                <i class="fas fa-plus"></i>
+                Add Patient
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <form method="GET" action="{{ url_for('records') }}" class="filter-dropdown">
+            <div class="filter-grid">
+                <div class="form-group">
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-select" id="status" name="status">
+                        <option value="">All Statuses</option>
+                        {% for status in statuses %}
+                        <option value="{{ status['current_status'] }}" {% if current_status == status['current_status'] %}selected{% endif %}>
+                            {{ status['current_status'] }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cancer_type" class="form-label">Cancer Type</label>
+                    <select class="form-select" id="cancer_type" name="cancer_type">
+                        <option value="">All Types</option>
+                        {% for cancer in cancer_types %}
+                        <option value="{{ cancer['cancer_type'] }}" {% if current_cancer == cancer['cancer_type'] %}selected{% endif %}>
+                            {{ cancer['cancer_type'] }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cancer_stage" class="form-label">Cancer Stage</label>
+                    <select class="form-select status-select" id="cancer_stage" name="cancer_stage">
+                        <option value="">All Stages</option>
+                        {% for stage in stages %}
+                        <option value="{{ stage['cancer_stage'] }}" {% if current_stage == stage['cancer_stage'] %}selected{% endif %}>
+                            {{ stage['cancer_stage'] }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="search" class="form-label">Search</label>
+                    <div class="header-actions">
+                        <div class="search-bar filter-search">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" class="search-input" id="userSearch" name="search" value="{{ current_search }}" placeholder="Search patients...">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">&nbsp;</label>
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                            Search
+                        </button>
+                        <a href="{{ url_for('records') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-times"></i>
+                            Clear
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Patient Table -->
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="card-title">Patient List</h2>
+            <div class="export-buttons">
+                <form method="POST" action="{{ url_for('export_data') }}" style="display: inline;">
+                    <input type="hidden" name="format" value="csv">
+                    <input type="hidden" name="status" value="{{ current_status }}">
+                    <input type="hidden" name="cancer_type" value="{{ current_cancer }}">
+                    <input type="hidden" name="search" value="{{ current_search }}">
+                    <button type="submit" class="btn btn-outline-success btn-sm">
+                        <i class="fas fa-file-csv"></i>
+                        Export CSV
+                    </button>
+                </form>
+                <form method="POST" action="{{ url_for('export_data') }}" style="display: inline;">
+                    <input type="hidden" name="format" value="excel">
+                    <input type="hidden" name="status" value="{{ current_status }}">
+                    <input type="hidden" name="cancer_type" value="{{ current_cancer }}">
+                    <input type="hidden" name="search" value="{{ current_search }}">
+                    <button type="submit" class="btn btn-outline-primary btn-sm">
+                        <i class="fas fa-file-excel"></i>
+                        Export Excel
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        {% if patients %}
+        <div class="table-wrapper">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Patient ID</th>
+                        <th>Full Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Cancer Type</th>
+                        <th>Stage</th>
+                        <th>Status</th>
+                        <th>Doctor</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for patient in patients %}
+                    <tr>
+                        <td><span class="badge badge-secondary">{{ patient['patient_id'] }}</span></td>
+                        <td><strong>{{ patient['full_name'] }}</strong></td>
+                        <td>{{ patient['age'] }}</td>
+                        <td>{{ patient['gender'] }}</td>
+                        <td>{{ patient['cancer_type'] }}</td>
+                        <td>
+                            {% if patient['cancer_stage'] == 'Stage I' %}
+                                <span class="badge badge-success">{{ patient['cancer_stage'] }}</span>
+                            {% elif patient['cancer_stage'] == 'Stage II' %}
+                                <span class="badge badge-info">{{ patient['cancer_stage'] }}</span>
+                            {% elif patient['cancer_stage'] == 'Stage III' %}
+                                <span class="badge badge-warning">{{ patient['cancer_stage'] }}</span>
+                            {% elif patient['cancer_stage'] == 'Stage IV' %}
+                                <span class="badge badge-danger">{{ patient['cancer_stage'] }}</span>
+                            {% else %}
+                                <span class="badge badge-secondary">{{ patient['cancer_stage'] }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if patient['current_status'] == 'Active Treatment' %}
+                                <span class="badge badge-primary">{{ patient['current_status'] }}</span>
+                            {% elif patient['current_status'] == 'Recovered' %}
+                                <span class="badge badge-success">{{ patient['current_status'] }}</span>
+                            {% elif patient['current_status'] == 'Critical' %}
+                                <span class="badge badge-danger">{{ patient['current_status'] }}</span>
+                            {% elif patient['current_status'] == 'Under Observation' %}
+                                <span class="badge badge-warning">{{ patient['current_status'] }}</span>
+                            {% elif patient['current_status'] == 'Remission' %}
+                                <span class="badge badge-info">{{ patient['current_status'] }}</span>
+                            {% else %}
+                                <span class="badge badge-secondary">{{ patient['current_status'] }}</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ patient['doctor_name'] or 'Not Assigned' }}</td>
+                        <td><small class="text-muted">{{ patient['created_at'][:10] }}</small></td>
+                        <td>
+                            <div class="action-buttons">
+                                <a href="{{ url_for('edit_record', patient_id=patient['id']) }}" 
+                                   class="btn btn-outline-warning btn-sm" title="Edit Patient">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form method="POST" action="{{ url_for('delete_record', patient_id=patient['id']) }}" 
+                                      style="display: inline;" 
+                                      onsubmit="return confirm('Delete patient {{ patient['full_name'] }}? This action cannot be undone.')">
+                                    <button type="submit" class="btn btn-outline-danger btn-sm" title="Delete Patient">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <i class="fas fa-users fa-4x text-muted mb-3"></i>
+            <h4>No patients found</h4>
+            <p class="text-muted">
+                {% if current_search or current_status or current_cancer %}
+                    No patients match your search criteria. <a href="{{ url_for('records') }}">Clear filters</a>
+                {% else %}
+                    No patients in the system yet. <a href="{{ url_for('add_patient') }}">Add your first patient</a>
+                {% endif %}
+            </p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize search functionality
+    const searchInput = document.getElementById('search');
+    const tableRows = document.querySelectorAll('.table tbody tr');
+    
+    if (searchInput) {
+        initSearchFilter(searchInput, tableRows);
+    }
+    
+    // Initialize filter functionality - simple implementation
+    const filterSelects = document.querySelectorAll('.form-select');
+    filterSelects.forEach(select => {
+        select.addEventListener('change', function() {
+            // Trigger form submission to apply filters
+            this.form.submit();
+        });
+    });
+});
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Records Page Specific Styles */
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.filter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+    gap: 1.5rem;
+    align-items: end;
+}
+
+.btn-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.export-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.export-buttons form {
+    margin: 0;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.action-buttons form {
+    margin: 0;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-muted);
+}
+
+.empty-state i {
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-state h4 {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .filter-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+    }
+    
+    .export-buttons {
+        flex-direction: column;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .table {
+        font-size: 0.875rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .filter-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+}
+
+/* Table improvements */
+.table-wrapper {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.table {
+    margin: 0;
+}
+
+.table th {
+    background: linear-gradient(135deg, var(--background), var(--card-bg));
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.75rem;
+    padding: 1rem;
+}
+
+.table td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+/* Hover effects */
+.table tbody tr:hover {
+    background: var(--background);
+    transform: translateX(2px);
+    transition: all 0.2s ease;
+}
+
+/* Form improvements */
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--text-muted);
+    z-index: 1;
+}
+
+.form-control {
+    padding-left: 3rem !important;
+}
+
+/* Button improvements */
+.btn-sm {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Card improvements */
+.card {
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.card:hover {
+    box-shadow: var(--shadow);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--background), var(--card-bg));
+    border-bottom: 1px solid var(--border);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* Badge improvements */
+.badge {
+    padding: 0.375rem 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    border-radius: var(--radius-sm);
+}
+
+/* Search bar styling */
+.search-input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.search-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(14, 116, 144, 0.1);
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+/* Form select improvements */
+.form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+    background-color: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(14, 116, 144, 0.1);
+    outline: none;
+}
+
+/* Form label improvements */
+.form-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Form group improvements */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* Button group improvements */
+.btn-group .btn {
+    flex: 1;
+}
+
+/* Export buttons improvements */
+.export-buttons .btn {
+    white-space: nowrap;
+}
+
+/* Table responsive improvements */
+@media (max-width: 768px) {
+    .table-wrapper {
+        overflow-x: auto;
+    }
+    
+    .table {
+        min-width: 800px;
+    }
+}
+</style>
+{% endblock %}

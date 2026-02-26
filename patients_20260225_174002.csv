@@ -1,0 +1,51 @@
+Patient ID,Full Name,Age,Gender,Cancer Type,Stage,Status,Diagnosis Date,Doctor,Hospital,Created At
+ONC-2026-0001,Sunita Deshmukh,31,Female,Lung Cancer,Stage II,Under Treatment,2022-11-18,Dr. Vikram Singh,Fortis Healthcare,2026-02-25 11:55:21
+ONC-2026-0002,Jennifer Smith,37,Other,Stomach Cancer,Stage II,Recovered,2020-05-25,Dr. Priya Patel,Tata Memorial,2026-02-25 11:55:21
+ONC-2026-0003,Deborah Rodriguez,49,Male,Skin Cancer,Stage III,Critical,2021-08-25,Dr. Sunita Gupta,Lilavati Hospital,2026-02-25 11:55:21
+ONC-2026-0004,Emily Perez,58,Other,Ovarian Cancer,Stage I,Terminal,2023-11-06,Dr. Kavita Joshi,Fortis Healthcare,2026-02-25 11:55:21
+ONC-2026-0005,Nancy White,84,Female,Thyroid Cancer,Stage II,Recovered,2021-11-25,Dr. Kavita Joshi,Lilavati Hospital,2026-02-25 11:55:21
+ONC-2026-0006,Dorothy Ramirez,40,Female,Breast Cancer,Stage IV,Recovered,2024-07-29,Dr. Arun Nair,Jaslok Hospital,2026-02-25 11:55:21
+ONC-2026-0007,Richard Gonzalez,64,Male,Pancreatic Cancer,Stage III,Remission,2025-04-23,Dr. Meera Iyer,Lilavati Hospital,2026-02-25 11:55:21
+ONC-2026-0008,Elizabeth Smith,63,Female,Esophageal Cancer,Stage IV,Critical,2021-10-30,Dr. Rajesh Sharma,Tata Memorial,2026-02-25 11:55:21
+ONC-2026-0009,Lisa Hill,69,Male,Bladder Cancer,Stage II,Terminal,2022-01-31,Dr. Arun Nair,AIIMS,2026-02-25 11:55:21
+ONC-2026-0010,Jennifer Martinez,71,Other,Liver Cancer,Stage III,Under Observation,2025-07-24,Dr. Sunita Gupta,AIIMS,2026-02-25 11:55:21
+ONC-2026-0011,Deborah Nelson,48,Female,Leukemia,Stage I,Terminal,2021-11-08,Dr. Priya Patel,Jaslok Hospital,2026-02-25 11:55:21
+ONC-2026-0012,Helen Smith,54,Other,Testicular Cancer,Stage IV,Recovered,2025-08-07,Dr. Priya Patel,AIIMS,2026-02-25 11:55:21
+ONC-2026-0013,William Carter,74,Other,Prostate Cancer,Stage I,Terminal,2024-03-04,Dr. Kavita Joshi,Jaslok Hospital,2026-02-25 11:55:21
+ONC-2026-0014,Sarah Nguyen,46,Male,Thyroid Cancer,Stage III,Remission,2024-08-28,Dr. Arun Nair,Max Super Speciality,2026-02-25 11:55:21
+ONC-2026-0015,David Harris,78,Male,Prostate Cancer,Stage I,Active Treatment,2023-04-09,Dr. Arun Nair,Lilavati Hospital,2026-02-25 11:55:21
+ONC-2026-0016,Laura Lewis,54,Male,Lung Cancer,Stage II,Terminal,2022-08-08,Dr. Vikram Singh,Fortis Healthcare,2026-02-25 11:55:21
+ONC-2026-0017,James Clark,51,Female,Stomach Cancer,Stage I,Under Observation,2023-08-31,Dr. Suresh Reddy,Manipal Hospital,2026-02-25 11:55:21
+ONC-2026-0018,Kenneth Nguyen,50,Other,Prostate Cancer,Stage III,Critical,2023-12-04,Dr. Arun Nair,Apollo Hospital,2026-02-25 11:55:21
+ONC-2026-0019,Kevin Clark,26,Other,Skin Cancer,Stage III,Terminal,2025-01-06,Dr. Rajesh Sharma,Lilavati Hospital,2026-02-25 11:55:21
+ONC-2026-0020,Thomas Mitchell,84,Other,Bladder Cancer,Stage IV,Recovered,2022-08-16,Dr. Anjali Desai,Lilavati Hospital,2026-02-25 11:55:21
+ONC-2026-0021,Joshua Martinez,34,Female,Skin Cancer,Stage III,Recovered,2021-02-03,Dr. Sunita Gupta,Kokilaben Hospital,2026-02-25 11:55:21
+ONC-2026-0022,John Mitchell,78,Female,Kidney Cancer,Stage III,Critical,2025-07-21,Dr. Kavita Joshi,Tata Memorial,2026-02-25 11:55:21
+ONC-2026-0023,Robert Thomas,69,Other,Bone Cancer,Stage II,Active Treatment,2023-11-29,Dr. Suresh Reddy,Jaslok Hospital,2026-02-25 11:55:21
+ONC-2026-0024,Patricia Campbell,74,Male,Cervical Cancer,Stage IV,Critical,2023-11-13,Dr. Kavita Joshi,Tata Memorial,2026-02-25 11:55:21
+ONC-2026-0025,Sharon Jones,64,Other,Brain Cancer,Stage I,Terminal,2024-05-09,Dr. Priya Patel,Max Super Speciality,2026-02-25 11:55:21
+ONC-2026-0026,Michelle Mitchell,79,Female,Breast Cancer,Stage I,Recovered,2023-07-05,Dr. Anjali Desai,AIIMS,2026-02-25 11:55:21
+ONC-2026-0027,Joseph Jones,74,Other,Stomach Cancer,Stage II,Critical,2020-06-09,Dr. Meera Iyer,AIIMS,2026-02-25 11:55:21
+ONC-2026-0028,Amy Martin,53,Female,Skin Cancer,Stage II,Remission,2024-03-26,Dr. Meera Iyer,Fortis Healthcare,2026-02-25 11:55:21
+ONC-2026-0029,Emily Wilson,75,Other,Leukemia,Stage I,Under Observation,2022-11-19,Dr. Amit Kumar,Lilavati Hospital,2026-02-25 11:55:21
+ONC-2026-0030,Kevin White,79,Male,Prostate Cancer,Stage II,Recovered,2021-10-17,Dr. Kavita Joshi,AIIMS,2026-02-25 11:55:21
+ONC-2026-0031,Sharon Smith,47,Other,Pancreatic Cancer,Stage II,Active Treatment,2020-02-27,Dr. Arun Nair,Kokilaben Hospital,2026-02-25 11:55:21
+ONC-2026-0032,Robert Baker,67,Female,Bladder Cancer,Stage III,Remission,2021-07-15,Dr. Priya Patel,Nanavati Hospital,2026-02-25 11:55:21
+ONC-2026-0033,Kimberly Smith,76,Female,Kidney Cancer,Stage II,Active Treatment,2023-07-20,Dr. Arun Nair,AIIMS,2026-02-25 11:55:21
+ONC-2026-0034,Elizabeth Lee,61,Other,Kidney Cancer,Stage II,Remission,2021-08-15,Dr. Meera Iyer,Max Super Speciality,2026-02-25 11:55:21
+ONC-2026-0035,Charles Baker,66,Male,Skin Cancer,Stage IV,Terminal,2025-09-16,Dr. Vikram Singh,Apollo Hospital,2026-02-25 11:55:21
+ONC-2026-0036,Robert Torres,69,Male,Thyroid Cancer,Stage II,Active Treatment,2021-09-01,Dr. Arun Nair,Nanavati Hospital,2026-02-25 11:55:21
+ONC-2026-0037,Linda Jones,81,Female,Ovarian Cancer,Stage II,Terminal,2021-06-03,Dr. Kavita Joshi,Apollo Hospital,2026-02-25 11:55:21
+ONC-2026-0038,Edward Roberts,76,Female,Oral Cancer,Stage IV,Recovered,2024-07-22,Dr. Sunita Gupta,AIIMS,2026-02-25 11:55:21
+ONC-2026-0039,Carol Lopez,74,Female,Lung Cancer,Stage I,Recovered,2020-10-06,Dr. Rajesh Sharma,Manipal Hospital,2026-02-25 11:55:21
+ONC-2026-0040,Kimberly Ramirez,75,Male,Bladder Cancer,Stage I,Terminal,2024-05-25,Dr. Meera Iyer,Jaslok Hospital,2026-02-25 11:55:21
+ONC-2026-0041,Jennifer Torres,60,Female,Stomach Cancer,Stage I,Active Treatment,2025-11-17,Dr. Meera Iyer,Tata Memorial,2026-02-25 11:55:21
+ONC-2026-0042,Sharon Scott,70,Other,Colon Cancer,Stage I,Terminal,2020-12-02,Dr. Meera Iyer,Kokilaben Hospital,2026-02-25 11:55:21
+ONC-2026-0043,Ronald Smith,49,Other,Lymphoma,Stage IV,Under Observation,2025-03-08,Dr. Kavita Joshi,Apollo Hospital,2026-02-25 11:55:21
+ONC-2026-0044,Anthony Jackson,64,Other,Lymphoma,Stage III,Remission,2023-12-30,Dr. Kavita Joshi,Max Super Speciality,2026-02-25 11:55:21
+ONC-2026-0045,Ronald Gonzalez,65,Female,Thyroid Cancer,Stage IV,Terminal,2020-05-02,Dr. Meera Iyer,Manipal Hospital,2026-02-25 11:55:21
+ONC-2026-0046,Kenneth Miller,38,Other,Bone Cancer,Stage III,Terminal,2023-10-06,Dr. Arun Nair,Manipal Hospital,2026-02-25 11:55:21
+ONC-2026-0047,Donald Clark,77,Female,Bone Cancer,Stage III,Terminal,2023-06-12,Dr. Amit Kumar,Lilavati Hospital,2026-02-25 11:55:21
+ONC-2026-0048,Nancy Jackson,63,Male,Colon Cancer,Stage III,Terminal,2023-10-29,Dr. Meera Iyer,Lilavati Hospital,2026-02-25 11:55:21
+ONC-2026-0049,Carol Adams,65,Male,Skin Cancer,Stage III,Remission,2024-11-27,Dr. Rajesh Sharma,Apollo Hospital,2026-02-25 11:55:21
+ONC-2026-0050,James Allen,40,Female,Ovarian Cancer,Stage I,Active Treatment,2020-02-02,Dr. Amit Kumar,Kokilaben Hospital,2026-02-25 11:55:21

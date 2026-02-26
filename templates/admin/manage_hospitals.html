@@ -1,0 +1,128 @@
+{% extends "layout_modern.html" %}
+
+{% block title %}Manage Hospitals - Oncobloom{% endblock %}
+
+{% block page_title %}Manage Hospitals{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <div class="row mb-4">
+        <div class="col-12">
+            <a href="{{ url_for('admin_enhanced.admin_dashboard') }}" class="btn btn-outline-secondary mb-3">
+                <i class="fas fa-arrow-left"></i> Back to Admin Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- Add Hospital Form -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-hospital"></i>
+                        Add New Hospital
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('admin_enhanced.manage_hospitals') }}">
+                        <input type="hidden" name="action" value="add">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label for="hospital_name" class="form-label">Hospital Name</label>
+                                <input type="text" class="form-control" id="hospital_name" name="hospital_name" 
+                                       placeholder="Enter hospital name" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">&nbsp;</label>
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="fas fa-plus"></i> Add Hospital
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hospitals List -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-hospital"></i>
+                        Registered Hospitals
+                        <span class="badge bg-primary ms-2">{{ hospitals|length }}</span>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% if hospitals %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Hospital Name</th>
+                                    <th>Patient Count</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for hospital in hospitals %}
+                                <tr>
+                                    <td><strong>{{ hospital['hospital_name'] }}</strong></td>
+                                    <td>
+                                        <span class="badge bg-info">{{ hospital['patient_count'] }} patients</span>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-warning" 
+                                                onclick="deleteHospital('{{ hospital['hospital_name'] }}')">
+                                            <i class="fas fa-trash"></i> Remove
+                                        </button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-hospital fa-4x text-muted mb-3"></i>
+                        <h4>No Hospitals Registered</h4>
+                        <p class="text-muted">Start by adding hospitals to the system using the form above.</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function deleteHospital(hospitalName) {
+    if (confirm(`Are you sure you want to remove "${hospitalName}" from the system?`)) {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '{{ url_for('admin_enhanced.manage_hospitals') }}';
+        
+        const actionInput = document.createElement('input');
+        actionInput.type = 'hidden';
+        actionInput.name = 'action';
+        actionInput.value = 'delete';
+        
+        const hospitalInput = document.createElement('input');
+        hospitalInput.type = 'hidden';
+        hospitalInput.name = 'hospital_name';
+        hospitalInput.value = hospitalName;
+        
+        form.appendChild(actionInput);
+        form.appendChild(hospitalInput);
+        document.body.appendChild(form);
+        form.submit();
+    }
+}
+</script>
+{% endblock %}

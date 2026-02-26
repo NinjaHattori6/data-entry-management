@@ -91,11 +91,6 @@
                     </div>
                     
                     <div class="navbar-right">
-                        <div class="search-bar dashboard-search">
-                            <i class="fas fa-search search-icon"></i>
-                            <input type="text" class="search-input" placeholder="Search patients...">
-                        </div>
-                        
                         <div class="user-dropdown">
                             <div class="user-avatar" id="userDropdown">
                                 {{ session.get('username', 'U')[0].upper() }}
@@ -172,6 +167,142 @@
     <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ url_for('static', filename='js/modern.js') }}"></script>
+    
+    <!-- Global Password Toggle Script -->
+    <script>
+    // Universal password visibility toggle function
+    function togglePasswordVisibility(inputId, iconId) {
+        const passwordInput = document.getElementById(inputId);
+        const passwordIcon = document.getElementById(iconId);
+        
+        if (!passwordInput || !passwordIcon) {
+            console.warn('Password toggle elements not found:', inputId, iconId);
+            return;
+        }
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            passwordIcon.classList.remove('fa-eye');
+            passwordIcon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            passwordIcon.classList.remove('fa-eye-slash');
+            passwordIcon.classList.add('fa-eye');
+        }
+    }
+    
+    // Initialize all password toggles when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        // Find all password toggle buttons using class-based approach
+        const toggleButtons = document.querySelectorAll('.password-toggle-button');
+        
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const buttonId = this.id;
+                let inputId, iconId;
+                
+                // Map button IDs to input and icon IDs
+                switch(buttonId) {
+                    case 'togglePassword':
+                        inputId = 'password';
+                        iconId = 'passwordIcon';
+                        break;
+                    case 'toggleCurrentPassword':
+                        inputId = 'current_password';
+                        iconId = 'currentPasswordIcon';
+                        break;
+                    case 'toggleNewPassword':
+                        inputId = 'new_password';
+                        iconId = 'newPasswordIcon';
+                        break;
+                    case 'toggleConfirmPassword':
+                        inputId = 'confirm_password';
+                        iconId = 'confirmPasswordIcon';
+                        break;
+                    default:
+                        console.warn('Unknown toggle button ID:', buttonId);
+                        return;
+                }
+                
+                togglePasswordVisibility(inputId, iconId);
+            });
+        });
+    });
+    </script>
+    
+    <style>
+    /* Password Toggle Button Styling */
+    .password-toggle-button {
+        background: var(--muted);
+        border: 1px solid var(--border);
+        color: var(--muted-foreground);
+        padding: 0.5rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border-radius: 0 var(--radius) var(--radius) 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.5rem;
+    }
+
+    .password-toggle-button:hover {
+        background: var(--accent);
+        color: var(--accent-foreground);
+        border-color: var(--accent);
+    }
+
+    .password-toggle-button:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--ring);
+        border-color: var(--primary);
+    }
+
+    .password-toggle-button i {
+        font-size: 0.875rem;
+        transition: transform 0.2s ease;
+    }
+
+    .password-toggle-button:hover i {
+        transform: scale(1.1);
+    }
+
+    /* Input group styling for password fields */
+    .input-group {
+        position: relative;
+        display: flex;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .input-group .form-control {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .input-group .form-control:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .input-group .password-toggle-button {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    /* Auth page specific styling */
+    .auth-container .password-toggle-button {
+        background: var(--background);
+        border-color: var(--border);
+        color: var(--text-muted);
+    }
+
+    .auth-container .password-toggle-button:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: white;
+    }
+    </style>
     
     {% block extra_js %}{% endblock %}
 </body>

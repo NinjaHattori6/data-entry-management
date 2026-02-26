@@ -14,7 +14,7 @@
         <div class="stats-icon">
             <i class="fas fa-users"></i>
         </div>
-        <div class="stats-number">{{ status_distribution | sum(attribute='count') }}</div>
+        <div class="stats-number">{{ status_distribution.values() | list | sum }}</div>
         <div class="stats-label">Total Patients</div>
     </div>
     
@@ -22,7 +22,7 @@
         <div class="stats-icon">
             <i class="fas fa-heartbeat"></i>
         </div>
-        <div class="stats-number">{{ status_distribution | selectattr('status', 'equalto', 'Active Treatment') | map(attribute='count') | first | default(0) }}</div>
+        <div class="stats-number">{{ status_distribution.get('Active Treatment', 0) + status_distribution.get('Under Treatment', 0) }}</div>
         <div class="stats-label">Active Treatment</div>
     </div>
     
@@ -30,7 +30,7 @@
         <div class="stats-icon">
             <i class="fas fa-exclamation-triangle"></i>
         </div>
-        <div class="stats-number">{{ status_distribution | selectattr('status', 'equalto', 'Critical') | map(attribute='count') | first | default(0) }}</div>
+        <div class="stats-number">{{ status_distribution.get('Critical', 0) }}</div>
         <div class="stats-label">Critical Cases</div>
     </div>
     
@@ -38,7 +38,7 @@
         <div class="stats-icon">
             <i class="fas fa-smile"></i>
         </div>
-        <div class="stats-number">{{ status_distribution | selectattr('status', 'equalto', 'Recovered') | map(attribute='count') | first | default(0) }}</div>
+        <div class="stats-number">{{ status_distribution.get('Recovered', 0) }}</div>
         <div class="stats-label">Recovered</div>
     </div>
 </div>
@@ -73,14 +73,14 @@
         <div class="card-body">
             {% if status_distribution %}
             <div class="status-list">
-                {% for status_item in status_distribution %}
+                {% for status, count in status_distribution.items() %}
                 <div class="status-item">
                     <div class="status-info">
-                        <span class="status-name">{{ status_item.status }}</span>
-                        <span class="status-count">{{ status_item.count }}</span>
+                        <span class="status-name">{{ status }}</span>
+                        <span class="status-count">{{ count }}</span>
                     </div>
                     <div class="status-bar">
-                        <div class="status-progress" style="width: {{ (status_item.count / (status_distribution | sum(attribute='count')) * 100) }}%"></div>
+                        <div class="status-progress" style="width: {{ (count / status_distribution.values() | list | sum * 100) | round(1) }}%"></div>
                     </div>
                 </div>
                 {% endfor %}
@@ -214,9 +214,9 @@ document.addEventListener('DOMContentLoaded', function() {
     {% if cancer_distribution %}
     const cancerCtx = document.getElementById('cancerChart').getContext('2d');
     createDoughnutChart(cancerCtx, {
-        labels: {{ cancer_distribution | map(attribute='cancer_type') | list | tojson }},
+        labels: {{ cancer_distribution.keys() | list | tojson }},
         datasets: [{
-            data: {{ cancer_distribution | map(attribute='count') | list | tojson }},
+            data: {{ cancer_distribution.values() | list | tojson }},
             backgroundColor: [
                 '#0E7490', '#06B6D4', '#16A34A', '#F59E0B', '#DC2626',
                 '#8B5CF6', '#EC4899', '#F97316', '#14B8A6', '#6366F1'
@@ -231,9 +231,9 @@ document.addEventListener('DOMContentLoaded', function() {
     {% if stage_distribution %}
     const stageCtx = document.getElementById('stageChart').getContext('2d');
     createDoughnutChart(stageCtx, {
-        labels: {{ stage_distribution | map(attribute='cancer_stage') | list | tojson }},
+        labels: {{ stage_distribution.keys() | list | tojson }},
         datasets: [{
-            data: {{ stage_distribution | map(attribute='count') | list | tojson }},
+            data: {{ stage_distribution.values() | list | tojson }},
             backgroundColor: [
                 '#16A34A',  // Stage I - Green
                 '#06B6D4',  // Stage II - Cyan
@@ -250,9 +250,9 @@ document.addEventListener('DOMContentLoaded', function() {
     {% if gender_distribution %}
     const genderCtx = document.getElementById('genderChart').getContext('2d');
     createDoughnutChart(genderCtx, {
-        labels: {{ gender_distribution | map(attribute='gender') | list | tojson }},
+        labels: {{ gender_distribution.keys() | list | tojson }},
         datasets: [{
-            data: {{ gender_distribution | map(attribute='count') | list | tojson }},
+            data: {{ gender_distribution.values() | list | tojson }},
             backgroundColor: ['#0E7490', '#EC4899'],
             borderWidth: 2,
             borderColor: '#fff'
@@ -261,13 +261,13 @@ document.addEventListener('DOMContentLoaded', function() {
     {% endif %}
 
     // Age Groups Chart
-    {% if age_groups %}
+    {% if age_groups and age_groups is defined %}
     const ageCtx = document.getElementById('ageChart').getContext('2d');
     createBarChart(ageCtx, {
-        labels: {{ age_groups | map(attribute='age_group') | list | tojson }},
+        labels: {{ age_groups.keys() | list | tojson }},
         datasets: [{
             label: 'Number of Patients',
-            data: {{ age_groups | map(attribute='count') | list | tojson }},
+            data: {{ age_groups.values() | list | tojson }},
             backgroundColor: '#0E7490',
             borderColor: '#0E7490',
             borderWidth: 1
@@ -276,13 +276,13 @@ document.addEventListener('DOMContentLoaded', function() {
     {% endif %}
 
     // Monthly Trend Chart
-    {% if monthly_trend %}
+    {% if monthly_trend and monthly_trend is defined %}
     const trendCtx = document.getElementById('trendChart').getContext('2d');
     createBarChart(trendCtx, {
-        labels: {{ monthly_trend | map(attribute='month') | list | tojson }},
+        labels: {{ monthly_trend.keys() | list | tojson }},
         datasets: [{
             label: 'New Patients',
-            data: {{ monthly_trend | map(attribute='count') | list | tojson }},
+            data: {{ monthly_trend.values() | list | tojson }},
             backgroundColor: '#06B6D4',
             borderColor: '#06B6D4',
             borderWidth: 1

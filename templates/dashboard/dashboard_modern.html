@@ -4,8 +4,21 @@
 
 {% block content %}
 <div class="page-header">
-    <h1 class="page-title">Dashboard</h1>
-    <p class="page-subtitle">Patient Management Overview</p>
+    <div class="welcome-section">
+        <div class="welcome-message">
+            <h2 class="welcome-title">Welcome back, {{ session.get('username', 'Admin') }}!</h2>
+            <p class="welcome-subtitle">Here's what's happening with your patients today</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-primary" onclick="window.location.href='/add_patient'">
+                <i class="fas fa-plus"></i> Add New Patient
+            </button>
+        </div>
+    </div>
+    <div class="page-info">
+        <h1 class="page-title">Dashboard</h1>
+        <p class="page-subtitle">Patient Management Overview</p>
+    </div>
 </div>
 
 <!-- Statistics Cards -->

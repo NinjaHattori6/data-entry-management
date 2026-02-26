@@ -255,10 +255,10 @@ def dashboard():
         'SELECT COUNT(*) as count FROM patients'
     ).fetchone()['count']
     
-    # Active cases (current_status = Active Treatment)
+    # Active cases (current_status contains 'Treatment' or 'Under Treatment')
     active_cases = conn.execute(
-        'SELECT COUNT(*) as count FROM patients WHERE current_status = ?',
-        ('Active Treatment',)
+        'SELECT COUNT(*) as count FROM patients WHERE current_status LIKE ? OR current_status LIKE ?',
+        ('%Treatment%', 'Under Treatment')
     ).fetchone()['count']
     
     # Stage IV patients
@@ -273,38 +273,61 @@ def dashboard():
         ('Recovered',)
     ).fetchone()['count']
     
+    # Recent patients (last 5)
+    recent_patients = conn.execute('''
+        SELECT * FROM patients 
+        ORDER BY created_at DESC 
+        LIMIT 5
+    ''').fetchall()
+    
     # Stage distribution for chart
-    stage_distribution = conn.execute('''
+    stage_data = conn.execute('''
         SELECT cancer_stage, COUNT(*) as count 
         FROM patients 
         GROUP BY cancer_stage
+        ORDER BY cancer_stage
     ''').fetchall()
+    stage_distribution = {row['cancer_stage']: row['count'] for row in stage_data}
     
     # Status distribution
-    status_distribution = conn.execute('''
+    status_data = conn.execute('''
         SELECT current_status, COUNT(*) as count 
         FROM patients 
         GROUP BY current_status
+        ORDER BY count DESC
     ''').fetchall()
-    
-    # Recent patients
-    recent_patients = conn.execute('''
-        SELECT id, patient_id, full_name, age, gender, cancer_type, cancer_stage, current_status, created_at
-        FROM patients 
-        ORDER BY created_at DESC 
-        LIMIT 10
-    ''').fetchall()
+    status_distribution = {row['current_status']: row['count'] for row in status_data}
     
     conn.close()
     
-    return render_template('dashboard/dashboard_modern.html',
+    return render_template('dashboard/dashboard_modern.html', 
                          total_patients=total_patients,
                          active_cases=active_cases,
                          stage_iv_patients=stage_iv_patients,
                          recovered_patients=recovered_patients,
-                         stage_distribution=dict(stage_distribution),
-                         status_distribution=dict(status_distribution),
-                         recent_patients=recent_patients)
+                         recent_patients=recent_patients,
+                         stage_distribution=stage_distribution,
+                         status_distribution=status_distribution)
+
+@app.route('/dashboard-sidebar')
+@login_required
+def dashboard_sidebar():
+    """Display modern dashboard with sidebar component"""
+    conn = get_db_connection()
+    
+    # Get statistics for sidebar demo
+    total_patients = conn.execute(
+        'SELECT COUNT(*) as count FROM patients'
+    ).fetchone()['count']
+    
+    conn.close()
+    
+    # Demo data for the sidebar dashboard
+    return render_template('dashboard_sidebar_demo.html', 
+                         total_patients=total_patients,
+                         appointments_today=8,
+                         treatments_completed=24,
+                         critical_cases=2)
 
 # ==================== PATIENT RECORD ROUTES ====================
 
@@ -770,29 +793,33 @@ def analytics():
     conn = get_db_connection()
     
     # Get comprehensive analytics data
-    status_distribution = conn.execute('''
+    status_data = conn.execute('''
         SELECT current_status, COUNT(*) as count 
         FROM patients 
         GROUP BY current_status
     ''').fetchall()
+    status_distribution = {row['current_status']: row['count'] for row in status_data}
     
-    cancer_distribution = conn.execute('''
+    cancer_data = conn.execute('''
         SELECT cancer_type, COUNT(*) as count 
         FROM patients 
         GROUP BY cancer_type
     ''').fetchall()
+    cancer_distribution = {row['cancer_type']: row['count'] for row in cancer_data}
     
-    gender_distribution = conn.execute('''
+    gender_data = conn.execute('''
         SELECT gender, COUNT(*) as count 
         FROM patients 
         GROUP BY gender
     ''').fetchall()
+    gender_distribution = {row['gender']: row['count'] for row in gender_data}
     
-    stage_distribution = conn.execute('''
+    stage_data = conn.execute('''
         SELECT cancer_stage, COUNT(*) as count 
         FROM patients 
         GROUP BY cancer_stage
     ''').fetchall()
+    stage_distribution = {row['cancer_stage']: row['count'] for row in stage_data}
     
     age_groups = conn.execute('''
         SELECT 
@@ -807,6 +834,7 @@ def analytics():
         FROM patients 
         GROUP BY age_group
     ''').fetchall()
+    age_groups = {row['age_group']: row['count'] for row in age_groups}
     
     monthly_trend = conn.execute('''
         SELECT 
@@ -817,6 +845,7 @@ def analytics():
         GROUP BY strftime('%Y-%m', diagnosis_date)
         ORDER BY month
     ''').fetchall()
+    monthly_trend = {row['month']: row['count'] for row in monthly_trend}
     
     conn.close()
     
@@ -976,18 +1005,18 @@ def profile():
 
 # ==================== EXPORT ROUTE ====================
 
-@app.route('/export_data', methods=['POST'])
+@app.route('/export_data', methods=['GET', 'POST'])
 @login_required
 def export_data():
     """Export patient data in various formats"""
-    export_format = request.form.get('format', 'csv')
+    export_format = request.args.get('format') or request.form.get('format', 'csv')
     
     conn = get_db_connection()
     
     # Get filtered data based on current filters
-    status_filter = request.form.get('status', '')
-    cancer_filter = request.form.get('cancer_type', '')
-    search = request.form.get('search', '')
+    status_filter = request.args.get('status') or request.form.get('status', '')
+    cancer_filter = request.args.get('cancer_type') or request.form.get('cancer_type', '')
+    search = request.args.get('search') or request.form.get('search', '')
     
     query = '''
         SELECT patient_id, full_name, age, gender, cancer_type, cancer_stage, 

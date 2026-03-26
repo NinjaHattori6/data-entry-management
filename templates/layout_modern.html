@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="OncoBloom - Cancer Patient Management System">
     <title>{% block title %}OncoBloom - Cancer Patient Management{% endblock %}</title>
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/modern.css') }}">
-    
+
     {% block extra_css %}{% endblock %}
 </head>
-<body class="{% if request.endpoint in ['login', 'register', 'forgot_password', 'otp_verify', 'reset_password'] %}auth-page{% endif %}">
+
+<body
+    class="{% if request.endpoint in ['login', 'register', 'forgot_password', 'otp_verify', 'reset_password'] %}auth-page{% endif %}">
     <div class="app-container">
         <!-- Sidebar - Only show for logged-in users -->
         {% if session.user_id %}
@@ -35,21 +38,25 @@
                     <span>OncoBloom</span>
                 </a>
             </div>
-            
+
             <nav class="sidebar-nav">
-                <a href="{{ url_for('dashboard') }}" class="nav-item {% if request.endpoint == 'dashboard' %}active{% endif %}">
+                <a href="{{ url_for('dashboard') }}"
+                    class="nav-item {% if request.endpoint == 'dashboard' %}active{% endif %}">
                     <i class="fas fa-tachometer-alt"></i>
                     Dashboard
                 </a>
-                <a href="{{ url_for('add_patient') }}" class="nav-item {% if request.endpoint == 'add_patient' %}active{% endif %}">
+                <a href="{{ url_for('add_patient') }}"
+                    class="nav-item {% if request.endpoint == 'add_patient' %}active{% endif %}">
                     <i class="fas fa-user-plus"></i>
                     Add Patient
                 </a>
-                <a href="{{ url_for('records') }}" class="nav-item {% if request.endpoint == 'records' %}active{% endif %}">
+                <a href="{{ url_for('records') }}"
+                    class="nav-item {% if request.endpoint == 'records' %}active{% endif %}">
                     <i class="fas fa-list"></i>
                     Records
                 </a>
-                <a href="{{ url_for('analytics') }}" class="nav-item {% if request.endpoint == 'analytics' %}active{% endif %}">
+                <a href="{{ url_for('analytics') }}"
+                    class="nav-item {% if request.endpoint == 'analytics' %}active{% endif %}">
                     <i class="fas fa-chart-line"></i>
                     Analytics
                 </a>
@@ -58,12 +65,14 @@
                     <i class="fas fa-users-cog"></i>
                     User Management
                 </a>
-                <a href="{{ url_for('admin_enhanced.admin_dashboard') }}" class="nav-item {% if request.endpoint and 'admin_enhanced' in request.endpoint %}active{% endif %}">
+                <a href="{{ url_for('admin_enhanced_dashboard') }}"
+                    class="nav-item {% if request.endpoint and 'admin_enhanced' in request.endpoint %}active{% endif %}">
                     <i class="fas fa-crown"></i>
                     Enhanced Admin
                 </a>
                 {% endif %}
-                <a href="{{ url_for('profile') }}" class="nav-item {% if request.endpoint == 'profile' %}active{% endif %}">
+                <a href="{{ url_for('profile') }}"
+                    class="nav-item {% if request.endpoint == 'profile' %}active{% endif %}">
                     <i class="fas fa-user"></i>
                     Profile
                 </a>
@@ -89,7 +98,7 @@
                             Welcome back, {{ session.get('username', 'User') }}
                         </div>
                     </div>
-                    
+
                     <div class="navbar-right">
                         <div class="user-dropdown">
                             <div class="user-avatar" id="userDropdown">
@@ -104,7 +113,7 @@
                             <span>OncoBloom</span>
                         </div>
                     </div>
-                    
+
                     <div class="navbar-right">
                         <a href="{{ url_for('login') }}" class="btn btn-outline-primary btn-lg">
                             <i class="fas fa-sign-in-alt me-2"></i> Login
@@ -130,159 +139,278 @@
     <!-- Flash messages from Flask → feed into toast system -->
     <div id="ob-flash-data" style="display:none">
         {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <span data-cat="{{ category }}" data-msg="{{ message }}"></span>
-                {% endfor %}
-            {% endif %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <span data-cat="{{ category }}" data-msg="{{ message }}"></span>
+        {% endfor %}
+        {% endif %}
         {% endwith %}
     </div>
 
     <style>
-    /* ══════════════════════════
+        /* ══════════════════════════
        TOAST NOTIFICATION SYSTEM
     ══════════════════════════ */
-    #ob-toast-stack {
-        position: fixed;
-        top: 1.25rem;
-        right: 1.25rem;
-        z-index: 99999;
-        display: flex;
-        flex-direction: column;
-        gap: .65rem;
-        max-width: 380px;
-        width: calc(100vw - 2.5rem);
-        pointer-events: none;
-    }
-
-    .ob-toast {
-        pointer-events: all;
-        display: flex;
-        align-items: flex-start;
-        gap: .85rem;
-        padding: .9rem 1rem .85rem 1rem;
-        border-radius: 14px;
-        background: #fff;
-        box-shadow: 0 8px 32px rgba(0,0,0,.14), 0 2px 8px rgba(0,0,0,.08);
-        border-left: 4px solid transparent;
-        position: relative;
-        overflow: hidden;
-        font-family: 'Inter', sans-serif;
-        /* enter */
-        animation: ob-toast-in .38s cubic-bezier(.22,.61,.36,1) both;
-    }
-
-    .ob-toast.removing {
-        animation: ob-toast-out .32s cubic-bezier(.55,0,1,.45) forwards;
-    }
-
-    @keyframes ob-toast-in {
-        from { opacity: 0; transform: translateX(64px) scale(.96); }
-        to   { opacity: 1; transform: translateX(0)   scale(1);    }
-    }
-    @keyframes ob-toast-out {
-        from { opacity: 1; transform: translateX(0)   scale(1);    max-height: 120px; margin-bottom: 0; }
-        to   { opacity: 0; transform: translateX(64px) scale(.96); max-height: 0;     margin-bottom: -.65rem; }
-    }
-
-    /* Colour variants */
-    .ob-toast.success { border-left-color: #22c55e; }
-    .ob-toast.danger  { border-left-color: #ef4444; }
-    .ob-toast.warning { border-left-color: #f59e0b; }
-    .ob-toast.info    { border-left-color: #8a79ab; }
-
-    .ob-toast-icon {
-        flex-shrink: 0;
-        width: 34px; height: 34px;
-        border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-        font-size: .95rem;
-        margin-top: .05rem;
-    }
-    .ob-toast.success .ob-toast-icon { background: #dcfce7; color: #16a34a; }
-    .ob-toast.danger  .ob-toast-icon { background: #fee2e2; color: #dc2626; }
-    .ob-toast.warning .ob-toast-icon { background: #fef9c3; color: #d97706; }
-    .ob-toast.info    .ob-toast-icon { background: #ede9f6; color: #6b5f8a; }
-
-    .ob-toast-body { flex: 1; min-width: 0; }
-    .ob-toast-title {
-        font-size: .8rem; font-weight: 700; letter-spacing: .03em;
-        text-transform: uppercase; margin-bottom: .18rem;
-    }
-    .ob-toast.success .ob-toast-title { color: #16a34a; }
-    .ob-toast.danger  .ob-toast-title { color: #dc2626; }
-    .ob-toast.warning .ob-toast-title { color: #d97706; }
-    .ob-toast.info    .ob-toast-title { color: #6b5f8a; }
-
-    .ob-toast-msg {
-        font-size: .875rem; color: #374151; line-height: 1.45;
-        word-break: break-word;
-    }
-
-    .ob-toast-close {
-        background: none; border: none; cursor: pointer;
-        color: #9ca3af; font-size: .88rem; padding: .15rem;
-        border-radius: 6px; flex-shrink: 0; align-self: flex-start;
-        transition: color .15s, background .15s;
-        line-height: 1;
-    }
-    .ob-toast-close:hover { color: #374151; background: #f3f4f6; }
-
-    /* Progress bar */
-    .ob-toast-progress {
-        position: absolute;
-        bottom: 0; left: 0;
-        height: 3px;
-        border-radius: 0 0 14px 14px;
-        animation: ob-toast-progress linear forwards;
-    }
-    .ob-toast.success .ob-toast-progress { background: #22c55e; }
-    .ob-toast.danger  .ob-toast-progress { background: #ef4444; }
-    .ob-toast.warning .ob-toast-progress { background: #f59e0b; }
-    .ob-toast.info    .ob-toast-progress { background: #8a79ab; }
-
-    @keyframes ob-toast-progress {
-        from { width: 100%; }
-        to   { width: 0%;   }
-    }
-
-    @media (max-width: 480px) {
         #ob-toast-stack {
-            top: auto; bottom: 1rem;
-            right: .75rem; left: .75rem;
-            width: auto; max-width: 100%;
+            position: fixed;
+            top: 1.25rem;
+            right: 1.25rem;
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            gap: .65rem;
+            max-width: 380px;
+            width: calc(100vw - 2.5rem);
+            pointer-events: none;
         }
+
+        .ob-toast {
+            pointer-events: all;
+            display: flex;
+            align-items: flex-start;
+            gap: .85rem;
+            padding: .9rem 1rem .85rem 1rem;
+            border-radius: 14px;
+            background: #fff;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, .14), 0 2px 8px rgba(0, 0, 0, .08);
+            border-left: 4px solid transparent;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            /* enter */
+            animation: ob-toast-in .38s cubic-bezier(.22, .61, .36, 1) both;
+        }
+
+        .ob-toast.removing {
+            animation: ob-toast-out .32s cubic-bezier(.55, 0, 1, .45) forwards;
+        }
+
         @keyframes ob-toast-in {
-            from { opacity: 0; transform: translateY(24px) scale(.96); }
-            to   { opacity: 1; transform: translateY(0)    scale(1);   }
+            from {
+                opacity: 0;
+                transform: translateX(64px) scale(.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
         }
+
         @keyframes ob-toast-out {
-            from { opacity: 1; transform: translateY(0)    scale(1); max-height: 120px; }
-            to   { opacity: 0; transform: translateY(24px) scale(.96); max-height: 0; }
+            from {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+                max-height: 120px;
+                margin-bottom: 0;
+            }
+
+            to {
+                opacity: 0;
+                transform: translateX(64px) scale(.96);
+                max-height: 0;
+                margin-bottom: -.65rem;
+            }
         }
-    }
+
+        /* Colour variants */
+        .ob-toast.success {
+            border-left-color: #22c55e;
+        }
+
+        .ob-toast.danger {
+            border-left-color: #ef4444;
+        }
+
+        .ob-toast.warning {
+            border-left-color: #f59e0b;
+        }
+
+        .ob-toast.info {
+            border-left-color: #8a79ab;
+        }
+
+        .ob-toast-icon {
+            flex-shrink: 0;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .95rem;
+            margin-top: .05rem;
+        }
+
+        .ob-toast.success .ob-toast-icon {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .ob-toast.danger .ob-toast-icon {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .ob-toast.warning .ob-toast-icon {
+            background: #fef9c3;
+            color: #d97706;
+        }
+
+        .ob-toast.info .ob-toast-icon {
+            background: #ede9f6;
+            color: #6b5f8a;
+        }
+
+        .ob-toast-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .ob-toast-title {
+            font-size: .8rem;
+            font-weight: 700;
+            letter-spacing: .03em;
+            text-transform: uppercase;
+            margin-bottom: .18rem;
+        }
+
+        .ob-toast.success .ob-toast-title {
+            color: #16a34a;
+        }
+
+        .ob-toast.danger .ob-toast-title {
+            color: #dc2626;
+        }
+
+        .ob-toast.warning .ob-toast-title {
+            color: #d97706;
+        }
+
+        .ob-toast.info .ob-toast-title {
+            color: #6b5f8a;
+        }
+
+        .ob-toast-msg {
+            font-size: .875rem;
+            color: #374151;
+            line-height: 1.45;
+            word-break: break-word;
+        }
+
+        .ob-toast-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #9ca3af;
+            font-size: .88rem;
+            padding: .15rem;
+            border-radius: 6px;
+            flex-shrink: 0;
+            align-self: flex-start;
+            transition: color .15s, background .15s;
+            line-height: 1;
+        }
+
+        .ob-toast-close:hover {
+            color: #374151;
+            background: #f3f4f6;
+        }
+
+        /* Progress bar */
+        .ob-toast-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            border-radius: 0 0 14px 14px;
+            animation: ob-toast-progress linear forwards;
+        }
+
+        .ob-toast.success .ob-toast-progress {
+            background: #22c55e;
+        }
+
+        .ob-toast.danger .ob-toast-progress {
+            background: #ef4444;
+        }
+
+        .ob-toast.warning .ob-toast-progress {
+            background: #f59e0b;
+        }
+
+        .ob-toast.info .ob-toast-progress {
+            background: #8a79ab;
+        }
+
+        @keyframes ob-toast-progress {
+            from {
+                width: 100%;
+            }
+
+            to {
+                width: 0%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #ob-toast-stack {
+                top: auto;
+                bottom: 1rem;
+                right: .75rem;
+                left: .75rem;
+                width: auto;
+                max-width: 100%;
+            }
+
+            @keyframes ob-toast-in {
+                from {
+                    opacity: 0;
+                    transform: translateY(24px) scale(.96);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+
+            @keyframes ob-toast-out {
+                from {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                    max-height: 120px;
+                }
+
+                to {
+                    opacity: 0;
+                    transform: translateY(24px) scale(.96);
+                    max-height: 0;
+                }
+            }
+        }
     </style>
 
     <script>
-    (function () {
-        const DURATION = 4500; // ms before auto-dismiss
+        (function () {
+            const DURATION = 4500; // ms before auto-dismiss
 
-        const LABELS = { success: 'Success', danger: 'Error', warning: 'Warning', info: 'Info' };
-        const ICONS  = {
-            success: 'fa-check-circle',
-            danger:  'fa-exclamation-circle',
-            warning: 'fa-exclamation-triangle',
-            info:    'fa-info-circle'
-        };
+            const LABELS = { success: 'Success', danger: 'Error', warning: 'Warning', info: 'Info' };
+            const ICONS = {
+                success: 'fa-check-circle',
+                danger: 'fa-exclamation-circle',
+                warning: 'fa-exclamation-triangle',
+                info: 'fa-info-circle'
+            };
 
-        function showToastPopup(category, message) {
-            const cat   = ['success','danger','warning','info'].includes(category) ? category : 'info';
-            const stack = document.getElementById('ob-toast-stack');
+            function showToastPopup(category, message) {
+                const cat = ['success', 'danger', 'warning', 'info'].includes(category) ? category : 'info';
+                const stack = document.getElementById('ob-toast-stack');
 
-            const toast = document.createElement('div');
-            toast.className = 'ob-toast ' + cat;
-            toast.setAttribute('role', 'alert');
-            toast.innerHTML = `
+                const toast = document.createElement('div');
+                toast.className = 'ob-toast ' + cat;
+                toast.setAttribute('role', 'alert');
+                toast.innerHTML = `
                 <div class="ob-toast-icon"><i class="fas ${ICONS[cat]}"></i></div>
                 <div class="ob-toast-body">
                     <div class="ob-toast-title">${LABELS[cat]}</div>
@@ -292,51 +420,51 @@
                 <div class="ob-toast-progress" style="animation-duration:${DURATION}ms"></div>
             `;
 
-            stack.appendChild(toast);
+                stack.appendChild(toast);
 
-            // Close button
-            toast.querySelector('.ob-toast-close').addEventListener('click', () => dismissToast(toast));
+                // Close button
+                toast.querySelector('.ob-toast-close').addEventListener('click', () => dismissToast(toast));
 
-            // Auto-dismiss
-            const timer = setTimeout(() => dismissToast(toast), DURATION);
-            toast._timer = timer;
+                // Auto-dismiss
+                const timer = setTimeout(() => dismissToast(toast), DURATION);
+                toast._timer = timer;
 
-            // Pause on hover
-            toast.addEventListener('mouseenter', () => {
+                // Pause on hover
+                toast.addEventListener('mouseenter', () => {
+                    clearTimeout(toast._timer);
+                    const bar = toast.querySelector('.ob-toast-progress');
+                    if (bar) bar.style.animationPlayState = 'paused';
+                });
+                toast.addEventListener('mouseleave', () => {
+                    const bar = toast.querySelector('.ob-toast-progress');
+                    if (bar) bar.style.animationPlayState = 'running';
+                    toast._timer = setTimeout(() => dismissToast(toast), 1500);
+                });
+            }
+
+            function dismissToast(toast) {
+                if (toast._removed) return;
+                toast._removed = true;
                 clearTimeout(toast._timer);
-                const bar = toast.querySelector('.ob-toast-progress');
-                if (bar) bar.style.animationPlayState = 'paused';
-            });
-            toast.addEventListener('mouseleave', () => {
-                const bar = toast.querySelector('.ob-toast-progress');
-                if (bar) bar.style.animationPlayState = 'running';
-                toast._timer = setTimeout(() => dismissToast(toast), 1500);
-            });
-        }
+                toast.classList.add('removing');
+                toast.addEventListener('animationend', () => toast.remove(), { once: true });
+            }
 
-        function dismissToast(toast) {
-            if (toast._removed) return;
-            toast._removed = true;
-            clearTimeout(toast._timer);
-            toast.classList.add('removing');
-            toast.addEventListener('animationend', () => toast.remove(), { once: true });
-        }
-
-        // Boot: read Flask flash messages
-        document.addEventListener('DOMContentLoaded', function () {
-            const data = document.getElementById('ob-flash-data');
-            if (!data) return;
-            const items = data.querySelectorAll('[data-cat]');
-            items.forEach(function (el, i) {
-                setTimeout(function () {
-                    showToastPopup(el.dataset.cat, el.dataset.msg);
-                }, i * 160);
+            // Boot: read Flask flash messages
+            document.addEventListener('DOMContentLoaded', function () {
+                const data = document.getElementById('ob-flash-data');
+                if (!data) return;
+                const items = data.querySelectorAll('[data-cat]');
+                items.forEach(function (el, i) {
+                    setTimeout(function () {
+                        showToastPopup(el.dataset.cat, el.dataset.msg);
+                    }, i * 160);
+                });
             });
-        });
 
-        // Expose globally so other scripts can call it
-        window.showToastPopup = showToastPopup;
-    })();
+            // Expose globally so other scripts can call it
+            window.showToastPopup = showToastPopup;
+        })();
     </script>
 
     <!-- Confirmation Modal -->
@@ -358,143 +486,144 @@
     <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ url_for('static', filename='js/modern.js') }}"></script>
-    
+
     <!-- Global Password Toggle Script -->
     <script>
-    // Universal password visibility toggle function
-    function togglePasswordVisibility(inputId, iconId) {
-        const passwordInput = document.getElementById(inputId);
-        const passwordIcon = document.getElementById(iconId);
-        
-        if (!passwordInput || !passwordIcon) {
-            console.warn('Password toggle elements not found:', inputId, iconId);
-            return;
+        // Universal password visibility toggle function
+        function togglePasswordVisibility(inputId, iconId) {
+            const passwordInput = document.getElementById(inputId);
+            const passwordIcon = document.getElementById(iconId);
+
+            if (!passwordInput || !passwordIcon) {
+                console.warn('Password toggle elements not found:', inputId, iconId);
+                return;
+            }
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordIcon.classList.remove('fa-eye');
+                passwordIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                passwordIcon.classList.remove('fa-eye-slash');
+                passwordIcon.classList.add('fa-eye');
+            }
         }
-        
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            passwordIcon.classList.remove('fa-eye');
-            passwordIcon.classList.add('fa-eye-slash');
-        } else {
-            passwordInput.type = 'password';
-            passwordIcon.classList.remove('fa-eye-slash');
-            passwordIcon.classList.add('fa-eye');
-        }
-    }
-    
-    // Initialize all password toggles when DOM is ready
-    document.addEventListener('DOMContentLoaded', function() {
-        // Find all password toggle buttons using class-based approach
-        const toggleButtons = document.querySelectorAll('.password-toggle-button');
-        
-        toggleButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const buttonId = this.id;
-                let inputId, iconId;
-                
-                // Map button IDs to input and icon IDs
-                switch(buttonId) {
-                    case 'togglePassword':
-                        inputId = 'password';
-                        iconId = 'passwordIcon';
-                        break;
-                    case 'toggleCurrentPassword':
-                        inputId = 'current_password';
-                        iconId = 'currentPasswordIcon';
-                        break;
-                    case 'toggleNewPassword':
-                        inputId = 'new_password';
-                        iconId = 'newPasswordIcon';
-                        break;
-                    case 'toggleConfirmPassword':
-                        inputId = 'confirm_password';
-                        iconId = 'confirmPasswordIcon';
-                        break;
-                    default:
-                        console.warn('Unknown toggle button ID:', buttonId);
-                        return;
-                }
-                
-                togglePasswordVisibility(inputId, iconId);
+
+        // Initialize all password toggles when DOM is ready
+        document.addEventListener('DOMContentLoaded', function () {
+            // Find all password toggle buttons using class-based approach
+            const toggleButtons = document.querySelectorAll('.password-toggle-button');
+
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const buttonId = this.id;
+                    let inputId, iconId;
+
+                    // Map button IDs to input and icon IDs
+                    switch (buttonId) {
+                        case 'togglePassword':
+                            inputId = 'password';
+                            iconId = 'passwordIcon';
+                            break;
+                        case 'toggleCurrentPassword':
+                            inputId = 'current_password';
+                            iconId = 'currentPasswordIcon';
+                            break;
+                        case 'toggleNewPassword':
+                            inputId = 'new_password';
+                            iconId = 'newPasswordIcon';
+                            break;
+                        case 'toggleConfirmPassword':
+                            inputId = 'confirm_password';
+                            iconId = 'confirmPasswordIcon';
+                            break;
+                        default:
+                            console.warn('Unknown toggle button ID:', buttonId);
+                            return;
+                    }
+
+                    togglePasswordVisibility(inputId, iconId);
+                });
             });
         });
-    });
     </script>
-    
+
     <style>
-    /* Password Toggle Button Styling */
-    .password-toggle-button {
-        background: var(--muted);
-        border: 1px solid var(--border);
-        color: var(--muted-foreground);
-        padding: 0.5rem;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        border-radius: 0 var(--radius) var(--radius) 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 2.5rem;
-    }
+        /* Password Toggle Button Styling */
+        .password-toggle-button {
+            background: var(--muted);
+            border: 1px solid var(--border);
+            color: var(--muted-foreground);
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 2.5rem;
+        }
 
-    .password-toggle-button:hover {
-        background: var(--accent);
-        color: var(--accent-foreground);
-        border-color: var(--accent);
-    }
+        .password-toggle-button:hover {
+            background: var(--accent);
+            color: var(--accent-foreground);
+            border-color: var(--accent);
+        }
 
-    .password-toggle-button:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px var(--ring);
-        border-color: var(--primary);
-    }
+        .password-toggle-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--ring);
+            border-color: var(--primary);
+        }
 
-    .password-toggle-button i {
-        font-size: 0.875rem;
-        transition: transform 0.2s ease;
-    }
+        .password-toggle-button i {
+            font-size: 0.875rem;
+            transition: transform 0.2s ease;
+        }
 
-    .password-toggle-button:hover i {
-        transform: scale(1.1);
-    }
+        .password-toggle-button:hover i {
+            transform: scale(1.1);
+        }
 
-    /* Input group styling for password fields */
-    .input-group {
-        position: relative;
-        display: flex;
-        align-items: stretch;
-        width: 100%;
-    }
+        /* Input group styling for password fields */
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: stretch;
+            width: 100%;
+        }
 
-    .input-group .form-control {
-        flex: 1;
-        min-width: 0;
-    }
+        .input-group .form-control {
+            flex: 1;
+            min-width: 0;
+        }
 
-    .input-group .form-control:not(:last-child) {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-    }
+        .input-group .form-control:not(:last-child) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
 
-    .input-group .password-toggle-button {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-    }
+        .input-group .password-toggle-button {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
 
-    /* Auth page specific styling */
-    .auth-container .password-toggle-button {
-        background: var(--background);
-        border-color: var(--border);
-        color: var(--text-muted);
-    }
+        /* Auth page specific styling */
+        .auth-container .password-toggle-button {
+            background: var(--background);
+            border-color: var(--border);
+            color: var(--text-muted);
+        }
 
-    .auth-container .password-toggle-button:hover {
-        background: var(--primary);
-        border-color: var(--primary);
-        color: white;
-    }
+        .auth-container .password-toggle-button:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
     </style>
-    
+
     {% block extra_js %}{% endblock %}
 </body>
+
 </html>

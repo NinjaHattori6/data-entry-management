@@ -1,0 +1,394 @@
+{% extends "layout_modern.html" %}
+
+{% block title %}Sign In — OncoBloom{% endblock %}
+
+{% block extra_css %}
+<style>
+  /* ── Reset navbar & body for auth pages ── */
+  body.auth-page .navbar,
+  body.auth-page .sidebar { display: none !important; }
+  body.auth-page .main-content { margin: 0 !important; padding: 0 !important; width: 100% !important; }
+  body.auth-page .page-content { padding: 0 !important; }
+
+  /* ── Google Font ── */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── Page wrapper ── */
+  .ob-auth {
+    min-height: 100vh;
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+  }
+
+  /* ══════════════════════════════
+     LEFT BRAND PANEL
+  ══════════════════════════════ */
+  .ob-brand {
+    flex: 0 0 42%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3.5rem 4rem;
+    overflow: hidden;
+    background: linear-gradient(145deg, #3a2d5f 0%, #6b5f8a 55%, #8a79ab 100%);
+  }
+
+  /* subtle mesh overlay */
+  .ob-brand::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(138,121,171,.35) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(230,165,184,.2) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  /* floating blobs */
+  .ob-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: .25;
+    animation: blobFloat 8s ease-in-out infinite alternate;
+  }
+  .ob-blob-1 { width: 280px; height: 280px; background: #c8bfe0; top: -60px; right: -60px; animation-delay: 0s; }
+  .ob-blob-2 { width: 200px; height: 200px; background: #e6a5b8; bottom: 40px; left: -40px; animation-delay: 3s; }
+
+  @keyframes blobFloat {
+    from { transform: translateY(0) scale(1); }
+    to   { transform: translateY(20px) scale(1.05); }
+  }
+
+  .ob-brand-content { position: relative; z-index: 1; }
+
+  .ob-logo {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 3.5rem;
+  }
+  .ob-logo-icon {
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; color: #fff;
+  }
+  .ob-logo-text {
+    font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: -.3px;
+  }
+
+  .ob-tagline {
+    font-size: 2.2rem; font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+    letter-spacing: -.5px;
+    margin-bottom: 1rem;
+  }
+  .ob-tagline span { color: #e6a5b8; }
+
+  .ob-sub {
+    font-size: 1rem; color: rgba(255,255,255,.75);
+    line-height: 1.6;
+    max-width: 340px;
+    margin-bottom: 3rem;
+  }
+
+  .ob-features { display: flex; flex-direction: column; gap: 1.1rem; }
+  .ob-feature {
+    display: flex; align-items: center; gap: .9rem;
+    font-size: .9rem; color: rgba(255,255,255,.85);
+  }
+  .ob-feature-icon {
+    width: 34px; height: 34px; flex-shrink: 0;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .75rem; color: #e6a5b8;
+  }
+
+  /* ══════════════════════════════
+     RIGHT FORM PANEL
+  ══════════════════════════════ */
+  .ob-form-panel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem;
+    background: #f8fafc;
+  }
+
+  .ob-card {
+    width: 100%;
+    max-width: 440px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.75rem 2.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,.05), 0 20px 50px -12px rgba(0,0,0,.1);
+    animation: cardIn .45s cubic-bezier(.22,.61,.36,1) both;
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ob-card-head { margin-bottom: 2rem; }
+  .ob-card-head h1 {
+    font-size: 1.65rem; font-weight: 700;
+    color: #0f172a; letter-spacing: -.4px;
+    margin-bottom: .3rem;
+  }
+  .ob-card-head p { font-size: .93rem; color: #64748b; }
+
+  /* Flash messages */
+  .ob-flash {
+    padding: .75rem 1rem;
+    border-radius: 10px;
+    font-size: .875rem;
+    margin-bottom: 1.25rem;
+    display: flex; align-items: flex-start; gap: .6rem;
+  }
+  .ob-flash.success { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+  .ob-flash.danger  { background: #fff1f2; color: #9f1239; border: 1px solid #fecdd3; }
+  .ob-flash.info    { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+  .ob-flash.warning { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+
+  /* Fields */
+  .ob-field { margin-bottom: 1.2rem; }
+  .ob-label {
+    display: block;
+    font-size: .83rem; font-weight: 600;
+    color: #374151;
+    margin-bottom: .45rem;
+    letter-spacing: .01em;
+  }
+  .ob-input-wrap {
+    position: relative;
+    display: flex; align-items: center;
+  }
+  .ob-input-icon {
+    position: absolute; left: .9rem;
+    color: #94a3b8; font-size: .85rem;
+    pointer-events: none;
+    transition: color .2s;
+  }
+  .ob-input {
+    width: 100%;
+    padding: .72rem 1rem .72rem 2.6rem;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: .95rem;
+    color: #0f172a;
+    background: #f8fafc;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+    outline: none;
+    font-family: inherit;
+  }
+  .ob-input::placeholder { color: #cbd5e1; }
+  .ob-input:focus { border-color: #8a79ab; box-shadow: 0 0 0 3px rgba(138,121,171,.14); background: #fff; }
+  .ob-input-wrap:focus-within .ob-input-icon { color: #8a79ab; }
+
+  /* password toggle */
+  .ob-pw-toggle {
+    position: absolute; right: .75rem;
+    background: none; border: none;
+    color: #94a3b8; cursor: pointer;
+    padding: .25rem;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .85rem;
+    transition: color .2s;
+  }
+  .ob-pw-toggle:hover { color: #8a79ab; }
+
+  /* row */
+  .ob-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 1.4rem;
+  }
+  .ob-remember {
+    display: flex; align-items: center; gap: .45rem;
+    font-size: .84rem; color: #64748b; cursor: pointer;
+  }
+  .ob-remember input[type=checkbox] {
+    width: 15px; height: 15px;
+    accent-color: #0e7490;
+    cursor: pointer;
+  }
+  .ob-forgot {
+    font-size: .84rem; font-weight: 500;
+    color: #8a79ab; text-decoration: none;
+    transition: color .2s;
+  }
+  .ob-forgot:hover { color: #6b5f8a; text-decoration: underline; }
+
+  /* Submit */
+  .ob-btn {
+    width: 100%;
+    padding: .8rem 1rem;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #6b5f8a 0%, #8a79ab 100%);
+    color: #fff;
+    font-size: .97rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    letter-spacing: .01em;
+    display: flex; align-items: center; justify-content: center; gap: .5rem;
+    transition: transform .15s, box-shadow .15s, filter .15s;
+    box-shadow: 0 4px 14px rgba(138,121,171,.4);
+  }
+  .ob-btn:hover {
+    filter: brightness(1.07);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(138,121,171,.5);
+  }
+  .ob-btn:active { transform: translateY(0); }
+
+  /* Footer link */
+  .ob-card-foot {
+    text-align: center;
+    margin-top: 1.6rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid #f1f5f9;
+    font-size: .875rem; color: #64748b;
+  }
+  .ob-card-foot a {
+    font-weight: 600; color: #8a79ab; text-decoration: none;
+  }
+  .ob-card-foot a:hover { text-decoration: underline; }
+
+  /* ── Responsive ── */
+  @media (max-width: 860px) {
+    .ob-brand { display: none; }
+    .ob-form-panel { background: #2d2540; }
+    .ob-card { background: #3a2d5f; box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+    .ob-card-head h1 { color: #f1f5f9; }
+    .ob-card-head p  { color: #c8bfe0; }
+    .ob-label  { color: #dcd9e3; }
+    .ob-input  { background: #2d2540; border-color: #4a3d6b; color: #f1f5f9; }
+    .ob-input:focus { background: #2d2540; border-color: #8a79ab; }
+    .ob-input::placeholder { color: #6b5f8a; }
+    .ob-remember { color: #c8bfe0; }
+    .ob-card-foot { color: #c8bfe0; border-top-color: #4a3d6b; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="ob-auth">
+
+  <!-- ── Brand Panel ── -->
+  <div class="ob-brand">
+    <div class="ob-blob ob-blob-1"></div>
+    <div class="ob-blob ob-blob-2"></div>
+
+    <div class="ob-brand-content">
+      <a href="{{ url_for('index') }}" class="ob-logo" style="text-decoration:none;">
+        <div class="ob-logo-icon"><i class="fas fa-heartbeat"></i></div>
+        <span class="ob-logo-text">OncoBloom</span>
+      </a>
+
+      <h2 class="ob-tagline">Smarter care,<br><span>better outcomes.</span></h2>
+      <p class="ob-sub">A unified platform for oncology teams to manage patients, track treatments, and visualise outcomes — all in one place.</p>
+
+      <div class="ob-features">
+        <div class="ob-feature">
+          <div class="ob-feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <span>HIPAA-compliant &amp; secure data storage</span>
+        </div>
+        <div class="ob-feature">
+          <div class="ob-feature-icon"><i class="fas fa-chart-line"></i></div>
+          <span>Real-time analytics &amp; treatment insights</span>
+        </div>
+        <div class="ob-feature">
+          <div class="ob-feature-icon"><i class="fas fa-users"></i></div>
+          <span>Patient-centric collaborative workflows</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Form Panel ── -->
+  <div class="ob-form-panel">
+    <div class="ob-card">
+
+      <div class="ob-card-head">
+        <h1>Welcome back</h1>
+        <p>Sign in to continue to your dashboard</p>
+      </div>
+
+
+
+      <form method="POST" action="{{ url_for('login') }}" id="loginForm" autocomplete="on">
+
+        <div class="ob-field">
+          <label class="ob-label" for="username">Username</label>
+          <div class="ob-input-wrap">
+            <i class="fas fa-user ob-input-icon"></i>
+            <input type="text" id="username" name="username" class="ob-input"
+                   placeholder="Enter your username" autocomplete="username" required>
+          </div>
+        </div>
+
+        <div class="ob-field">
+          <label class="ob-label" for="password">Password</label>
+          <div class="ob-input-wrap">
+            <i class="fas fa-lock ob-input-icon"></i>
+            <input type="password" id="password" name="password" class="ob-input"
+                   placeholder="Enter your password" autocomplete="current-password" required>
+            <button type="button" class="ob-pw-toggle" id="togglePassword" aria-label="Toggle password visibility">
+              <i class="fas fa-eye" id="passwordIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="ob-row">
+          <label class="ob-remember">
+            <input type="checkbox" name="remember">
+            Remember me
+          </label>
+          <a href="{{ url_for('forgot_password') }}" class="ob-forgot">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="ob-btn" id="loginBtn">
+          <i class="fas fa-sign-in-alt"></i> Sign In
+        </button>
+
+      </form>
+
+      <div class="ob-card-foot">
+        Don't have an account? <a href="{{ url_for('register') }}">Create one</a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.getElementById('togglePassword').addEventListener('click', function () {
+  const inp  = document.getElementById('password');
+  const icon = document.getElementById('passwordIcon');
+  if (inp.type === 'password') {
+    inp.type = 'text';
+    icon.classList.replace('fa-eye', 'fa-eye-slash');
+  } else {
+    inp.type = 'password';
+    icon.classList.replace('fa-eye-slash', 'fa-eye');
+  }
+});
+</script>
+{% endblock %}

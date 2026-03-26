@@ -1,0 +1,382 @@
+{% extends "layout_modern.html" %}
+
+{% block title %}Create Account — OncoBloom{% endblock %}
+
+{% block extra_css %}
+<style>
+  /* ── Hide chrome for auth pages ── */
+  body.auth-page .navbar,
+  body.auth-page .sidebar { display: none !important; }
+  body.auth-page .main-content { margin: 0 !important; padding: 0 !important; width: 100% !important; }
+  body.auth-page .page-content { padding: 0 !important; }
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .ob-auth {
+    min-height: 100vh;
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+  }
+
+  /* ══ Brand panel ══ */
+  .ob-brand {
+    flex: 0 0 40%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3.5rem 4rem;
+    overflow: hidden;
+    background: linear-gradient(145deg, #3a2d5f 0%, #6b5f8a 55%, #8a79ab 100%);
+  }
+  .ob-brand::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 85%, rgba(138,121,171,.35) 0%, transparent 50%),
+      radial-gradient(circle at 85% 15%, rgba(230,165,184,.2) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .ob-blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .22; animation: blobF 9s ease-in-out infinite alternate; }
+  .ob-blob-1 { width: 260px; height: 260px; background: #c8bfe0; top: -50px; right: -50px; }
+  .ob-blob-2 { width: 180px; height: 180px; background: #e6a5b8; bottom: 60px; left: -30px; animation-delay: 4s; }
+  @keyframes blobF { from { transform: translateY(0) scale(1); } to { transform: translateY(18px) scale(1.06); } }
+
+  .ob-brand-content { position: relative; z-index: 1; }
+
+  .ob-logo { display: flex; align-items: center; gap: .75rem; margin-bottom: 3rem; }
+  .ob-logo-icon {
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; color: #fff;
+  }
+  .ob-logo-text { font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: -.3px; }
+
+  .ob-tagline { font-size: 2rem; font-weight: 700; color: #fff; line-height: 1.25; letter-spacing: -.5px; margin-bottom: .9rem; }
+  .ob-tagline span { color: #e6a5b8; }
+  .ob-sub { font-size: .95rem; color: rgba(255,255,255,.74); line-height: 1.65; max-width: 320px; margin-bottom: 2.8rem; }
+
+  .ob-features { display: flex; flex-direction: column; gap: 1rem; }
+  .ob-feature { display: flex; align-items: center; gap: .85rem; font-size: .88rem; color: rgba(255,255,255,.85); }
+  .ob-feature-icon {
+    width: 32px; height: 32px; flex-shrink: 0;
+    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: .72rem; color: #e6a5b8;
+  }
+
+  /* ══ Form panel ══ */
+  .ob-form-panel {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    padding: 2.5rem;
+    background: #f8fafc;
+    overflow-y: auto;
+  }
+
+  .ob-card {
+    width: 100%; max-width: 460px;
+    background: #fff; border-radius: 20px;
+    padding: 2.5rem 2.5rem 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,.05), 0 20px 50px -12px rgba(0,0,0,.09);
+    animation: cardIn .45s cubic-bezier(.22,.61,.36,1) both;
+  }
+  @keyframes cardIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  .ob-card-head { margin-bottom: 1.8rem; }
+  .ob-card-head h1 { font-size: 1.6rem; font-weight: 700; color: #0f172a; letter-spacing: -.4px; margin-bottom: .3rem; }
+  .ob-card-head p  { font-size: .9rem; color: #64748b; }
+
+  /* ── Flash ── */
+  .ob-flash {
+    padding: .7rem 1rem; border-radius: 10px; font-size: .85rem;
+    margin-bottom: 1.2rem; display: flex; align-items: flex-start; gap: .55rem;
+  }
+  .ob-flash.success { background:#f0fdf4; color:#166534; border:1px solid #bbf7d0; }
+  .ob-flash.danger  { background:#fff1f2; color:#9f1239; border:1px solid #fecdd3; }
+  .ob-flash.info    { background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; }
+  .ob-flash.warning { background:#fffbeb; color:#92400e; border:1px solid #fde68a; }
+
+  /* ── Divider ── */
+  .ob-section-label {
+    font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: #94a3b8;
+    margin: 1.5rem 0 1rem;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .ob-section-label::after {
+    content: ''; flex: 1;
+    height: 1px; background: #e2e8f0;
+  }
+
+  /* ── Fields ── */
+  .ob-field { margin-bottom: 1.1rem; }
+  .ob-label { display: block; font-size: .82rem; font-weight: 600; color: #374151; margin-bottom: .4rem; }
+
+  .ob-input-wrap { position: relative; display: flex; align-items: center; }
+  .ob-input-icon { position: absolute; left: .9rem; color: #94a3b8; font-size: .82rem; pointer-events: none; transition: color .2s; }
+  .ob-input {
+    width: 100%; padding: .7rem 1rem .7rem 2.5rem;
+    border: 1.5px solid #e2e8f0; border-radius: 10px;
+    font-size: .93rem; color: #0f172a; background: #f8fafc;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+    outline: none; font-family: inherit;
+  }
+  .ob-input::placeholder { color: #cbd5e1; }
+  .ob-input:focus { border-color: #8a79ab; box-shadow: 0 0 0 3px rgba(138,121,171,.11); background: #fff; }
+  .ob-input-wrap:focus-within .ob-input-icon { color: #8a79ab; }
+
+  .ob-pw-toggle {
+    position: absolute; right: .7rem;
+    background: none; border: none; color: #94a3b8;
+    cursor: pointer; padding: .25rem; border-radius: 6px;
+    display: flex; align-items: center; font-size: .82rem;
+    transition: color .2s;
+  }
+  .ob-pw-toggle:hover { color: #8a79ab; }
+
+  /* ── Password strength ── */
+  .ob-strength { margin-top: .65rem; }
+  .ob-strength-bars { display: flex; gap: 4px; margin-bottom: .3rem; }
+  .ob-strength-bar {
+    flex: 1; height: 4px; border-radius: 99px;
+    background: #e2e8f0; transition: background .3s;
+  }
+  .ob-strength-label { font-size: .75rem; color: #94a3b8; transition: color .3s; }
+
+  /* ── Checkbox ── */
+  .ob-check-label {
+    display: flex; align-items: flex-start; gap: .55rem;
+    font-size: .84rem; color: #64748b; cursor: pointer; line-height: 1.5;
+    margin-bottom: 1.4rem;
+  }
+  .ob-check-label input[type=checkbox] { width: 15px; height: 15px; accent-color: #0e7490; margin-top: 2px; flex-shrink: 0; }
+  .ob-check-label a { color: #0e7490; font-weight: 500; text-decoration: none; }
+  .ob-check-label a:hover { text-decoration: underline; }
+
+  /* ── Submit ── */
+  .ob-btn {
+    width: 100%; padding: .8rem 1rem;
+    border: none; border-radius: 10px;
+    background: linear-gradient(135deg, #6b5f8a 0%, #8a79ab 100%);
+    color: #fff; font-size: .95rem; font-weight: 600;
+    font-family: inherit; cursor: pointer; letter-spacing: .01em;
+    display: flex; align-items: center; justify-content: center; gap: .5rem;
+    transition: transform .15s, box-shadow .15s, filter .15s;
+    box-shadow: 0 4px 14px rgba(138,121,171,.4);
+  }
+  .ob-btn:hover { filter: brightness(1.07); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(138,121,171,.5); }
+  .ob-btn:active { transform: translateY(0); }
+
+  .ob-card-foot {
+    text-align: center; margin-top: 1.4rem; padding-top: 1.3rem;
+    border-top: 1px solid #f1f5f9; font-size: .87rem; color: #64748b;
+  }
+  .ob-card-foot a { font-weight: 600; color: #8a79ab; text-decoration: none; }
+  .ob-card-foot a:hover { text-decoration: underline; }
+
+  /* ── Responsive ── */
+  @media (max-width: 860px) {
+    .ob-brand { display: none; }
+    .ob-form-panel { background: #2d2540; }
+    .ob-card { background: #3a2d5f; box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+    .ob-card-head h1 { color: #f1f5f9; }
+    .ob-card-head p  { color: #c8bfe0; }
+    .ob-label { color: #dcd9e3; }
+    .ob-input { background: #2d2540; border-color: #4a3d6b; color: #f1f5f9; }
+    .ob-input:focus { background: #2d2540; border-color: #8a79ab; }
+    .ob-input::placeholder { color: #6b5f8a; }
+    .ob-section-label { color: #a09aad; }
+    .ob-section-label::after { background: #4a3d6b; }
+    .ob-check-label { color: #c8bfe0; }
+    .ob-card-foot { color: #c8bfe0; border-top-color: #4a3d6b; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="ob-auth">
+
+  <!-- ══ Brand Panel ══ -->
+  <div class="ob-brand">
+    <div class="ob-blob ob-blob-1"></div>
+    <div class="ob-blob ob-blob-2"></div>
+    <div class="ob-brand-content">
+      <a href="{{ url_for('index') }}" class="ob-logo" style="text-decoration:none;">
+        <div class="ob-logo-icon"><i class="fas fa-heartbeat"></i></div>
+        <span class="ob-logo-text">OncoBloom</span>
+      </a>
+      <h2 class="ob-tagline">Join the future<br>of <span>oncology care.</span></h2>
+      <p class="ob-sub">Create your account and start managing cancer patient records with confidence, clarity, and speed.</p>
+      <div class="ob-features">
+        <div class="ob-feature">
+          <div class="ob-feature-icon"><i class="fas fa-lock"></i></div>
+          <span>End-to-end encrypted data storage</span>
+        </div>
+        <div class="ob-feature">
+          <div class="ob-feature-icon"><i class="fas fa-clock"></i></div>
+          <span>Access records anytime, anywhere 24/7</span>
+        </div>
+        <div class="ob-feature">
+          <div class="ob-feature-icon"><i class="fas fa-mobile-alt"></i></div>
+          <span>Fully responsive across all devices</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ Form Panel ══ -->
+  <div class="ob-form-panel">
+    <div class="ob-card">
+
+      <div class="ob-card-head">
+        <h1>Create your account</h1>
+        <p>Fill in the details below to get started</p>
+      </div>
+
+
+
+      <form method="POST" action="{{ url_for('register') }}" id="registerForm" autocomplete="on">
+
+        <!-- Account section -->
+        <div class="ob-section-label">Account Info</div>
+
+        <div class="ob-field">
+          <label class="ob-label" for="username">Username <span style="color:#f43f5e">*</span></label>
+          <div class="ob-input-wrap">
+            <i class="fas fa-user ob-input-icon"></i>
+            <input type="text" id="username" name="username" class="ob-input"
+                   placeholder="Choose a unique username" autocomplete="username" required>
+          </div>
+        </div>
+
+        <div class="ob-field">
+          <label class="ob-label" for="full_name">Full Name <span style="color:#f43f5e">*</span></label>
+          <div class="ob-input-wrap">
+            <i class="fas fa-id-card ob-input-icon"></i>
+            <input type="text" id="full_name" name="full_name" class="ob-input"
+                   placeholder="Enter your full name" required>
+          </div>
+        </div>
+
+        <!-- Security section -->
+        <div class="ob-section-label">Security</div>
+
+        <div class="ob-field">
+          <label class="ob-label" for="password">Password <span style="color:#f43f5e">*</span></label>
+          <div class="ob-input-wrap">
+            <i class="fas fa-lock ob-input-icon"></i>
+            <input type="password" id="password" name="password" class="ob-input"
+                   placeholder="Create a strong password" autocomplete="new-password" required>
+            <button type="button" class="ob-pw-toggle" id="togglePassword" aria-label="Show password">
+              <i class="fas fa-eye" id="passwordIcon"></i>
+            </button>
+          </div>
+          <!-- Strength meter -->
+          <div class="ob-strength" id="strengthMeter" style="display:none">
+            <div class="ob-strength-bars">
+              <div class="ob-strength-bar" id="sb1"></div>
+              <div class="ob-strength-bar" id="sb2"></div>
+              <div class="ob-strength-bar" id="sb3"></div>
+              <div class="ob-strength-bar" id="sb4"></div>
+            </div>
+            <span class="ob-strength-label" id="strengthLabel">Weak</span>
+          </div>
+        </div>
+
+        <div class="ob-field">
+          <label class="ob-label" for="confirm_password">Confirm Password <span style="color:#f43f5e">*</span></label>
+          <div class="ob-input-wrap">
+            <i class="fas fa-lock ob-input-icon"></i>
+            <input type="password" id="confirm_password" name="confirm_password" class="ob-input"
+                   placeholder="Re-enter your password" autocomplete="new-password" required>
+            <button type="button" class="ob-pw-toggle" id="toggleConfirmPassword" aria-label="Show confirm password">
+              <i class="fas fa-eye" id="confirmPasswordIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <label class="ob-check-label">
+          <input type="checkbox" name="terms" required>
+          I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+        </label>
+
+        <button type="submit" class="ob-btn" id="registerBtn">
+          <i class="fas fa-user-plus"></i> Create Account
+        </button>
+
+      </form>
+
+      <div class="ob-card-foot">
+        Already have an account? <a href="{{ url_for('login') }}">Sign in</a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// ── Password toggles ──
+function pwToggle(inputId, iconId) {
+  const inp  = document.getElementById(inputId);
+  const icon = document.getElementById(iconId);
+  if (!inp || !icon) return;
+  if (inp.type === 'password') {
+    inp.type = 'text'; icon.classList.replace('fa-eye', 'fa-eye-slash');
+  } else {
+    inp.type = 'password'; icon.classList.replace('fa-eye-slash', 'fa-eye');
+  }
+}
+document.getElementById('togglePassword').addEventListener('click', () => pwToggle('password', 'passwordIcon'));
+document.getElementById('toggleConfirmPassword').addEventListener('click', () => pwToggle('confirm_password', 'confirmPasswordIcon'));
+
+// ── Password strength ──
+const pwInput  = document.getElementById('password');
+const meter    = document.getElementById('strengthMeter');
+const label    = document.getElementById('strengthLabel');
+const bars     = [document.getElementById('sb1'), document.getElementById('sb2'),
+                  document.getElementById('sb3'), document.getElementById('sb4')];
+const colors   = ['#ef4444', '#f97316', '#eab308', '#22c55e'];
+const labels   = ['Weak', 'Fair', 'Good', 'Strong'];
+
+pwInput.addEventListener('input', function () {
+  const v = this.value;
+  meter.style.display = v ? '' : 'none';
+
+  let score = 0;
+  if (v.length >= 8) score++;
+  if (/[A-Z]/.test(v)) score++;
+  if (/[0-9]/.test(v)) score++;
+  if (/[^a-zA-Z0-9]/.test(v)) score++;
+
+  bars.forEach((b, i) => {
+    b.style.background = i < score ? colors[score - 1] : '#e2e8f0';
+  });
+  label.textContent = labels[score - 1] || 'Weak';
+  label.style.color = colors[score - 1] || '#94a3b8';
+});
+
+// ── Client-side password match check ──
+document.getElementById('registerForm').addEventListener('submit', function (e) {
+  const pw   = document.getElementById('password').value;
+  const cpw  = document.getElementById('confirm_password').value;
+  if (pw !== cpw) {
+    e.preventDefault();
+    const existing = document.querySelector('.ob-flash.danger');
+    if (!existing) {
+      const msg = document.createElement('div');
+      msg.className = 'ob-flash danger';
+      msg.innerHTML = '<i class="fas fa-exclamation-circle"></i><span>Passwords do not match.</span>';
+      document.querySelector('.ob-card-head').insertAdjacentElement('afterend', msg);
+    }
+  }
+});
+</script>
+{% endblock %}

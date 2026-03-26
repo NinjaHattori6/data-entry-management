@@ -1,0 +1,201 @@
+{% extends "layout_modern.html" %}
+
+{% block title %}Bulk Operations - Oncobloom{% endblock %}
+
+{% block page_title %}Bulk Operations{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <div class="row mb-4">
+        <div class="col-12">
+            <a href="{{ url_for('admin_enhanced.admin_dashboard') }}" class="btn btn-outline-secondary mb-3">
+                <i class="fas fa-arrow-left"></i> Back to Admin Dashboard
+            </a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <i class="fas fa-tasks"></i>
+                Bulk Patient Operations
+            </h5>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('admin_enhanced.bulk_operations') }}">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="operation" class="form-label">Operation Type</label>
+                        <select class="form-select" id="operation" name="operation" required>
+                            <option value="">Select Operation</option>
+                            <option value="delete">Delete Selected Patients</option>
+                            <option value="update_status">Update Status</option>
+                            <option value="assign_doctor">Assign Doctor</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-6" id="operationOptions" style="display: none;">
+                        <!-- Dynamic options will be inserted here -->
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" id="selectAll" class="form-check-input">
+                                </th>
+                                <th>Patient ID</th>
+                                <th>Name</th>
+                                <th>Cancer Type</th>
+                                <th>Stage</th>
+                                <th>Current Status</th>
+                                <th>Doctor</th>
+                                <th>Created By</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for patient in patients %}
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="selected_patients" value="{{ patient['id'] }}" 
+                                           class="form-check-input patient-checkbox">
+                                </td>
+                                <td><span class="badge bg-secondary">{{ patient['patient_id'] }}</span></td>
+                                <td><strong>{{ patient['full_name'] }}</strong></td>
+                                <td>{{ patient['cancer_type'] }}</td>
+                                <td>
+                                    {% if patient['cancer_stage'] == 'Stage I' %}
+                                        <span class="badge bg-success">{{ patient['cancer_stage'] }}</span>
+                                    {% elif patient['cancer_stage'] == 'Stage II' %}
+                                        <span class="badge bg-info">{{ patient['cancer_stage'] }}</span>
+                                    {% elif patient['cancer_stage'] == 'Stage III' %}
+                                        <span class="badge bg-warning">{{ patient['cancer_stage'] }}</span>
+                                    {% elif patient['cancer_stage'] == 'Stage IV' %}
+                                        <span class="badge bg-danger">{{ patient['cancer_stage'] }}</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">{{ patient['cancer_stage'] }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if patient['current_status'] == 'Active Treatment' %}
+                                        <span class="badge bg-primary">{{ patient['current_status'] }}</span>
+                                    {% elif patient['current_status'] == 'Recovered' %}
+                                        <span class="badge bg-success">{{ patient['current_status'] }}</span>
+                                    {% elif patient['current_status'] == 'Critical' %}
+                                        <span class="badge bg-danger">{{ patient['current_status'] }}</span>
+                                    {% elif patient['current_status'] == 'Under Observation' %}
+                                        <span class="badge bg-warning">{{ patient['current_status'] }}</span>
+                                    {% elif patient['current_status'] == 'Remission' %}
+                                        <span class="badge bg-info">{{ patient['current_status'] }}</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">{{ patient['current_status'] }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ patient['doctor_name'] or 'Not Assigned' }}</td>
+                                <td><small class="text-muted">User {{ patient['created_by'] }}</small></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary" id="submitBtn" disabled>
+                            <i class="fas fa-play"></i> Execute Operation
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary" onclick="clearSelection()">
+                            <i class="fas fa-times"></i> Clear Selection
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const operationSelect = document.getElementById('operation');
+    const operationOptions = document.getElementById('operationOptions');
+    const submitBtn = document.getElementById('submitBtn');
+    const selectAllCheckbox = document.getElementById('selectAll');
+    const patientCheckboxes = document.querySelectorAll('.patient-checkbox');
+    
+    // Operation type change handler
+    operationSelect.addEventListener('change', function() {
+        const operation = this.value;
+        operationOptions.innerHTML = '';
+        operationOptions.style.display = 'block';
+        
+        if (operation === 'update_status') {
+            operationOptions.innerHTML = `
+                <label for="new_status" class="form-label">New Status</label>
+                <select class="form-select" id="new_status" name="new_status" required>
+                    <option value="">Select Status</option>
+                    <option value="Active Treatment">Active Treatment</option>
+                    <option value="Recovered">Recovered</option>
+                    <option value="Critical">Critical</option>
+                    <option value="Under Observation">Under Observation</option>
+                    <option value="Remission">Remission</option>
+                    <option value="Terminal">Terminal</option>
+                </select>
+            `;
+        } else if (operation === 'assign_doctor') {
+            operationOptions.innerHTML = `
+                <label for="doctor_name" class="form-label">Doctor Name</label>
+                <input type="text" class="form-control" id="doctor_name" name="doctor_name" 
+                       placeholder="Enter doctor name" required>
+            `;
+        } else if (operation === 'delete') {
+            operationOptions.innerHTML = `
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>Warning:</strong> This will permanently delete selected patient records. This action cannot be undone.
+                </div>
+            `;
+        }
+        
+        updateSubmitButton();
+    });
+    
+    // Select all checkbox handler
+    selectAllCheckbox.addEventListener('change', function() {
+        patientCheckboxes.forEach(checkbox => {
+            checkbox.checked = this.checked;
+        });
+        updateSubmitButton();
+    });
+    
+    // Individual checkbox handlers
+    patientCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateSubmitButton);
+    });
+    
+    // Update submit button state
+    function updateSubmitButton() {
+        const selectedCount = document.querySelectorAll('.patient-checkbox:checked').length;
+        const operation = operationSelect.value;
+        
+        if (operation && selectedCount > 0) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = `<i class="fas fa-play"></i> Execute Operation on ${selectedCount} patient${selectedCount > 1 ? 's' : ''}`;
+        } else {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-play"></i> Execute Operation';
+        }
+    }
+    
+    // Clear selection
+    window.clearSelection = function() {
+        selectAllCheckbox.checked = false;
+        patientCheckboxes.forEach(checkbox => checkbox.checked = false);
+        updateSubmitButton();
+    };
+});
+</script>
+{% endblock %}

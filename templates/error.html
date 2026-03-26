@@ -1,0 +1,35 @@
+{% extends "layout_modern.html" %}
+
+{% block title %}Error - OncoBloom{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Error</h1>
+    <p class="page-subtitle">Something went wrong</p>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="alert alert-danger">
+            <h4 class="alert-heading">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                Error Occurred
+            </h4>
+            <p class="mb-0">{{ error or "An unexpected error occurred. Please try again." }}</p>
+        </div>
+        
+        <div class="mt-4">
+            <a href="{{ url_for('index') }}" class="btn btn-primary">
+                <i class="fas fa-home me-2"></i>
+                Go to Homepage
+            </a>
+            {% if session.user_id %}
+            <a href="{{ url_for('dashboard') }}" class="btn btn-outline-primary ms-2">
+                <i class="fas fa-tachometer-alt me-2"></i>
+                Dashboard
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,710 @@
+{% extends "layout_modern.html" %}
+
+{% block title %}Add Patient - OncoBloom{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Register New Patient</h1>
+    <p class="page-subtitle">Comprehensive patient registration form</p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 class="card-title">Patient Information</h2>
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Dashboard
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('add_patient') }}" id="patientForm" class="modern-form medical-form">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-user"></i>
+                            Personal Information
+                        </h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="full_name" class="form-label">Full Name *</label>
+                                <input type="text" class="form-control" id="full_name" name="full_name" 
+                                       placeholder="Enter patient's full name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="age" class="form-label">Age *</label>
+                                <input type="number" class="form-control" id="age" name="age" 
+                                       placeholder="Enter age" min="1" max="150" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="gender" class="form-label">Gender *</label>
+                                <select class="form-select" id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="blood_group" class="form-label">Blood Group</label>
+                                <select class="form-select" id="blood_group" name="blood_group">
+                                    <option value="">Select Blood Group</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-phone"></i>
+                            Contact Information
+                        </h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="contact_number" class="form-label">Contact Number</label>
+                                <input type="tel" class="form-control" id="contact_number" name="contact_number" 
+                                       placeholder="Enter phone number">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email" 
+                                       placeholder="Enter email address">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" id="city" name="city" 
+                                       placeholder="Enter city">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="state" class="form-label">State</label>
+                                <input type="text" class="form-control" id="state" name="state" 
+                                       placeholder="Enter state">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Contact -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Emergency Contact
+                        </h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="emergency_contact_name" class="form-label">Emergency Contact Name</label>
+                                <input type="text" class="form-control" id="emergency_contact_name" name="emergency_contact_name" 
+                                       placeholder="Enter emergency contact name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="emergency_contact_number" class="form-label">Emergency Contact Number</label>
+                                <input type="tel" class="form-control" id="emergency_contact_number" name="emergency_contact_number" 
+                                       placeholder="Enter emergency contact number">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Medical Information -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-heartbeat"></i>
+                            Medical Information
+                        </h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="cancer_type" class="form-label">Cancer Type *</label>
+                                <select class="form-select" id="cancer_type" name="cancer_type" required>
+                                    <option value="">Select Cancer Type</option>
+                                    <option value="Breast Cancer">Breast Cancer</option>
+                                    <option value="Lung Cancer">Lung Cancer</option>
+                                    <option value="Prostate Cancer">Prostate Cancer</option>
+                                    <option value="Colorectal Cancer">Colorectal Cancer</option>
+                                    <option value="Skin Cancer">Skin Cancer</option>
+                                    <option value="Stomach Cancer">Stomach Cancer</option>
+                                    <option value="Liver Cancer">Liver Cancer</option>
+                                    <option value="Pancreatic Cancer">Pancreatic Cancer</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="cancer_stage" class="form-label">Cancer Stage *</label>
+                                <select class="form-select" id="cancer_stage" name="cancer_stage" required>
+                                    <option value="">Select Cancer Stage</option>
+                                    <option value="Stage I">Stage I</option>
+                                    <option value="Stage II">Stage II</option>
+                                    <option value="Stage III">Stage III</option>
+                                    <option value="Stage IV">Stage IV</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="tumor_size" class="form-label">Tumor Size (cm)</label>
+                                <input type="number" class="form-control" id="tumor_size" name="tumor_size" 
+                                       placeholder="Enter tumor size in cm" step="0.1" min="0">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="metastasis" class="form-label">Metastasis</label>
+                                <select class="form-select" id="metastasis" name="metastasis">
+                                    <option value="">Select Metastasis Status</option>
+                                    <option value="No Metastasis">No Metastasis</option>
+                                    <option value="Regional Metastasis">Regional Metastasis</option>
+                                    <option value="Distant Metastasis">Distant Metastasis</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="diagnosis_date" class="form-label">Diagnosis Date *</label>
+                                <div class="date-input-modern">
+                                    <input type="date" class="form-control" id="diagnosis_date" name="diagnosis_date" 
+                                           required max="{{ current_date }}">
+                                </div>
+                                <small class="form-text">Format: YYYY-MM-DD</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="current_status" class="form-label">Current Status *</label>
+                                <select class="form-select" id="current_status" name="current_status" required>
+                                    <option value="">Select Current Status</option>
+                                    <option value="Active Treatment">Active Treatment</option>
+                                    <option value="Recovered">Recovered</option>
+                                    <option value="Critical">Critical</option>
+                                    <option value="Under Observation">Under Observation</option>
+                                    <option value="Remission">Remission</option>
+                                    <option value="Terminal">Terminal</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Treatment Information -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-medkit"></i>
+                            Treatment Information
+                        </h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="treatment_type" class="form-label">Treatment Type</label>
+                                <select class="form-select" id="treatment_type" name="treatment_type">
+                                    <option value="">Select Treatment Type</option>
+                                    <option value="Chemotherapy">Chemotherapy</option>
+                                    <option value="Radiation Therapy">Radiation Therapy</option>
+                                    <option value="Surgery">Surgery</option>
+                                    <option value="Immunotherapy">Immunotherapy</option>
+                                    <option value="Targeted Therapy">Targeted Therapy</option>
+                                    <option value="Hormone Therapy">Hormone Therapy</option>
+                                    <option value="Combination">Combination</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="treatment_phase" class="form-label">Treatment Phase</label>
+                                <select class="form-select" id="treatment_phase" name="treatment_phase">
+                                    <option value="">Select Treatment Phase</option>
+                                    <option value="Initial">Initial</option>
+                                    <option value="Induction">Induction</option>
+                                    <option value="Consolidation">Consolidation</option>
+                                    <option value="Maintenance">Maintenance</option>
+                                    <option value="Palliative">Palliative</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="doctor_name" class="form-label">Treating Doctor</label>
+                                <input type="text" class="form-control" id="doctor_name" name="doctor_name" 
+                                       placeholder="Enter doctor's name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="hospital_name" class="form-label">Hospital Name</label>
+                                <input type="text" class="form-control" id="hospital_name" name="hospital_name" 
+                                       placeholder="Enter hospital name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Physical Measurements -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-weight"></i>
+                            Physical Measurements
+                        </h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="height" class="form-label">Height (cm)</label>
+                                <input type="number" class="form-control" id="height" name="height" 
+                                       placeholder="Enter height in cm" step="0.1" min="0">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="weight" class="form-label">Weight (kg)</label>
+                                <input type="number" class="form-control" id="weight" name="weight" 
+                                       placeholder="Enter weight in kg" step="0.1" min="0">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="blood_pressure" class="form-label">Blood Pressure</label>
+                                <input type="text" class="form-control" id="blood_pressure" name="blood_pressure" 
+                                       placeholder="e.g., 120/80">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="heart_rate" class="form-label">Heart Rate (bpm)</label>
+                                <input type="number" class="form-control" id="heart_rate" name="heart_rate" 
+                                       placeholder="Enter heart rate" min="0" max="300">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Risk Assessment -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Risk Assessment
+                        </h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="risk_level" class="form-label">Risk Level</label>
+                                <select class="form-select" id="risk_level" name="risk_level">
+                                    <option value="">Select Risk Level</option>
+                                    <option value="Low">Low</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="High">High</option>
+                                    <option value="Critical">Critical</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="next_appointment" class="form-label">Next Appointment</label>
+                                <div class="date-input-modern">
+                                    <input type="date" class="form-control" id="next_appointment" name="next_appointment">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
+                            <i class="fas fa-save"></i>
+                            Register Patient
+                        </button>
+                        <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary btn-lg">
+                            <i class="fas fa-times"></i>
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.getElementById('patientForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const btn = document.getElementById('submitBtn');
+    const formData = new FormData(this);
+    
+    // Validate required fields
+    if (!validateForm(this)) {
+        return;
+    }
+    
+    // Show loading state
+    showLoading(btn);
+    
+    // Submit form
+    fetch(this.action, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(html => {
+        // If registration successful, page will redirect
+        window.location.href = window.location.href;
+    })
+    .catch(error => {
+        hideLoading(btn);
+        showToast('Registration failed. Please try again.', 'danger');
+    });
+});
+
+// Auto-calculate BMI when height and weight are entered
+document.getElementById('height').addEventListener('input', calculateBMI);
+document.getElementById('weight').addEventListener('input', calculateBMI);
+
+// Add date validation
+document.getElementById('diagnosis_date').addEventListener('change', validateDiagnosisDate);
+document.getElementById('next_appointment').addEventListener('change', validateFutureDate);
+
+function calculateBMI() {
+    const height = parseFloat(document.getElementById('height').value);
+    const weight = parseFloat(document.getElementById('weight').value);
+    
+    if (height && weight && height > 0 && weight > 0) {
+        const heightInMeters = height / 100;
+        const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(2);
+        
+        // You could display this BMI value if needed
+        console.log('Calculated BMI:', bmi);
+    }
+}
+
+function validateDiagnosisDate() {
+    const dateInput = this;
+    const selectedDate = new Date(dateInput.value);
+    const today = new Date();
+    
+    // Clear any previous validation
+    dateInput.setCustomValidity('');
+    
+    if (selectedDate > today) {
+        dateInput.setCustomValidity('Diagnosis date cannot be in the future');
+        showToast('Diagnosis date cannot be in the future', 'danger');
+    } else {
+        // Check if date is too far in the past (more than 100 years)
+        const minDate = new Date();
+        minDate.setFullYear(today.getFullYear() - 100);
+        
+        if (selectedDate < minDate) {
+            dateInput.setCustomValidity('Diagnosis date cannot be more than 100 years in the past');
+            showToast('Diagnosis date cannot be more than 100 years in the past', 'danger');
+        }
+    }
+}
+
+function validateFutureDate() {
+    const dateInput = this;
+    const selectedDate = new Date(dateInput.value);
+    const today = new Date();
+    
+    // Clear any previous validation
+    dateInput.setCustomValidity('');
+    
+    if (selectedDate < today) {
+        dateInput.setCustomValidity('Appointment date cannot be in the past');
+        showToast('Appointment date cannot be in the past', 'warning');
+    }
+}
+
+// Set max date to today for diagnosis date
+document.addEventListener('DOMContentLoaded', function() {
+    const today = new Date().toISOString().split('T')[0];
+    const diagnosisDateInput = document.getElementById('diagnosis_date');
+    if (diagnosisDateInput) {
+        diagnosisDateInput.setAttribute('max', today);
+    }
+});
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Add Patient Page Specific Styles */
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.modern-form {
+    max-width: 100%;
+}
+
+.form-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.form-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.section-title i {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    background: var(--card-bg);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(14, 116, 144, 0.1);
+}
+
+.form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+    background-color: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(14, 116, 144, 0.1);
+    outline: none;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Card improvements */
+.card {
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: var(--shadow);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--background), var(--card-bg));
+    border-bottom: 1px solid var(--border);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    padding: 2rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn-lg {
+        width: 100%;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .card-header {
+        padding: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.125rem;
+    }
+    
+    .section-title i {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Form validation styles */
+.form-control:invalid {
+    border-color: var(--danger);
+}
+
+.form-control:invalid:focus {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+/* Loading state */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Hover effects */
+.form-control:hover {
+    border-color: var(--primary-light);
+}
+
+.form-select:hover {
+    border-color: var(--primary-light);
+}
+
+/* Animation for form sections */
+.form-section {
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Required field indicator */
+.form-label::after {
+    content: ' *';
+    color: var(--danger);
+    font-weight: 700;
+}
+
+.form-label:not([required])::after {
+    content: '';
+}
+
+/* Placeholder styling */
+.form-control::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+/* Focus states */
+.form-control:focus::placeholder {
+    opacity: 0.5;
+}
+
+/* Date input styling */
+input[type="date"] {
+    cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    background: transparent;
+    color: var(--primary);
+}
+
+/* Number input styling */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    opacity: 0.5;
+}
+
+/* Tel input styling */
+input[type="tel"] {
+    cursor: text;
+}
+
+/* Email input styling */
+input[type="email"] {
+    cursor: text;
+}
+
+/* Text input styling */
+input[type="text"] {
+    cursor: text;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,425 @@
+{% extends "layout_modern.html" %}
+
+{% block title %}User Management - OncoBloom{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">User Management</h1>
+    <p class="page-subtitle">Manage system users and permissions</p>
+</div>
+
+<!-- Statistics Cards -->
+<div class="stats-grid">
+    <div class="stats-card primary">
+        <div class="stats-icon">
+            <i class="fas fa-users"></i>
+        </div>
+        <div class="stats-number">{{ total_users }}</div>
+        <div class="stats-label">Total Users</div>
+    </div>
+    
+    <div class="stats-card success">
+        <div class="stats-icon">
+            <i class="fas fa-user-plus"></i>
+        </div>
+        <div class="stats-number">{{ total_patients }}</div>
+        <div class="stats-label">Total Patients</div>
+    </div>
+    
+    <div class="stats-card warning">
+        <div class="stats-icon">
+            <i class="fas fa-crown"></i>
+        </div>
+        <div class="stats-number">{{ total_admins }}</div>
+        <div class="stats-label">Admin Users</div>
+    </div>
+    
+    <div class="stats-card info">
+        <div class="stats-icon">
+            <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="stats-number">{{ "%.1f"|format(total_patients / total_users if total_users > 0 else 0) }}</div>
+        <div class="stats-label">Avg Patients/User</div>
+    </div>
+</div>
+
+<!-- Users Table -->
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="card-title">System Users</h2>
+            <div class="header-actions">
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search users..." id="userSearch">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-wrapper">
+            <table class="table" id="usersTable">
+                <thead>
+                    <tr>
+                        <th data-sort="username">Username</th>
+                        <th data-sort="full_name">Full Name</th>
+                        <th data-sort="role">Role</th>
+                        <th data-sort="patients">Patients</th>
+                        <th data-sort="created">Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td data-column="username">
+                            <div class="user-info">
+                                <div class="user-avatar-small">{{ user['username'][0].upper() }}</div>
+                                <span>{{ user['username'] }}</span>
+                            </div>
+                        </td>
+                        <td data-column="full_name">{{ user['full_name'] or 'Not set' }}</td>
+                        <td data-column="role">
+                            {% if user['is_admin'] %}
+                                <span class="badge badge-danger">Admin</span>
+                            {% else %}
+                                <span class="badge badge-primary">User</span>
+                            {% endif %}
+                        </td>
+                        <td data-column="patients">
+                            <span class="patient-count">{{ user['patient_count'] }}</span>
+                        </td>
+                        <td data-column="created">{{ user['created_at'][:10] }}</td>
+                        <td>
+                            <div class="action-buttons">
+                                {% if user['is_admin'] %}
+                                    <form method="POST" action="{{ url_for('admin_demote', user_id=user['id']) }}" 
+                                          style="display: inline;" 
+                                          onsubmit="return confirmAction('Demote {{ user['username'] }} to regular user?')">
+                                        <button type="submit" class="btn btn-outline-warning btn-sm" title="Demote to User">
+                                            <i class="fas fa-arrow-down"></i>
+                                            Demote
+                                        </button>
+                                    </form>
+                                {% else %}
+                                    <form method="POST" action="{{ url_for('admin_promote', user_id=user['id']) }}" 
+                                          style="display: inline;" 
+                                          onsubmit="return confirmAction('Promote {{ user['username'] }} to admin?')">
+                                        <button type="submit" class="btn btn-outline-success btn-sm" title="Promote to Admin">
+                                            <i class="fas fa-arrow-up"></i>
+                                            Promote
+                                        </button>
+                                    </form>
+                                {% endif %}
+                                
+                                {% if user['id'] != session['user_id'] %}
+                                <form method="POST" action="{{ url_for('admin_delete_user', user_id=user['id']) }}" 
+                                      style="display: inline;" 
+                                      onsubmit="return confirmAction('Delete user {{ user['username'] }}? This will also delete all their patients.')">
+                                    <button type="submit" class="btn btn-outline-danger btn-sm" title="Delete User">
+                                        <i class="fas fa-trash"></i>
+                                        Delete
+                                    </button>
+                                </form>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Quick Actions</h2>
+    </div>
+    <div class="card-body">
+        <div class="quick-actions">
+            <a href="{{ url_for('register') }}" class="btn btn-primary">
+                <i class="fas fa-user-plus"></i>
+                Add New User
+            </a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-outline-primary">
+                <i class="fas fa-tachometer-alt"></i>
+                Back to Dashboard
+            </a>
+            <a href="{{ url_for('admin_enhanced.admin_dashboard') }}" class="btn btn-outline-success">
+                <i class="fas fa-crown"></i>
+                Enhanced Admin
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize search
+    const searchInput = document.getElementById('userSearch');
+    const tableRows = document.querySelectorAll('#usersTable tbody tr');
+    
+    if (searchInput) {
+        initSearch(searchInput, tableRows);
+    }
+    
+    // Initialize table sorting
+    const table = document.getElementById('usersTable');
+    if (table) {
+        initTableSort(table);
+    }
+});
+
+// Override confirm action to use modal
+function confirmAction(message, onConfirm) {
+    showModal('Confirm Action', message, onConfirm);
+}
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Admin Specific Styles */
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.user-avatar-small {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.patient-count {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.action-buttons form {
+    margin: 0;
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    .header-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-bar {
+        max-width: none;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+    
+    .table {
+        font-size: 0.875rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.75rem;
+    }
+}
+
+/* Table hover effects */
+.table tbody tr:hover {
+    background: var(--background);
+    transform: translateX(2px);
+    transition: all 0.2s ease;
+}
+
+/* Button animations */
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+/* Badge improvements */
+.badge {
+    padding: 0.375rem 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+}
+
+/* Search bar styling */
+.search-bar {
+    position: relative;
+    max-width: 300px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.search-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(14, 116, 144, 0.1);
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+/* Form styling */
+form {
+    display: inline;
+}
+
+.btn-sm {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Loading state */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Card improvements */
+.card {
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: var(--shadow);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--background), var(--card-bg));
+    border-bottom: 1px solid var(--border);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+/* Table wrapper improvements */
+.table-wrapper {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.table {
+    margin: 0;
+}
+
+.table th {
+    background: linear-gradient(135deg, var(--background), var(--card-bg));
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.75rem;
+    padding: 1rem;
+}
+
+.table td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+/* Sortable headers */
+.table th[data-sort] {
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+.table th[data-sort]:hover {
+    background: var(--border-light);
+}
+
+.table th[data-sort]::after {
+    content: '↕';
+    position: absolute;
+    right: 0.5rem;
+    opacity: 0.3;
+    font-size: 0.75rem;
+}
+
+.table th[data-sort]:hover::after {
+    opacity: 0.6;
+}
+</style>
+{% endblock %}

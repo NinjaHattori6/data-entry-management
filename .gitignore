@@ -1,0 +1,73 @@
+# ── Environment ──
+.env
+.env.production
+.env.local
+
+# ── Database (never commit the live DB) ──
+*.db
+*.sqlite
+*.sqlite3
+
+# ── Logs ──
+*.log
+
+# ── Python cache ──
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# ── Virtual environment ──
+venv/
+.venv/
+env/
+ENV/
+
+# ── Build / dist ──
+build/
+dist/
+*.spec
+*.zip
+*.exe
+*.egg-info/
+.eggs/
+
+# ── IDE / editor ──
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ── OS files ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Export files generated at runtime ──
+*.csv
+*.pdf
+*.xlsx
+
+# ── Jupyter ──
+*.ipynb
+.ipynb_checkpoints/
+
+# ── Batch / PowerShell scripts not needed in repo ──
+*.bat
+run_production.bat
+start_production.py
+
+# ── One-off / unused scripts ──
+add_50_patients.py
+add_patients.py
+migrate_patients_table.py
+config.py
+ScriptEditor.bat
+ultimate_fix.ps1
+ultimate_fix_ascii.ps1
+
+# ── Old docs not needed in repo ──
+PRODUCTION_UPGRADE_SUMMARY.md
+README_NEW.md
+README_PRODUCTION.md

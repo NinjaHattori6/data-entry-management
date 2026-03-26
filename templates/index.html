@@ -1,0 +1,98 @@
+﻿{% extends "layout_modern.html" %}
+{% block title %}Home | Oncology Tracking System{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="text-center py-5 hero-section">
+  <div class="container py-5 px-3">
+    <h1 class="fw-bold display-5 mb-3">
+      Welcome to the <span class="text-warning">Oncology Tracking System</span>
+    </h1>
+    <p class="lead mb-4 mx-auto" style="max-width: 700px;">
+      A comprehensive, secure, and efficient way to manage patient records by adding, viewing, updating, and exporting data effortlessly.
+    </p>
+
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="{{ url_for('login') }}"
+         class="btn btn-light btn-lg fw-semibold px-4 shadow-sm login-btn text-primary">
+        <i class="fa-solid fa-right-to-bracket me-2"></i> Login
+      </a>
+
+      <a href="{{ url_for('register') }}"
+         class="btn btn-light btn-lg fw-semibold px-4 shadow-sm register-btn text-primary">
+        <i class="fa-solid fa-user-plus me-2"></i> Register
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="container text-center my-5">
+  <h2 class="fw-bold text-primary mb-4">Why Choose This System?</h2>
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 p-4 h-100 rounded-4">
+        <div class="mb-3 text-primary">
+          <i class="fa-solid fa-database fa-2x"></i>
+        </div>
+        <h5 class="fw-semibold">Seamless Data Management</h5>
+        <p class="text-muted small mb-0">
+          Add, edit, and delete your data with a clean and easy-to-use dashboard.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 p-4 h-100 rounded-4">
+        <div class="mb-3 text-success">
+          <i class="fa-solid fa-file-export fa-2x"></i>
+        </div>
+        <h5 class="fw-semibold">Instant Data Export</h5>
+        <p class="text-muted small mb-0">
+          Export your records instantly to CSV, Excel, or PDF &mdash; ready for reports and sharing.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 p-4 h-100 rounded-4">
+        <div class="mb-3 text-danger">
+          <i class="fa-solid fa-chart-pie fa-2x"></i>
+        </div>
+        <h5 class="fw-semibold">Smart Insights</h5>
+        <p class="text-muted small mb-0">
+          See summaries, total counts, and entry statistics at a glance.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="py-5 bg-light">
+  <div class="container text-center">
+    <h3 class="fw-bold text-primary mb-3">About This Project</h3>
+    <p class="text-muted mx-auto" style="max-width: 700px;">
+      The <strong>Data Vault</strong> is a Flask-based web application built with
+      <strong>Python</strong>, <strong>SQLite</strong>, and <strong>Bootstrap 5</strong>.
+      It enables users to securely manage their records, download formatted reports,
+      and provides an admin dashboard for advanced data oversight.
+    </p>
+  </div>
+</section>
+
+<!-- Call-to-Action Section -->
+<section class="text-center py-5 cta-section">
+  <div class="container px-3">
+    <h2 class="fw-bold mb-3">Get Started Today!</h2>
+    <p class="mb-4">Sign up now and start managing your data the smart way.</p>
+    <a href="{{ url_for('register') }}" class="btn btn-light btn-lg fw-semibold px-4 shadow-sm">
+      <i class="fa-solid fa-user-plus me-2"></i> Create Your Account
+    </a>
+  </div>
+</section>
+
+{% endblock %}

@@ -21,6 +21,7 @@ def init_database():
             full_name     VARCHAR(120),
             email         VARCHAR(120),
             password_hash VARCHAR(255) NOT NULL,
+            recovery_key_hash VARCHAR(255),
             is_admin      BOOLEAN DEFAULT FALSE,
             created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )

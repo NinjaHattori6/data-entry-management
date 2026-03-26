@@ -1,0 +1,129 @@
+{% extends "layout_modern.html" %}
+{% block title %}Registration Success | OncoBloom{% endblock %}
+
+{% block content %}
+<div class="app-container">
+  
+  <div class="row w-100 m-0 h-100 justify-content-center align-items-center">
+    <div class="col-md-8 col-lg-6 col-xl-5 p-4">
+      
+      <div class="ob-success-card text-center">
+        <div class="ob-success-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        
+        <h2 class="ob-title">Account Created!</h2>
+        <p class="ob-subtitle">Hello <strong>{{ username }}</strong>, welcome to OncoBloom.</p>
+        
+        <div class="ob-key-box">
+          <h5><i class="fas fa-key me-2"></i> Your Account Recovery Key</h5>
+          <p class="text-sm">If you ever forget your password, you will need this key to reset it. <strong>We do not send password resets via email.</strong> Keep this key incredibly safe.</p>
+          
+          <div class="ob-raw-key">
+            <code>{{ recovery_key }}</code>
+          </div>
+          
+          <div class="mt-4 mb-3" id="qrcode" style="display:flex; justify-content:center; align-items:center;"></div>
+          <p class="text-xs text-muted">Scan or take a screenshot of this QR Code and store it securely.</p>
+        </div>
+
+        <a href="{{ url_for('login') }}" class="ob-btn mt-4">
+          <i class="fas fa-arrow-right me-2"></i> Proceed to Login
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Download qrcode.js to generate the QR code -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    new QRCode(document.getElementById("qrcode"), {
+      text: "{{ recovery_key }}",
+      width: 140,
+      height: 140,
+      colorDark : "#3a2d5f",
+      colorLight : "#ffffff",
+      correctLevel : QRCode.CorrectLevel.H
+    });
+  });
+</script>
+
+<style>
+  body {
+    background: #f1eff5; /* Light purple background */
+  }
+  .ob-success-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    border: 1px solid rgba(138,121,171,0.2);
+  }
+  .ob-success-icon {
+    font-size: 4rem;
+    color: #22c55e;
+    margin-bottom: 1.5rem;
+  }
+  .ob-title {
+    font-weight: 700;
+    color: #3a2d5f;
+    margin-bottom: 0.5rem;
+  }
+  .ob-subtitle {
+    color: #6b5f8a;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  .ob-key-box {
+    background: #fffafa; /* very light warm background */
+    border: 1px dashed #e6a5b8;
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .ob-key-box h5 {
+    color: #d95c5c;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .ob-key-box p {
+    color: #6b5f8a;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+  .ob-raw-key {
+    background: #f1eff5;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #3a2d5f;
+    letter-spacing: 0.1em;
+  }
+  .text-xs { font-size: 0.75rem; }
+  .ob-btn {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #6b5f8a 0%, #8a79ab 100%);
+    color: #fff;
+    font-size: 0.97rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 14px rgba(138,121,171,0.4);
+  }
+  .ob-btn:hover {
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(138,121,171,0.5);
+  }
+</style>
+{% endblock %}

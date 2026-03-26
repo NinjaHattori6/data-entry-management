@@ -3,17 +3,9 @@ Enhanced Admin Routes for Cancer Patient Management System
 """
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 from utils.decorators import login_required, admin_required
+from utils.db import get_db_connection
 import sqlite3
 from datetime import datetime
-
-# Database configuration
-DATABASE = 'oncology_system.db'
-
-def get_db_connection():
-    """Create a database connection"""
-    conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row
-    return conn
 
 # Create admin blueprint
 admin_bp = Blueprint('admin_enhanced', __name__)

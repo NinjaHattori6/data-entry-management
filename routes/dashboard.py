@@ -69,26 +69,7 @@ def register_dashboard_routes(app):
                              stage_distribution=stage_distribution,
                              status_distribution=status_distribution)
 
-    @app.route('/dashboard-sidebar')
-    @login_required
-    def dashboard_sidebar():
-        """Display modern dashboard with sidebar component"""
-        conn = get_db_connection()
-        
-        # Get statistics for sidebar demo
-        total_patients = conn.execute(
-            'SELECT COUNT(*) as count FROM patients'
-        ).fetchone()['count']
-        
-        conn.close()
-        
-        # Demo data for the sidebar dashboard
-        return render_template('dashboard_sidebar_demo.html', 
-                             total_patients=total_patients,
-                             appointments_today=8,
-                             treatments_completed=24,
-                             critical_cases=2)
-
+    
     @app.route('/analytics')
     @login_required
     def analytics():

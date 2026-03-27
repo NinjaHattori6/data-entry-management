@@ -293,31 +293,31 @@ def register_patient_routes(app):
             missing_fields = [field for field, value in required_fields.items() if not value]
             if missing_fields:
                 flash(f"Required fields missing: {', '.join(missing_fields)}", "danger")
-                return render_template("add_patient_modern.html")
+                return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
 
             try:
                 age = int(age)
                 if age <= 0 or age > 150:
                     flash("Please enter a valid age (1-150)", "danger")
-                    return render_template("add_patient_modern.html")
+                    return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
             except ValueError:
                 flash("Age must be a valid number", "danger")
-                return render_template("add_patient_modern.html")
+                return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
 
             if diagnosis_date:
                 try:
                     parsed_date = datetime.strptime(diagnosis_date, '%Y-%m-%d')
                     if parsed_date > datetime.now():
                         flash("Diagnosis date cannot be in the future", "danger")
-                        return render_template("add_patient_modern.html")
+                        return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
                     
                     min_date = datetime.now().replace(year=datetime.now().year - 100)
                     if parsed_date < min_date:
                         flash("Diagnosis date cannot be more than 100 years in the past", "danger")
-                        return render_template("add_patient_modern.html")
+                        return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
                 except ValueError:
                     flash("Please enter a valid diagnosis date", "danger")
-                    return render_template("add_patient_modern.html")
+                    return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
 
             bmi = None
             if height and weight:
@@ -397,7 +397,7 @@ def register_patient_routes(app):
             except Exception as e:
                 conn.rollback()
                 flash(f"Error registering patient: {str(e)}", "danger")
-                return render_template("add_patient_modern.html")
+                return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
             finally:
                 conn.close()
 

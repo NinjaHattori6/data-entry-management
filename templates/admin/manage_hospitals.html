@@ -8,7 +8,7 @@
 <div class="fade-in">
     <div class="row mb-4">
         <div class="col-12">
-            <a href="{{ url_for('admin_enhanced.admin_dashboard') }}" class="btn btn-outline-secondary mb-3">
+            <a href="{{ url_for('admin_enhanced_dashboard') }}" class="btn btn-outline-secondary mb-3">
                 <i class="fas fa-arrow-left"></i> Back to Admin Dashboard
             </a>
         </div>
@@ -25,13 +25,13 @@
                     </h5>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ url_for('admin_enhanced.manage_hospitals') }}">
+                    <form method="POST" action="{{ url_for('admin_manage_hospitals') }}">
                         <input type="hidden" name="action" value="add">
                         <div class="row">
                             <div class="col-md-8">
                                 <label for="hospital_name" class="form-label">Hospital Name</label>
-                                <input type="text" class="form-control" id="hospital_name" name="hospital_name" 
-                                       placeholder="Enter hospital name" required>
+                                <input type="text" class="form-control" id="hospital_name" name="hospital_name"
+                                    placeholder="Enter hospital name" required>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">&nbsp;</label>
@@ -76,8 +76,8 @@
                                         <span class="badge bg-info">{{ hospital['patient_count'] }} patients</span>
                                     </td>
                                     <td>
-                                        <button class="btn btn-sm btn-outline-warning" 
-                                                onclick="deleteHospital('{{ hospital['hospital_name'] }}')">
+                                        <button class="btn btn-sm btn-outline-warning"
+                                            onclick="deleteHospital('{{ hospital['hospital_name'] }}')">
                                             <i class="fas fa-trash"></i> Remove
                                         </button>
                                     </td>
@@ -102,27 +102,27 @@
 
 {% block extra_js %}
 <script>
-function deleteHospital(hospitalName) {
-    if (confirm(`Are you sure you want to remove "${hospitalName}" from the system?`)) {
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = '{{ url_for('admin_enhanced.manage_hospitals') }}';
-        
-        const actionInput = document.createElement('input');
-        actionInput.type = 'hidden';
-        actionInput.name = 'action';
-        actionInput.value = 'delete';
-        
-        const hospitalInput = document.createElement('input');
-        hospitalInput.type = 'hidden';
-        hospitalInput.name = 'hospital_name';
-        hospitalInput.value = hospitalName;
-        
-        form.appendChild(actionInput);
-        form.appendChild(hospitalInput);
-        document.body.appendChild(form);
-        form.submit();
+    function deleteHospital(hospitalName) {
+        if (confirm(`Are you sure you want to remove "${hospitalName}" from the system?`)) {
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '{{ url_for('admin_manage_hospitals') }}';
+
+            const actionInput = document.createElement('input');
+            actionInput.type = 'hidden';
+            actionInput.name = 'action';
+            actionInput.value = 'delete';
+
+            const hospitalInput = document.createElement('input');
+            hospitalInput.type = 'hidden';
+            hospitalInput.name = 'hospital_name';
+            hospitalInput.value = hospitalName;
+
+            form.appendChild(actionInput);
+            form.appendChild(hospitalInput);
+            document.body.appendChild(form);
+            form.submit();
+        }
     }
-}
 </script>
 {% endblock %}

@@ -345,7 +345,7 @@ document.getElementById('patientForm').addEventListener('submit', function(e) {
     .then(response => response.text())
     .then(html => {
         // If registration successful, page will redirect
-        window.location.href = window.location.href;
+        window.location.href = '/dashboard';
     })
     .catch(error => {
         hideLoading(btn);

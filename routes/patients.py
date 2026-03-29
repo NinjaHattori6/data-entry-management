@@ -1,3 +1,4 @@
+import re
 from flask import render_template, request, flash, redirect, url_for, session
 from datetime import datetime
 from utils.decorators import login_required
@@ -304,6 +305,12 @@ def register_patient_routes(app):
                 flash("Age must be a valid number", "danger")
                 return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
 
+            if email:
+                email_pattern = re.compile(r'^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$')
+                if not email_pattern.match(email):
+                    flash("Please enter a valid email address", "danger")
+                    return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
+
             if diagnosis_date:
                 try:
                     parsed_date = datetime.strptime(diagnosis_date, '%Y-%m-%d')
@@ -319,6 +326,22 @@ def register_patient_routes(app):
                     flash("Please enter a valid diagnosis date", "danger")
                     return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
 
+            if blood_pressure:
+                bp_pattern = re.compile(r'^\d{1,3}/\d{1,3}$')
+                if not bp_pattern.match(blood_pressure):
+                    flash("Blood pressure must be in systolic/diastolic format (e.g., 120/80)", "danger")
+                    return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
+
+            if next_appointment:
+                try:
+                    parsed_appt = datetime.strptime(next_appointment, '%Y-%m-%d')
+                    if parsed_appt.date() < datetime.now().date():
+                        flash("Next appointment date cannot be in the past", "danger")
+                        return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
+                except ValueError:
+                    flash("Please enter a valid next appointment date", "danger")
+                    return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
+
             bmi = None
             if height and weight:
                 try:
@@ -332,21 +355,33 @@ def register_patient_routes(app):
 
             try:
                 tumor_size = float(tumor_size) if tumor_size else None
+                if tumor_size is not None and tumor_size <= 0:
+                    flash("Tumor size must be a positive number", "danger")
+                    return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
             except ValueError:
                 tumor_size = None
 
             try:
                 height = float(height) if height else None
+                if height is not None and height <= 0:
+                    flash("Height must be a positive number", "danger")
+                    return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
             except ValueError:
                 height = None
 
             try:
                 weight = float(weight) if weight else None
+                if weight is not None and weight <= 0:
+                    flash("Weight must be a positive number", "danger")
+                    return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
             except ValueError:
                 weight = None
 
             try:
                 heart_rate = int(heart_rate) if heart_rate else None
+                if heart_rate is not None and heart_rate <= 0:
+                    flash("Heart rate must be a positive number", "danger")
+                    return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
             except ValueError:
                 heart_rate = None
 

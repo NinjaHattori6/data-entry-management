@@ -159,7 +159,7 @@
                             <div class="form-group">
                                 <label for="tumor_size" class="form-label">Tumor Size (cm)</label>
                                 <input type="number" class="form-control" id="tumor_size" name="tumor_size" 
-                                       placeholder="Enter tumor size in cm" step="0.1" min="0">
+                                       placeholder="Enter tumor size in cm" step="0.1" min="0.1">
                             </div>
                             
                             <div class="form-group">
@@ -253,25 +253,26 @@
                             <div class="form-group">
                                 <label for="height" class="form-label">Height (cm)</label>
                                 <input type="number" class="form-control" id="height" name="height" 
-                                       placeholder="Enter height in cm" step="0.1" min="0">
+                                       placeholder="Enter height in cm" step="0.1" min="0.1">
                             </div>
                             
                             <div class="form-group">
                                 <label for="weight" class="form-label">Weight (kg)</label>
                                 <input type="number" class="form-control" id="weight" name="weight" 
-                                       placeholder="Enter weight in kg" step="0.1" min="0">
+                                       placeholder="Enter weight in kg" step="0.1" min="0.1">
                             </div>
                             
                             <div class="form-group">
                                 <label for="blood_pressure" class="form-label">Blood Pressure</label>
                                 <input type="text" class="form-control" id="blood_pressure" name="blood_pressure" 
-                                       placeholder="e.g., 120/80">
+                                       placeholder="e.g., 120/80" pattern="^\d{1,3}/\d{1,3}$"
+                                       title="Enter blood pressure in systolic/diastolic format (e.g., 120/80)">
                             </div>
                             
                             <div class="form-group">
                                 <label for="heart_rate" class="form-label">Heart Rate (bpm)</label>
                                 <input type="number" class="form-control" id="heart_rate" name="heart_rate" 
-                                       placeholder="Enter heart rate" min="0" max="300">
+                                       placeholder="Enter heart rate" min="1" max="300">
                             </div>
                         </div>
                     </div>
@@ -297,7 +298,8 @@
                             <div class="form-group">
                                 <label for="next_appointment" class="form-label">Next Appointment</label>
                                 <div class="date-input-modern">
-                                    <input type="date" class="form-control" id="next_appointment" name="next_appointment">
+                                    <input type="date" class="form-control" id="next_appointment" name="next_appointment"
+                                           min="{{ current_date }}">
                                 </div>
                             </div>
                         </div>

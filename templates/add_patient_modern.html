@@ -78,7 +78,9 @@
                             <div class="form-group">
                                 <label for="contact_number" class="form-label">Contact Number</label>
                                 <input type="tel" class="form-control" id="contact_number" name="contact_number" 
-                                       placeholder="Enter phone number">
+                                       placeholder="Enter 10-digit phone number"
+                                       pattern="[0-9]{10}" minlength="10" maxlength="10"
+                                       title="Please enter a valid 10-digit phone number">
                             </div>
                             
                             <div class="form-group">
@@ -117,7 +119,9 @@
                             <div class="form-group">
                                 <label for="emergency_contact_number" class="form-label">Emergency Contact Number</label>
                                 <input type="tel" class="form-control" id="emergency_contact_number" name="emergency_contact_number" 
-                                       placeholder="Enter emergency contact number">
+                                       placeholder="Enter 10-digit emergency contact number"
+                                       pattern="[0-9]{10}" minlength="10" maxlength="10"
+                                       title="Please enter a valid 10-digit phone number">
                             </div>
                         </div>
                     </div>

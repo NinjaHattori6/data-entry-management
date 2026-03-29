@@ -319,6 +319,14 @@ def register_patient_routes(app):
                     flash("Please enter a valid diagnosis date", "danger")
                     return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
 
+            if contact_number and (not contact_number.isdigit() or len(contact_number) != 10):
+                flash("Please enter a valid 10-digit phone number for Contact Number", "danger")
+                return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
+
+            if emergency_contact_number and (not emergency_contact_number.isdigit() or len(emergency_contact_number) != 10):
+                flash("Please enter a valid 10-digit phone number for Emergency Contact Number", "danger")
+                return render_template("add_patient_modern.html", current_date=datetime.now().strftime('%Y-%m-%d'))
+
             bmi = None
             if height and weight:
                 try:

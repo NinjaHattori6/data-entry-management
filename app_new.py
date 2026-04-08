@@ -10,10 +10,9 @@ app.config.from_object(Config)
 from utils.db import get_db_connection, generate_patient_id, DATABASE
 
 def init_db():
-    """Initialize database if it doesn't exist"""
-    if not os.path.exists(DATABASE):
-        from init_db import init_database
-        init_database()
+    """Initialize database schema and default data (idempotent)."""
+    from init_db import init_database
+    init_database()
 
 # Initialize database on app startup
 init_db()

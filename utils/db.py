@@ -2,7 +2,7 @@ import sqlite3
 import os
 from datetime import datetime
 
-DATABASE = 'oncology_system.db'
+DATABASE = os.environ.get('DB_PATH', 'oncology_system.db')
 
 def get_db_connection():
     """Create a database connection"""

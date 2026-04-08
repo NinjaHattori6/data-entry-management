@@ -4,18 +4,23 @@ from werkzeug.security import generate_password_hash
 
 
 def init_database():
-    """Initialize the database with required tables"""
+    """Initialize the database with required tables (safe and idempotent)."""
 
-    db_path = 'oncology_system.db'
-    if os.path.exists(db_path):
-        os.remove(db_path)
+    # Allow configuring the DB path via an environment variable
+    db_path = os.environ.get('DB_PATH', 'oncology_system.db')
+
+    # Create parent directory if needed (e.g. /data/oncology_system.db on a
+    # Render persistent disk)
+    db_dir = os.path.dirname(db_path)
+    if db_dir:
+        os.makedirs(db_dir, exist_ok=True)
 
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
     # ── Users table ──────────────────────────────────────────────────────────
     cursor.execute('''
-        CREATE TABLE users (
+        CREATE TABLE IF NOT EXISTS users (
             id            INTEGER PRIMARY KEY AUTOINCREMENT,
             username      VARCHAR(80)  UNIQUE NOT NULL,
             full_name     VARCHAR(120),
@@ -29,7 +34,7 @@ def init_database():
 
     # ── Patients table ────────────────────────────────────────────────────────
     cursor.execute('''
-        CREATE TABLE patients (
+        CREATE TABLE IF NOT EXISTS patients (
             id                           INTEGER PRIMARY KEY AUTOINCREMENT,
             patient_id                   VARCHAR(20) UNIQUE,
             created_by                   INTEGER NOT NULL,
@@ -72,24 +77,35 @@ def init_database():
     ''')
 
     # ── Indexes ───────────────────────────────────────────────────────────────
-    cursor.execute('CREATE INDEX idx_patients_created_by   ON patients(created_by)')
-    cursor.execute('CREATE INDEX idx_patients_status       ON patients(current_status)')
-    cursor.execute('CREATE INDEX idx_patients_cancer_type  ON patients(cancer_type)')
-    cursor.execute('CREATE INDEX idx_patients_cancer_stage ON patients(cancer_stage)')
-    cursor.execute('CREATE INDEX idx_patients_patient_id   ON patients(patient_id)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_patients_created_by   ON patients(created_by)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_patients_status       ON patients(current_status)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_patients_cancer_type  ON patients(cancer_type)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_patients_cancer_stage ON patients(cancer_stage)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_patients_patient_id   ON patients(patient_id)')
 
-    # ── Default admin user ────────────────────────────────────────────────────
-    admin_password = generate_password_hash('admin123')
-    cursor.execute('''
-        INSERT INTO users (username, full_name, email, password_hash, is_admin)
-        VALUES (?, ?, ?, ?, ?)
-    ''', ('admin', 'Administrator', 'admin@oncology.com', admin_password, True))
+    # ── Default admin user (only if it doesn't already exist) ────────────────
+    existing = cursor.execute(
+        'SELECT id FROM users WHERE username = ?', ('admin',)
+    ).fetchone()
+    if not existing:
+        raw_password = os.environ.get('DEFAULT_ADMIN_PASSWORD', 'admin123')
+        if not os.environ.get('DEFAULT_ADMIN_PASSWORD'):
+            print("⚠️  DEFAULT_ADMIN_PASSWORD env var is not set. "
+                  "Using insecure default — please set a strong password before going live.")
+        admin_password = generate_password_hash(raw_password)
+        cursor.execute('''
+            INSERT INTO users (username, full_name, email, password_hash, is_admin)
+            VALUES (?, ?, ?, ?, ?)
+        ''', ('admin', 'Administrator', 'admin@oncology.com', admin_password, True))
+        print("✅ Database initialized successfully!")
+        print("👤 Default admin user created: username=admin")
+        print("   (password set from DEFAULT_ADMIN_PASSWORD env var or default)")
+    else:
+        print("✅ Database schema verified successfully!")
 
     conn.commit()
     conn.close()
 
-    print("✅ Database initialized successfully!")
-    print("👤 Default admin: username=admin  password=admin123")
     print(f"📁 Database: {os.path.abspath(db_path)}")
 
 
